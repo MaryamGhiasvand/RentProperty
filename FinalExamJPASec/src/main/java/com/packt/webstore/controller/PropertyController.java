@@ -16,6 +16,7 @@ import com.packt.webstore.domain.Property;
 import com.packt.webstore.service.PropertyService;
 
 @Controller
+@RequestMapping({"/properties"})
 public class PropertyController {
 
 	@Autowired
@@ -23,7 +24,7 @@ public class PropertyController {
 
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
-//		model.addAttribute("properties", propertyService.findAll());
+		model.addAttribute("properties", propertyService.findAll());
 		return "properties";
 	}
 	
@@ -32,10 +33,10 @@ public class PropertyController {
 		
 		return "editProperty";
 	}
-
 	
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/add")
 	public String getAddProperty(@ModelAttribute("newProperty") Property newProperty) {
+		System.out.println("----test add");
 	   return "addProperty";
 	}
 	   
@@ -46,7 +47,7 @@ public class PropertyController {
 		}
 
    		try {
-//			propertyService.save(newProperty);
+			propertyService.save(newProperty);
 		} catch (Exception up) {
 	      System.out.println("Transaction Failed!!!");
  

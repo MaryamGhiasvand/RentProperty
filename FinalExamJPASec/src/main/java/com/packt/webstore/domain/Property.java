@@ -145,6 +145,11 @@ public class Property {
 	public void setPropertyType(PropertyType propertyType) {
 		this.propertyType = propertyType;
 	}
+	
+	public Property() {
+		
+	}
+	
 	public Property(String title, String description, float price, float area, int bedCount) {
 		super();
 		this.title = title;
@@ -153,8 +158,5 @@ public class Property {
 		this.area = area;
 		this.bedCount = bedCount;
 	}
-	
-	
-	
 }
 	
