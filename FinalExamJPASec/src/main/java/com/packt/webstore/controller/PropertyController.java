@@ -3,7 +3,6 @@ package com.packt.webstore.controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-import org.codehaus.jackson.map.ser.impl.PropertySerializerMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,50 +12,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.packt.webstore.domain.Employee;
-import com.packt.webstore.service.EmployeeService;
+import com.packt.webstore.domain.Property;
+import com.packt.webstore.service.PropertyService;
 
 @Controller
 public class PropertyController {
 
 	@Autowired
-	private PropertySerializerMap employeeService;
-	
-//	@Autowired
-//	private EmployeeValidator employeeValidator;
+	private PropertyService propertyService;
 
 	@RequestMapping("/list")
-	public String listEmployees(Model model) {
-		model.addAttribute("employees", employeeService.findAll());
-		return "employees";
+	public String listProperties(Model model) {
+//		model.addAttribute("properties", propertyService.findAll());
+		return "properties";
 	}
 	
-  	@RequestMapping("/employee")
-	public String getEmployeeById(Model model, @RequestParam("id") Long employeeId) {
-		Employee employee = employeeService.findByEmployeeNumber(employeeId);
-		model.addAttribute("employee", employee);
-		return "employee";
+  	@RequestMapping("/property")
+	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
+		
+		return "editProperty";
 	}
 
 	
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String getAddNewEmployeeForm(@ModelAttribute("newEmployee") Employee newEmployee) {
-	   return "addEmployee";
+	public String getAddProperty(@ModelAttribute("newProperty") Property newProperty) {
+	   return "addProperty";
 	}
 	   
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddNewEmployeeForm(@ModelAttribute("newEmployee") @Valid Employee employeeToBeAdded, BindingResult result, HttpServletRequest request) {
+	public String processAddProperty(@ModelAttribute("newProperty") @Valid Property newProperty, BindingResult result, HttpServletRequest request) {
 		if(result.hasErrors()) {
-			return "addEmployee";
+			return "addProperty";
 		}
 
    		try {
-			employeeService.save(employeeToBeAdded);
+//			propertyService.save(newProperty);
 		} catch (Exception up) {
 	      System.out.println("Transaction Failed!!!");
  
 		}
 		
-	   	return "redirect:/employees/list";
+	   	return "redirect:/properties/list";
 	}
 }
