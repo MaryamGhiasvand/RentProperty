@@ -6,7 +6,7 @@ function addToFavorite() {
 		url : 'addtoFavorite',
 		type : 'GET',
 		async : false,
-		dataType : 'json',
+		dataType : 'html',
 		data : 'propertyId=' + 111,
 		success : function(sucess) {
 			alert("sucess")
@@ -19,10 +19,8 @@ function addToFavorite() {
 			$('#dialog').show();
 		},
 		error: function(xhr, status, error) {
-			alert("err")
-			  var err = eval("(" + xhr.responseText + ")");
-			  alert(err.Message);
-			}
+		    alert(error.message);
+		 }
 
 	})
 }

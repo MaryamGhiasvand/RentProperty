@@ -30,7 +30,7 @@ public class FavoritePropertiesController {
 	
 	@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
 	@ResponseBody 
-		public void addtoFavorite( @RequestParam("propertyId") long propertyId) {
+		public String addtoFavorite( @RequestParam("propertyId") long propertyId) {
 		System.out.println("**********propertyId*********"+propertyId);
 		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 	       System.out.println("**********auth*********"+username);
@@ -42,7 +42,7 @@ public class FavoritePropertiesController {
            FavoriteProperties favorite = new FavoriteProperties(p,user);
 	       favoritePropertiesService.addToFavorite(favorite);
 	       System.out.println("**********u*********"+user.toString());
-	       //return "Sucees";
+	       return "";
 	}
 
 }
