@@ -2,12 +2,14 @@ package com.packt.webstore.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.packt.webstore.domain.PropertyReview;
 import com.packt.webstore.repository.ReviewRepository;
 import com.packt.webstore.service.ReviewService;
 
 @Service
+@Transactional 
 public class ReviewServiceImpl implements ReviewService{
 	@Autowired
 	private ReviewRepository reviewRepository;
