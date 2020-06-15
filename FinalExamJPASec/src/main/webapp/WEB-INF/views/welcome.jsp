@@ -73,7 +73,7 @@
 			</div>
 		</div>
 		
-	<!-- Add to favorite -->
+	<!-- Add to favorite --> 
 <p>for Maryam </p>
 	<%-- <input type="button" value="Add to favorite" onclick="addToFavorite('${Property.id}')" /> --%>
 	<input type="button" value="Add to favorite" onclick="addToFavorite()" />
