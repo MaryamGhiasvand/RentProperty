@@ -54,6 +54,21 @@
 				</div>
 			</fieldset>
 		</form:form>
+		<form method="post" action="doUpload" enctype="multipart/form-data">
+            <table border="0">
+                <tr>
+                    <td>Pick file #1:</td>
+                    <td><input type="file" name="fileUpload" size="50" /></td>
+                </tr>
+                <tr>
+                    <td>Pick file #2:</td>
+                    <td><input type="file" name="fileUpload" size="50" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
+                </tr>
+            </table>
+        </form>
 	</section>
 </body>
 </html>
