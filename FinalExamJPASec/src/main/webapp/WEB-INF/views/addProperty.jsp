@@ -18,11 +18,11 @@
 	<section class="container">
 		<form:form  modelAttribute="newProperty" action="add" method="post">
 			<fieldset>
-				<legend>New employee</legend>
+				<legend>New property</legend>
 
 				<form:errors path="*" element="div"/>
 				<div class="form-group">
-					<label for="employeeNumber">Property title</label>
+					<label for="number">Property title</label>
 					<div class="col-lg-10">
 						<form:input id="title" path="title" type="text" class="form:input-large"/>
 						<form:errors path="title" cssClass="text-danger"/>

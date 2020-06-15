@@ -30,14 +30,32 @@ public class PropertyController {
 		model.addAttribute("properties", propertyService.findAll());
 		return "properties";
 	}
-	
-  	@RequestMapping("/property")
+//	
+	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
-		
+  		System.out.println("-*-*- edit " + propertyId);
+  		Property property = propertyService.fingPropertyById(propertyId);
+  		model.addAttribute("property", property);
 		return "editProperty";
 	}
+  	
+  	@RequestMapping(value="/edit", method = RequestMethod.POST)
+	public String processEditProperty(@ModelAttribute("property") @Valid Property property, BindingResult result, HttpServletRequest request) {
+		if(result.hasErrors()) {
+			return "editProperty";
+		}
+
+   		try {
+			propertyService.save(property);
+		} catch (Exception up) {
+	      System.out.println("Transaction Failed!!!");
+ 
+		}
+		
+	   	return "redirect:/properties/list";
+	}
 	
-	@RequestMapping(value = "/add")
+  	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getAddProperty(@ModelAttribute("newProperty") Property newProperty) {
 		System.out.println("----test add");
 	   return "addProperty";

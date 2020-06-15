@@ -9,4 +9,6 @@ public interface PropertyService {
 	
 	public void save(Property property);
 	public List<Property> findAll();
+	public Property fingPropertyById(Long id);
+	
 }
