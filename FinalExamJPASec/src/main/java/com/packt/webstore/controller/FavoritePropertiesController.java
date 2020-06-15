@@ -29,7 +29,7 @@ public class FavoritePropertiesController {
 		 String auth = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 	       System.out.println("**********auth*********"+auth);
 	       
-	       Property p =propertyService.findProperty(propertyId);
+//	       Property p =propertyService.findProperty(propertyId);
 //	       Credentials user = 
 //	       FavoriteProperties favorite = new FavoriteProperties(p,);
 //	       favoritePropertiesService.addToFavorite(favorite);
