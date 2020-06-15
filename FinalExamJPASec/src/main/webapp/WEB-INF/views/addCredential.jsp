@@ -18,7 +18,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="credential" class="form-horizontal" action="user/add" method="post">
+		<form:form  modelAttribute="credential" class="form-horizontal" action="add" method="post">
 			<fieldset>
 				<legend>New user</legend>
 

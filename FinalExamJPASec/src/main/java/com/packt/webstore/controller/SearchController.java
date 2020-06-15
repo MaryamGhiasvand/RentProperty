@@ -12,5 +12,4 @@ public class SearchController {
 		System.out.println("------------------------------------------ search ---------------------------------------------");
 		return "";
 	}
-
 }
