@@ -33,4 +33,71 @@ public class PropertyReview {
     @JoinColumn(name="property_id", nullable=false)
 	private Property property;
 
+
+	public String getTitle() {
+		return title;
+	}
+
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+	public int getStarCount() {
+		return starCount;
+	}
+
+
+	public void setStarCount(int starCount) {
+		this.starCount = starCount;
+	}
+
+
+	public String getComment() {
+		return comment;
+	}
+
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+
+
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
+
+
+	public Property getProperty() {
+		return property;
+	}
+
+
+	public void setProperty(Property property) {
+		this.property = property;
+	}
+
+
+	public PropertyReview(String title, int starCount, String comment, LocalDateTime dateTime, Property property) {
+		super();
+		this.title = title;
+		this.starCount = starCount;
+		this.comment = comment;
+		this.dateTime = dateTime;
+		this.property = property;
+	}
+
+
+	public PropertyReview() {
+		super();
+	}
+	
+	
+
 }
