@@ -8,10 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.packt.webstore.domain.Employee;
 
-	@Repository
-	public interface EmployeeRepository extends  CrudRepository<Employee, Long> 
-	{
-		@Query("select e from Employee  e where e.id= :id")
-		public Employee findByEmployeeNumber(@Param("id") Long employeeNumber);
- 	}
+//@Repository
+public interface EmployeeRepository extends  CrudRepository<Employee, Long> {
+	@Query("select e from Employee  e where e.id= :id")
+	public Employee findByEmployeeNumber(@Param("id") Long employeeNumber);
+}
 
