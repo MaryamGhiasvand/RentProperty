@@ -15,11 +15,12 @@ public class CredentialServiceImpl implements CredentialService {
 	@Autowired
 	private CredentialRepository credentialRepository;
 	
+
 	@Override
-	public String addCredential() {
-		//credentialRepository.addCredentials();
-		return null;
+	public void addCredential(Credentials credentials) {
+		credentialRepository.save(credentials);
 	}
+
 
 	@Override
 	public Credentials findByUsername(String username) {
@@ -27,5 +28,5 @@ public class CredentialServiceImpl implements CredentialService {
 		return credentialRepository.findByUsername(username);
 		//return null;
 	}
-	
+
 }
