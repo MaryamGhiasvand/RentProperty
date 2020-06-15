@@ -1,8 +1,9 @@
-package com.packt.webstore.domain;
+	package com.packt.webstore.domain;
 
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,8 +59,11 @@ public class Property {
 //	@OneToMany(mappedBy = "property")
 //	private List<PropertyPicture> pictures;
 //	
-//	@OneToMany(mappedBy = "property")
-//	private List<PropertyReview> review;
+	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
+	private List<PropertyReview> reviews;
+	
+	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
+	private List<FavoriteProperties> favorites;
 	
 	public long getId() {
 		return id;

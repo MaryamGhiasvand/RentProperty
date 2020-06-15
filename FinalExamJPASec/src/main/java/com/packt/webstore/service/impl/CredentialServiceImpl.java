@@ -13,10 +13,20 @@ import com.packt.webstore.service.CredentialService;
 public class CredentialServiceImpl implements CredentialService {
 
 	@Autowired
-	CredentialRepository credentialRepository;
+	private CredentialRepository credentialRepository;
+	
 
 	@Override
 	public void addCredential(Credentials credentials) {
 		credentialRepository.save(credentials);
 	}
+
+
+	@Override
+	public Credentials findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return credentialRepository.findByUsername(username);
+		//return null;
+	}
+	
 }
