@@ -24,6 +24,9 @@ public class PropertyController {
 
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
+		
+		System.out.println("size - " + propertyService.findAll().size());
+		
 		model.addAttribute("properties", propertyService.findAll());
 		return "properties";
 	}

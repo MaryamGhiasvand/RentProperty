@@ -12,8 +12,7 @@
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Valued Employees</h1>
-				<p>Add a new one<p>
+				<h1>Valued Property</h1>
 			</div>
 		</div>
 	</section>

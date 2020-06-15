@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,11 +16,11 @@
 			<th>Description</th>
 			<th>Price</th>
 		</tr>
-		<c:forEach var="property" items="${properties }">
+		<c:forEach var="property" items="${properties}">
 			<tr>
-				<td>${property.title }</td>
-				<td>${property.description }</td>
-				<td>${property.price }</td>
+				<td>${property.title}</td>
+				<td>${property.description}</td>
+				<td>${property.price}</td>
 				<td>
 					<a>Delete</a>
 				
@@ -28,5 +29,6 @@
 		</c:forEach>
 	</table>
 <a href="<c:url value="/properties/add" />" class="btn btn-danger btn-mini pull-right">Add a new one</a>	<br>
+
 </body>
 </html>
