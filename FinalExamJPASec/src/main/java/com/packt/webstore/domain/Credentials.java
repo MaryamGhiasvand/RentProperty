@@ -13,18 +13,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
  
-@Entity(name = "Credentials")
+@Entity(name = "USERS")
 public class Credentials {
 
 	 @Id
 	 @Column(name = "USERNAME", nullable = false, unique = true)
- 	String username;
+ 	private String username;
 	 @Column(name = "PASSWORD", nullable = false)
-	String password;
+	 private String password;
+	 @Column(name = "EMAIL", nullable = false)
+	 private String email;
 	String verifyPassword;
-	Boolean enabled;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Boolean enabled;
+	@Column
+	private UserRole userRole;
+	
+    public UserRole getUserRole() {
+		return userRole;
+	}
+	public void setUserRole(UserRole userRole) {
+		this.userRole = userRole;
+	}
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="USERNAME", referencedColumnName= "USERNAME") 
 	List<Authority> authority;
 	
@@ -33,6 +43,12 @@ public class Credentials {
 	}
 	public void setUsername(String username) {
 		this.username = username;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getPassword() {
 		return password;

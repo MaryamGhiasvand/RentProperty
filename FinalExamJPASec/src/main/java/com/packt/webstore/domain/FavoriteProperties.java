@@ -3,6 +3,8 @@ package com.packt.webstore.domain;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.security.core.userdetails.User;
+
 public class FavoriteProperties {
 	
 	private long id;
