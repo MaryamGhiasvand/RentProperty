@@ -37,4 +37,16 @@ public class PropertyServiceImpl implements PropertyService{
 		propertyRepository.delete(id);
 		
 	}
+
+	@Override
+	public List<Property> findPropertyForSearch(int bathCount, int bedCount) {
+		return propertyRepository.findPropertyForSearch(bathCount, bedCount);
+	}
+
+	@Override
+	public List<Property> findPropertyByCity(String city) {
+		System.out.println("-----" + propertyRepository.findPropertyByCity().size() + " - ");
+		
+		return propertyRepository.findPropertyByCity();
+	}
 }
