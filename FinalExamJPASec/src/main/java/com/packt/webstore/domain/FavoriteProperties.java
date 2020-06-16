@@ -18,7 +18,7 @@ public class FavoriteProperties {
 	private Property property;
 	
 	@ManyToOne
-	@JoinColumn(name = "username")
+	//@JoinColumn(name = "username")
 	private Credentials username;
 
 	public Property getProperty() {
