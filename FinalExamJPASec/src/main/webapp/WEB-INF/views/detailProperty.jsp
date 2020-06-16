@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <!-- added by Maryam for add to favorite -->
 
-<style type="text/css">@import url("<spring:url value="/resources/css/styples.css"/>");</style>
+<!-- <style type="text/css">@import url("<spring:url value="/resources/css/styles.css"/>");</style> -->
 <script type="text/javascript"
 	src="<spring:url value="/resource/js/ajax.js"/>"></script>
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -57,7 +57,7 @@
 				<tr>
 					<td><input type="button"
 						<c:if test="${LoggedInUser == false}"><c:out value="disabled='disabled'"/></c:if>
-						value="add to favorite" />
+						value="add to favorite" onclick="addToFavorite(${property.id})"/>
 						<%-- onclick="alert(${LoggedInUser});addToFavorite(${property.id})"  --%>
 					<td>
 						<div id="result" style="display: none">
