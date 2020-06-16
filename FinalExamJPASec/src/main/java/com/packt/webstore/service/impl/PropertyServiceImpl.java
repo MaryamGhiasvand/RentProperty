@@ -35,8 +35,7 @@ public class PropertyServiceImpl implements PropertyService{
 	
 	@Override
 	public void delete(Long id) {
-		propertyRepository.delete(id);
-		
+		propertyRepository.delete(id);		
 	}
 
 	@Override
