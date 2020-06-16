@@ -1,6 +1,9 @@
 package com.packt.webstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.SystemEnvironmentPropertySource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,12 +36,15 @@ public class FavoritePropertiesController {
 		public String addtoFavorite( @RequestParam("propertyId") long propertyId) {
 		System.out.println("**********propertyId*********"+propertyId);
 		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();	 
-		 //if(username)
+		 System.out.print("username"+username);
+		 if(username !="anonymousUser") {
 	       Property p =propertyService.fingPropertyById(propertyId);
 	       Credentials user = credentialService.findByUsername(username);
            FavoriteProperties favorite = new FavoriteProperties(p,user);
 	       favoritePropertiesService.addToFavorite(favorite);
-	       return "";
+	       return "success";
+		 }
+	       return "notLoggedIn";
 	}
 
 }
