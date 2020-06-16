@@ -21,13 +21,11 @@
 				<td>${property.title}</td>
 				<td>${property.description}</td>
 				<td>${property.price}</td>
-				<td><a>Delete</a>				
+				<td><a href=" <spring:url value="/properties/delete?id=${property.id}" /> ">Delete</a>	
 				</td>
-				<td><a href=" <spring:url value="/properties/edit?id=${property.id}" /> "
-									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Details
-								</a>
-				
+				<td><a href=" <spring:url value="/properties/edit?id=${property.id}" /> ">Edit</a>				
+				</td>
+				<td><a href=" <spring:url value="/properties/detail?id=${property.id}" /> ">Details</a>				
 				</td>
 			</tr>
 		</c:forEach>
