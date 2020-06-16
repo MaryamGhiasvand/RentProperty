@@ -9,10 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "proporty")
+
+@NamedQuery(name = "Property.findByState", query = "SELECT ug FROM Property ug " + 
+			"INNER JOIN ug.address u WHERE u.state = ?1")
+
+
 public class Property {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -76,6 +84,10 @@ public class Property {
 //	@OneToMany(mappedBy = "property")
 //	private List<PropertyPicture> pictures;
 //	
+	
+	@OneToMany(mappedBy = "property", cascade = CascadeType.REMOVE)
+	private List<RentHistory> histories;
+	
 	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
 	private List<PropertyReview> reviews;
 	

@@ -17,11 +17,22 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="newProperty" action="add" method="post" >
+		<form:form  modelAttribute="newProperty" action="add" method="post">
 			<fieldset>
 				<legend>New property</legend>
-
+	
 				<form:errors path="*" element="div"/>
+				<div class="form-group">
+					<label for="number">Property type</label>
+					<div class="col-lg-10">
+					<form:select id="propertyType" path="propertyType" class="form:input-large">
+				                <option value="HOUSE">HOUSE</option>
+								<option value="APARTMENT">APARTMENT</option>
+								<option value="VILLA">VILLA</option>
+				   </form:select>	
+			   		</div>
+				</div>
+				
 				<div class="form-group">
 					<label for="number">Property title</label>
 					<div class="col-lg-10">
@@ -47,6 +58,27 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<form:checkbox path = "airConditioning" />
+					<label class="control-label col-lg-2" for="airConditioning">Air Conditioning</label>
+						
+				</div>
+				<div class="form-group">
+					<form:checkbox path = "grill" />
+					<label class="control-label col-lg-2" for="grill">Grill</label>
+						
+				</div>
+				<div class="form-group">
+					<form:checkbox path = "oven" />
+					<label class="control-label col-lg-2" for="oven">Oven</label>
+						
+				</div>
+				<div class="form-group">
+					<form:checkbox path = "parking" />
+					<label class="control-label col-lg-2" for="parking">Parking</label>						
+				</div>
+				
 				
 				<h4>Address:</h4>
 			  	<div class="form-group">
@@ -103,8 +135,7 @@
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="submit" id="btnAdd"value ="Add"/>
 					</div>
-				</div>
-				
+				</div>				
 				
 			</fieldset>
 			<input type="file" name="fileUpload" size="50" />

@@ -11,6 +11,8 @@
 
 	<h3>Products List</h3>
 	<table border="1" cellpadding="2" cellspacing="2">
+	<input id="title" type="text" class="form:input-large"/>
+	<a href=" <spring:url value="/properties/edit?search=vvvv" /> ">Search</a>
 		<tr>
 			<th>Title</th>
 			<th>Description</th>
@@ -23,9 +25,11 @@
 				<td>${property.price}</td>
 				<td><a href=" <spring:url value="/properties/delete?id=${property.id}" /> ">Delete</a>	
 				</td>
-				<td><a href=" <spring:url value="/properties/edit?id=${property.id}" /> ">Edit</a>				
+				<td><a href=" <spring:url value="/properties/edit?search=${property.address.state}" /> ">Edit</a>				
 				</td>
 				<td><a href=" <spring:url value="/properties/detail?id=${property.id}" /> ">Details</a>				
+				</td>
+				<td><a href=" <spring:url value="/addRentHistory?id=${property.id}" /> ">Rent</a>				
 				</td>
 			</tr>
 		</c:forEach>
