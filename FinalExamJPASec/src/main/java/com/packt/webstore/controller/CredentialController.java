@@ -1,5 +1,8 @@
 package com.packt.webstore.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -33,10 +36,12 @@ public class CredentialController {
 		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
 		Authority authority = new Authority();
 		authority.setAuthority("ROLE_USER");
+		List<Authority> authorities = new ArrayList<Authority>();
+		authorities.add(authority);
 		authority.setUsername(credential.getUsername());
 		credential.setPassword(passEncoder.encode(credential.getPassword()));
 		credential.setEnabled(true);
-		credential.setAuthority(authority);
+		credential.setAuthority(authorities);
 		credentialService.addCredential(credential);
 		redirectAttributes.addFlashAttribute(credential);
 		return "redirect:/credential/success";
