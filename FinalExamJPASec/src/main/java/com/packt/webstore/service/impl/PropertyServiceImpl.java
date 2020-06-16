@@ -31,4 +31,10 @@ public class PropertyServiceImpl implements PropertyService{
 	public Property fingPropertyById(Long id) {
 		return (Property) propertyRepository.findPropertyById(id);
 	}
+	
+	@Override
+	public void delete(Long id) {
+		propertyRepository.delete(id);
+		
+	}
 }

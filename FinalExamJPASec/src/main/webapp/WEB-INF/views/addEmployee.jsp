@@ -17,7 +17,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="newEmployee" class="form-horizontal" action="add" method="post">
+		<form:form  modelAttribute="newEmployee" class="form-horizontal" action="add" method="post" enctype="multipart/form-data">
 			<fieldset>
 				<legend>New employee</legend>
 
@@ -73,7 +73,7 @@
 						<input type="submit" id="btnAdd" class="btn btn-primary" value ="Add"/>
 					</div>
 				</div>
-				
+				<input type="file" name="fileUpload" size="50" />
 			</fieldset>
 		</form:form>
 	</section>

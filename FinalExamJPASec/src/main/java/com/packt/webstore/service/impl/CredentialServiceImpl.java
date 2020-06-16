@@ -8,6 +8,8 @@ import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.repository.CredentialRepository;
 import com.packt.webstore.service.CredentialService;
 
+import javassist.bytecode.ExceptionTable;
+
 @Service
 @Transactional 
 public class CredentialServiceImpl implements CredentialService {
@@ -25,7 +27,14 @@ public class CredentialServiceImpl implements CredentialService {
 	@Override
 	public Credentials findByUsername(String username) {
 		// TODO Auto-generated method stub
+		try {
 		return credentialRepository.findByUsername(username);
+		}
+		catch(Exception ex)
+		{
+			System.out.println(ex);
+			return null;
+		}
 		//return null;
 	}
 
