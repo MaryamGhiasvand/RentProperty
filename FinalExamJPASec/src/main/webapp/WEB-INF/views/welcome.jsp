@@ -26,13 +26,13 @@
 
 			<div class="container">
 
-		<form:form method="get" action="search">
+		<form:form method="get" action="search" modelAttribute="property">
 			<select name="type">
 				<option>Type1</option>
 				<option>Type2</option>
 				<option>Type3</option>
 			</select>
-			<input type="text" name="city" />
+		
 			<input type="text" name="max" />
 			<input type="text" name="min" />
 			<input type="submit" value="search" />
@@ -72,6 +72,8 @@
 					</a>
 
 
+<p>added by Maryam</p>
+<a href=" <spring:url value="/favoriteProperties/viewMyFvoriteList" /> "class="button">May favorite list</a>
 
 	
 			</div>

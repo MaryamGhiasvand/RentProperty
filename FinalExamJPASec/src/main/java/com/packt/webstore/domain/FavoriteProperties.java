@@ -18,8 +18,8 @@ public class FavoriteProperties {
 	private Property property;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_name")
-	private Credentials users;
+	@JoinColumn(name = "username")
+	private Credentials username;
 
 	public Property getProperty() {
 		return property;
@@ -30,11 +30,11 @@ public class FavoriteProperties {
 	}
 
 	public Credentials getUsers() {
-		return users;
+		return username;
 	}
 
 	public void setUsers(Credentials users) {
-		this.users = users;
+		this.username = users;
 	}
 	
 	public FavoriteProperties() {
@@ -44,7 +44,7 @@ public class FavoriteProperties {
 	public FavoriteProperties(Property property, Credentials users) {
 		super();
 		this.property = property;
-		this.users = users;
+		this.username = users;
 	}
 
 //	public FavoriteProperties() {

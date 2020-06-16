@@ -1,12 +1,14 @@
 package com.packt.webstore.service.impl;
 
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.packt.webstore.domain.FavoriteProperties;
+import com.packt.webstore.domain.Property;
 import com.packt.webstore.repository.FavoritePropertiesRepository;
 import com.packt.webstore.service.FavoritePropertiesService;
 
@@ -26,9 +28,16 @@ public class FavoritePropertiesServiceImpl implements FavoritePropertiesService{
 		favoritePropertiesRepository.delete(favorite_id);
 	}
 	
-	public List<FavoriteProperties> findAllFavorites(long user_id) {
-		List<FavoriteProperties> favoriteItems =favoritePropertiesRepository.findAllFavorites(user_id);
+	public List<Property> findAllFavorites(String username) {
+		try {
+		List<Property> favoriteItems =favoritePropertiesRepository.findAllFavorites(username);
 		return favoriteItems;
+		}
+		catch(Exception ex) {
+			System.out.print("a");
+			return null;
+		}
+		
 	}
 
 }

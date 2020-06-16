@@ -35,10 +35,13 @@
 		<div>
 			<a href="credential/edit" >Edit Profile</a>
 			<p>${credential.username}</p>
-			<p>${credential.password}</p>
 			<p>${credential.email}</p>
 		</div>
 
+		<div>
+			<p><a href="properties/list">My properties</a></p>
+			<p><a href="properties/add">Add new property</a>
+		</div>
 	</section>
 </body>
 </html>

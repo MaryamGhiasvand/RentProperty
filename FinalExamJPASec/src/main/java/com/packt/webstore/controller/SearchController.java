@@ -1,6 +1,7 @@
 package com.packt.webstore.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -8,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SearchController {
 	
 	@RequestMapping(value = {"/search"}, method = RequestMethod.GET)
-	public String search() {
-		System.out.println("------------------------------------------ search ---------------------------------------------");
-		return "";
+	public String search(Model model) {
+		System.out.println(model.containsAttribute(""));
+		return "search";
 	}
 }
