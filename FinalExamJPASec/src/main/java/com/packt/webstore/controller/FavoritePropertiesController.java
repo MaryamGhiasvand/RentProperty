@@ -1,11 +1,15 @@
 package com.packt.webstore.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.SystemEnvironmentPropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,8 +24,8 @@ import com.packt.webstore.service.CredentialService;
 import com.packt.webstore.service.FavoritePropertiesService;
 import com.packt.webstore.service.PropertyService;
 
-@RestController
-//@RequestMapping("/FavoriteProperties")
+@Controller
+@RequestMapping("/favoriteProperties")
 public class FavoritePropertiesController {
 	@Autowired
 	private FavoritePropertiesService favoritePropertiesService;
@@ -30,11 +34,24 @@ public class FavoritePropertiesController {
 	@Autowired
 	private CredentialService credentialService;
 
-	
-	@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
-	@ResponseBody 
-		public String addtoFavorite( @RequestParam("propertyId") long propertyId) {
+//	@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
+//	
+//	public String addtoFavorite(@RequestParam("propertyId") long propertyId, Model model) {
+//		if ((boolean) model.asMap().get("LoggedInUser") == true) {
+//			Property p = propertyService.fingPropertyById(propertyId);
+//			String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+//			Credentials user = credentialService.findByUsername(username);
+//			FavoriteProperties favorite = new FavoriteProperties(p, user);
+//			favoritePropertiesService.addToFavorite(favorite);
+//			model.addAttribute("AddedToFavorite",true);
+//			//return @ResponseBody"success";
+//		}
+//		return "redirect:/login";
+//}
 
+		@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
+		@ResponseBody
+		public String addtoFavorite(@RequestParam("propertyId") long propertyId, Model model) {
 		System.out.println("**********propertyId*********"+propertyId);
 		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();	 
 		 System.out.print("username"+username);
@@ -46,6 +63,26 @@ public class FavoritePropertiesController {
 	       return "success";
 		 }
 	       return "notLoggedIn";
+	}
+		
+		
+		@RequestMapping("/viewMyFvoriteList")
+		public String viewFvoriteList(Model model) {
+			 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+			List<Property> favoriteProperties=favoritePropertiesService.findAllFavorites(username);
+			model.addAttribute("properties",favoriteProperties);
+			
+			return "myFavoriteList";
+		}
+
+	@ModelAttribute("LoggedInUser")
+	public Boolean CheckLoggedIn() {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		if (username == "anonymousUser" || username == null) {
+			return false;
+		}
+
+		return true;
 	}
 
 }

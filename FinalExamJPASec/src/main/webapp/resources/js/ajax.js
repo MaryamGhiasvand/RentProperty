@@ -3,7 +3,7 @@ var contextRoot = "/" + window.location.pathname.split('/')[1];
 function addToFavorite(propertyId) {
 alert ("propid= "+propertyId)
 	$.ajax({
-		url : contextRoot+'/addtoFavorite',
+		url : contextRoot+'/favoriteProperties/addtoFavorite',
 		type : 'GET',
 		async : false,
 		dataType : 'html',
@@ -44,3 +44,18 @@ alert ("propid= "+propertyId)
 
 	})
 }
+
+
+//function addReview(propertyId) {
+//	alert ("addReview ")
+//	alert ("propid= "+propertyId)
+//		$.ajax({
+//		url : contextRoot+'/propertyReview/addPropertyReview',
+//		type : 'GET',
+//		async : false,
+//		dataType : 'html',
+//		data : 'propertyId=' + propertyId
+//
+//
+//	})
+//	}

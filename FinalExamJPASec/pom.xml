@@ -116,9 +116,6 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 
-
-
-
 		<!-- //Added for Ajax -->
 		<dependency>
 			<groupId>org.hibernate</groupId>

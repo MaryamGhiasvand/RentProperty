@@ -72,6 +72,8 @@
 					</a>
 
 
+<p>added by Maryam</p>
+<a href=" <spring:url value="/favoriteProperties/viewMyFvoriteList" /> "class="button">May favorite list</a>
 
 	
 			</div>

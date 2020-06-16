@@ -22,6 +22,17 @@
 
 				<form:errors path="*" element="div"/>
 				<div class="form-group">
+					<label for="number">Property type</label>
+					<div class="col-lg-10">
+					<form:select id="propertyType" path="propertyType" class="form:input-large">
+				                <option value="HOUSE">HOUSE</option>
+								<option value="APARTMENT">APARTMENT</option>
+								<option value="VILLA">VILLA</option>
+				   </form:select>	
+			   		</div>
+				</div>
+				
+				<div class="form-group">
 					<label for="number">Property title</label>
 					<div class="col-lg-10">
 						<form:input id="title" path="title" type="text" class="form:input-large"/>
@@ -46,10 +57,81 @@
 						</div>
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<form:checkbox path = "airConditioning" />
+					<label class="control-label col-lg-2" for="airConditioning">Air Conditioning</label>
+						
+				</div>
+				<div class="form-group">
+					<form:checkbox path = "grill" />
+					<label class="control-label col-lg-2" for="grill">Grill</label>
+						
+				</div>
+				<div class="form-group">
+					<form:checkbox path = "oven" />
+					<label class="control-label col-lg-2" for="oven">Oven</label>
+						
+				</div>
+				<div class="form-group">
+					<form:checkbox path = "parking" />
+					<label class="control-label col-lg-2" for="parking">Parking</label>						
+				</div>
+				
+				<h4>Address:</h4>
+			  	<div class="form-group">
+					<label class="control-label col-lg-2" for="state">State</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.state" id="state" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="city">City</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.city" id="city" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="street">Street</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.street" id="street" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="zipCode">Zip Code</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.zipCode" id="zipCode" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="longitude">Longitude</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.longitude" id="longitude" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="state">Latitude</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.latitude" id="latitude" />
+						</div>
+					</div>
+				</div>				
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<input type="submit" id="btnSave" value ="Save"/>
+						<input type="submit" id="btnAdd"value ="Add"/>
 					</div>
 				</div>
 			</fieldset>

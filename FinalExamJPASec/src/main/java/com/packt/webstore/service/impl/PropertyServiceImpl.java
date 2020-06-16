@@ -30,6 +30,7 @@ public class PropertyServiceImpl implements PropertyService{
 	@Override
 	public Property fingPropertyById(Long id) {
 		return (Property) propertyRepository.findPropertyById(id);
+		
 	}
 	
 	@Override
@@ -45,8 +46,11 @@ public class PropertyServiceImpl implements PropertyService{
 
 	@Override
 	public List<Property> findPropertyByCity(String city) {
-		System.out.println("-----" + propertyRepository.findPropertyByCity().size() + " - ");
-		
-		return propertyRepository.findPropertyByCity();
+		//return propertyRepository.findByState();
+		return null;
+	}
+
+	public Property searchProperty(String search) {
+		return (Property) propertyRepository.findByState(search);
 	}
 }
