@@ -6,19 +6,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet"	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<title>Search</title>
+<title>Products</title>
 </head>
 <body>
 	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Search property</h1>
-				<p>Search result<p>
+				<h1>Valued Property</h1>
 			</div>
 		</div>
 	</section>
 	<section class="container">
-		sd
+		  <form:form modelAttribute="newPhoto" action="addPhoto" method="post" enctype="multipart/form-data">
+		  <input type="file" name="fileUpload" size="50" />
+            
+            <div class="form-group">
+					<div class="col-lg-offset-2 col-lg-10">
+						<input type="submit" id="btnAdd" class="btn btn-primary" value ="Save"/>
+					</div>
+				</div>
+        </form:form>
 	</section>
 </body>
 </html>

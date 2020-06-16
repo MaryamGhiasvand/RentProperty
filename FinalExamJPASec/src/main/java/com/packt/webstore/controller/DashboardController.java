@@ -21,6 +21,7 @@ public class DashboardController {
 	public String dashboard(Model model) {
 		String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
 		Credentials credential = credentialService.findByUsername(username);
+		model.addAttribute("credential", credential);
 		return "dashboard";
 	}
 }

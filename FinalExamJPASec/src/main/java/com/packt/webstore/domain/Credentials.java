@@ -99,5 +99,4 @@ public class Credentials {
 	public void setAuthority(List<Authority> authority) {
 		this.authority = authority;
 	}
-	
 }
