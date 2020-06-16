@@ -39,7 +39,17 @@ public class PropertyServiceImpl implements PropertyService{
 	}
 
 	@Override
+	public List<Property> findPropertyForSearch(int bathCount, int bedCount) {
+		return propertyRepository.findPropertyForSearch(bathCount, bedCount);
+	}
+
+	@Override
+	public List<Property> findPropertyByCity(String city) {
+		//return propertyRepository.findByState();
+		return null;
+	}
+
 	public Property searchProperty(String search) {
-		return (Property) propertyRepository.findByState(search);
+		return propertyRepository.findByState(search);
 	}
 }
