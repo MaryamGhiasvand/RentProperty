@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
  
 @Entity(name="USERS")
@@ -28,15 +29,42 @@ public class Credentials {
 	@Column
 	private UserRole userRole;
 	
+    @Column
+	private String firstName;
+    
+    public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	@Column
+	private String lastName;
+    
+    @Column
+	private String phone;
+    
     public UserRole getUserRole() {
 		return userRole;
 	}
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
-	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="USERNAME", referencedColumnName= "USERNAME") 
-	List<Authority> authority;
+	Authority authority;
 	
  	public String getUsername() {
 		return username;
@@ -68,10 +96,10 @@ public class Credentials {
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
-	public List<Authority> getAuthority() {
+	public Authority getAuthority() {
 		return authority;
 	}
-	public void setAuthority(List<Authority> authority) {
+	public void setAuthority(Authority authority) {
 		this.authority = authority;
 	}
 	

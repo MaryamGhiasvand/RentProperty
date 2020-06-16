@@ -8,6 +8,7 @@ function addToFavorite() {
 		async : false,
 		dataType : 'html',
 		data : 'propertyId=' + 111,
+
 		success : function(returnParam) {
 			alert(returnParam);
 			if (returnParam == "notLoggedIn") {
@@ -28,6 +29,7 @@ function addToFavorite() {
 				$('#result').show();
 			}
 		},
+
 		error : function(xhr, status, error) {
 			$('#result').html("");
 			// $("#errors").append( '<H3 align="center"> '+error.message+

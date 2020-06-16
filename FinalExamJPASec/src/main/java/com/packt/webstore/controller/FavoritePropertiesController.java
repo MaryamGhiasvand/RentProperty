@@ -34,6 +34,7 @@ public class FavoritePropertiesController {
 	@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
 	@ResponseBody 
 		public String addtoFavorite( @RequestParam("propertyId") long propertyId) {
+
 		System.out.println("**********propertyId*********"+propertyId);
 		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();	 
 		 System.out.print("username"+username);
