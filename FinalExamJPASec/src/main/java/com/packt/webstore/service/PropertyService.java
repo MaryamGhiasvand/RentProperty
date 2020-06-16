@@ -11,5 +11,6 @@ public interface PropertyService {
 	public List<Property> findAll();
 	public Property fingPropertyById(Long id);
 	public void delete(Long id);
+	public Property searchProperty(String search);
 	
 }

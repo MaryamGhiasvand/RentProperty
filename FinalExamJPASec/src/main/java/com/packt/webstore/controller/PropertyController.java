@@ -66,10 +66,17 @@ public class PropertyController {
 	   	return "redirect:/properties/list";
 	}
 	
+//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+//	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
+//  		System.out.println("-*-*- edit " + propertyId);
+//  		Property property = propertyService.fingPropertyById(propertyId);
+//  		model.addAttribute("property", property);
+//		return "editProperty";
+//	}
+	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
-  		System.out.println("-*-*- edit " + propertyId);
-  		Property property = propertyService.fingPropertyById(propertyId);
+	public String getPropertyById(Model model, @RequestParam("search") String search) {
+  		Property property = propertyService.searchProperty(search);
   		model.addAttribute("property", property);
 		return "editProperty";
 	}
