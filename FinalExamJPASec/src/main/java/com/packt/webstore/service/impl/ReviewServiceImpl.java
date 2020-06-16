@@ -15,7 +15,13 @@ public class ReviewServiceImpl implements ReviewService{
 	private ReviewRepository reviewRepository;
 
 	public void save(PropertyReview review) {
-		reviewRepository.save(review);
+		
+		try{
+			reviewRepository.save(review);
+		}
+		catch(Exception ex){
+			System.out.print("ex:" +ex);
+		}
 	}
 
 	public void delete(long review_id) {
