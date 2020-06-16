@@ -1,15 +1,25 @@
 package com.packt.webstore.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class PropertyPhoto {
 	
-	@Id
+	@Id 
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
+	
 	private String fileName;
-	private byte[] data;
+	private String filePath;
+//	private byte[] data;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -22,10 +32,5 @@ public class PropertyPhoto {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	public byte[] getData() {
-		return data;
-	}
-	public void setData(byte[] data) {
-		this.data = data;
-	}
+
 }

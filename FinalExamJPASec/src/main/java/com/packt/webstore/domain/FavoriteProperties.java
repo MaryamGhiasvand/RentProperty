@@ -36,6 +36,10 @@ public class FavoriteProperties {
 	public void setUsers(Credentials users) {
 		this.users = users;
 	}
+	
+	public FavoriteProperties() {
+		
+	}
 
 	public FavoriteProperties(Property property, Credentials users) {
 		super();

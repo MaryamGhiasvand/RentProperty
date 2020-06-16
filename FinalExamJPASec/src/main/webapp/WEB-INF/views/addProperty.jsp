@@ -1,5 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"  %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="newProperty" action="add" method="post">
+		<form:form  modelAttribute="newProperty" action="add" method="post" >
 			<fieldset>
 				<legend>New property</legend>
 
@@ -46,29 +47,68 @@
 						</div>
 					</div>
 				</div>
+				
+				<h4>Address:</h4>
+			  	<div class="form-group">
+					<label class="control-label col-lg-2" for="state">State</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.state" id="state" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="city">City</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.city" id="city" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="street">Street</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.street" id="street" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="zipCode">Zip Code</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.zipCode" id="zipCode" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="longitude">Longitude</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.longitude" id="longitude" />
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="state">Latitude</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input path="address.latitude" id="latitude" />
+						</div>
+					</div>
+				</div>				
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="submit" id="btnAdd"value ="Add"/>
 					</div>
 				</div>
+				
+				
 			</fieldset>
+			<input type="file" name="fileUpload" size="50" />
 		</form:form>
-		<form method="post" action="doUpload" enctype="multipart/form-data">
-            <table border="0">
-                <tr>
-                    <td>Pick file #1:</td>
-                    <td><input type="file" name="fileUpload" size="50" /></td>
-                </tr>
-                <tr>
-                    <td>Pick file #2:</td>
-                    <td><input type="file" name="fileUpload" size="50" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center"><input type="submit" value="Upload" /></td>
-                </tr>
-            </table>
-        </form>
 	</section>
 </body>
 </html>

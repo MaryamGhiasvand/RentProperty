@@ -6,14 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.packt.webstore.service.EmployeeService;
   
 @Controller
 public class HomeController {
 
 	
-  	@Autowired
- 	private EmployeeService customerService;
 
 	@RequestMapping({"/","/welcome"})
 	public String welcome(Model model) {

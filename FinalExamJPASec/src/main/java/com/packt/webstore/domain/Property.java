@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Property {
@@ -55,7 +56,23 @@ public class Property {
 	
 	@Column
 	private PropertyType propertyType;
-//	
+	
+	public Property() {		
+	}
+	
+	public Property(String title, String description, float price, float area, int bedCount) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.area = area;
+		this.bedCount = bedCount;
+	}
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Address address;
+
+	//	
 //	@OneToMany(mappedBy = "property")
 //	private List<PropertyPicture> pictures;
 //	
@@ -150,17 +167,11 @@ public class Property {
 		this.propertyType = propertyType;
 	}
 	
-	public Property() {
-		
+	public Address getAddress() {
+		return address;
 	}
-	
-	public Property(String title, String description, float price, float area, int bedCount) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.price = price;
-		this.area = area;
-		this.bedCount = bedCount;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }
 	
