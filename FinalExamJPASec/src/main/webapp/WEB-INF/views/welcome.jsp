@@ -41,13 +41,17 @@
 			<input type="text" name="min" />
 			<input type="submit" value="search" />
 		</form:form>
-		
-		<a href="credential/add" >Register</a>
+		<security:authorize access="isAuthenticated()">
+		<a href="dashboard" >Dashboard</a>
+		</security:authorize>
+
+
 				<security:authorize access="isAnonymous()">
 					<!-- WHICH ONE? depends on basic form OR CUSTOM -->
 					<!--a href="<spring:url value='/spring_security_login' />" class="btn btn-default pull-right"> Login</a-->
 					<a href="<spring:url value='/login' />"
 						class="btn btn-default pull-right"> Login</a>
+					<a href="credential/add" >Register</a>
 				</security:authorize>
 
 				<p>

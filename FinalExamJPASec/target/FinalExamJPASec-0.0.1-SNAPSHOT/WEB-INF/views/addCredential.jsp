@@ -18,7 +18,7 @@
 		</div>
 	</section>
 	<section class="container">
-		<form:form  modelAttribute="credential" class="form-horizontal" action="user/add" method="post">
+		<form:form  modelAttribute="credential" class="form-horizontal" action="add" method="post">
 			<fieldset>
 				<legend>New user</legend>
 
@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="form-group">
-					<label class="control-label col-lg-2" for="lastName">Email</label>
+					<label class="control-label col-lg-2" for="email">Email</label>
 					<div class="col-lg-10">
 						<div class="form:input-prepend">
 							<form:input id="email" path="email" type="text" class="form:input-large"/>
@@ -48,6 +48,7 @@
 						</div>
 					</div>
 				</div>
+
 								
  				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
