@@ -19,7 +19,7 @@ public class FavoriteProperties {
 	
 	@ManyToOne
 	@JoinColumn(name = "user_name")
-	private Authority authority;
+	private Credentials users;
 
 	public Property getProperty() {
 		return property;
@@ -29,20 +29,30 @@ public class FavoriteProperties {
 		this.property = property;
 	}
 
-	public Authority getAuthority() {
-		return authority;
+	public Credentials getUsers() {
+		return users;
 	}
 
-	public void setAuthority(Authority authority) {
-		this.authority = authority;
+	public void setUsers(Credentials users) {
+		this.users = users;
 	}
 
-	public FavoriteProperties(Property property, Authority authority) {
+	public FavoriteProperties(Property property, Credentials users) {
 		super();
 		this.property = property;
-		this.authority = authority;
+		this.users = users;
 	}
-	
-	
+
+//	public FavoriteProperties() {
+//		super();
+//	}
+
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}	
 
 }

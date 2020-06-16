@@ -1,4 +1,4 @@
-package com.packt.webstore.domain;
+	package com.packt.webstore.domain;
 
 import java.time.LocalDate;
 import java.util.List;

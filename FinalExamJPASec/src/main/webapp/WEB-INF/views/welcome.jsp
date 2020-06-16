@@ -70,13 +70,14 @@
 						class="btn btn-default"> <span
 						class="glyphicon-hand-left glyphicon"></span> Go to Company
 					</a>
+					<p>for Maryam </p>
+	<%-- <input type="button" value="Add to favorite" onclick="addToFavorite('${Property.id}')" /> --%>
+	<input type="button" value="Add to favorite" onclick="addToFavorite()" />
 			</div>
 		</div>
 		
-	<!-- Add to favorite -->
-<p>for Maryam </p>
-	<%-- <input type="button" value="Add to favorite" onclick="addToFavorite('${Property.id}')" /> --%>
-	<input type="button" value="Add to favorite" onclick="addToFavorite()" />
+	<!-- Add to favorite --> 
+
 	</section>
 	
 </body>

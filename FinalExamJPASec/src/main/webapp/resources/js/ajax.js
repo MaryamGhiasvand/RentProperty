@@ -1,23 +1,26 @@
-var contextRoot = "/" + window.location.pathname.split( '/' )[1];
+var contextRoot = "/" + window.location.pathname.split('/')[1];
 
-function addToFavorite(){
-	alert("ajax3 function");
-	alert(contextRoot);
+function addToFavorite() {
+
 	$.ajax({
-		url:'addtoFavorite',
-		type:'GET',
-		async:false,
-		dataType:'json',
-		data: 'propertyId='+112,
-		success:function(){
+		url : 'addtoFavorite',
+		type : 'GET',
+		async : false,
+		dataType : 'html',
+		data : 'propertyId=' + 111,
+		success : function(sucess) {
 			alert("sucess")
-		    $('#overlay').css('height', $(document.body).height() + 'px')
-		    $('#overlay').show()
-		    $('#dialog').html("<p> successfully added to your favorite list </p>")
-		    centerMe('#dialog')
-		    $('#dialog').show();
-		}
-	
-			
+			alert(sucess)
+			$('#overlay').css('height', $(document.body).height() + 'px')
+			$('#overlay').show()
+			$('#dialog').html(
+					"<p> successfully added to your favorite list </p>")
+			centerMe('#dialog')
+			$('#dialog').show();
+		},
+		error: function(xhr, status, error) {
+		    alert(error.message);
+		 }
+
 	})
 }
