@@ -11,11 +11,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <title>Welcome</title>
 
-<!-- add to favorite -->
-<style type="text/css">@import url("<spring:url value="/resource/css/styples.css"/>");</style>
-<script type="text/javascript" src="<spring:url value="/resource/js/ajax.js"/>"></script>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<!-- add to favorite -->
+
 
 </head>
 <body>
@@ -74,18 +70,9 @@
 						class="btn btn-default"> <span
 						class="glyphicon-hand-left glyphicon"></span> Go to Company
 					</a>
-					<p>for Maryam </p>
-	<%-- <input type="button" value="Add to favorite" onclick="addToFavorite('${Property.id}')" /> --%>
-	<input type="button" value="Add to favorite" onclick="addToFavorite()" />
-	    	<div id="result" style="display:none" >   	
-    	    <p id="success" > 
-    
-    		</p> 
-    		<p id="errors" > 
-    
-    		</p>
-    	</div>
-	<p>for Maryam </p>
+
+
+
 	
 			</div>
 		</div>
