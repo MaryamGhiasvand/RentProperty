@@ -1,11 +1,14 @@
 package com.packt.webstore.domain;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
  
 @Entity(name="USERS")
@@ -56,9 +59,9 @@ public class Credentials {
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="USERNAME", referencedColumnName= "USERNAME") 
-	Authority authority;
+	List<Authority> authority;
 	
  	public String getUsername() {
 		return username;
@@ -90,10 +93,10 @@ public class Credentials {
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
 	}
-	public Authority getAuthority() {
+	public List<Authority> getAuthority() {
 		return authority;
 	}
-	public void setAuthority(Authority authority) {
+	public void setAuthority(List<Authority> authority) {
 		this.authority = authority;
 	}
 	

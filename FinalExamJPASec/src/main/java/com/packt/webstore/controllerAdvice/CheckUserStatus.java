@@ -20,4 +20,9 @@ public class CheckUserStatus {
 		
 		return true;
 	}
+	
+	@ModelAttribute("UserID")
+	public String GetUserID() {
+		return SecurityContextHolder.getContext().getAuthentication().getName().toString();
+	}
 }
