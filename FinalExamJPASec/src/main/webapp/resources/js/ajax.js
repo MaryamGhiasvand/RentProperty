@@ -7,7 +7,7 @@ function addToFavorite() {
 		type : 'GET',
 		async : false,
 		dataType : 'json',
-		data : 'propertyId=' + 111,
+		data : 'propertyId=' + 1,
 		success : function(sucess) {
 			alert("sucess")
 			alert(sucess)
