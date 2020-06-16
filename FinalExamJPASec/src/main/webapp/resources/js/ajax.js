@@ -1,13 +1,13 @@
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 
-function addToFavorite() {
-
+function addToFavorite(propertyId) {
+alert ("propid= "+propertyId)
 	$.ajax({
-		url : 'addtoFavorite',
+		url : contextRoot+'/addtoFavorite',
 		type : 'GET',
 		async : false,
 		dataType : 'html',
-		data : 'propertyId=' + 111,
+		data : 'propertyId=' + propertyId,
 
 		success : function(returnParam) {
 			alert(returnParam);
