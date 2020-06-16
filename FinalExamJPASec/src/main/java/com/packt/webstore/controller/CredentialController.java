@@ -1,6 +1,10 @@
 package com.packt.webstore.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -41,5 +45,10 @@ public class CredentialController {
 	@RequestMapping(value= {"/success"}, method= RequestMethod.GET)
 	public String saveSuccess() {
 		return "success";
+	}
+	
+	@RequestMapping(value= {"/edit"}, method=RequestMethod.GET)
+	public String editUser() {
+		return "userEdit";
 	}
 }
