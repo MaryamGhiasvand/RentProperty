@@ -32,16 +32,12 @@ public class FavoritePropertiesController {
 	@ResponseBody 
 		public String addtoFavorite( @RequestParam("propertyId") long propertyId) {
 		System.out.println("**********propertyId*********"+propertyId);
-		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-	       System.out.println("**********auth*********"+username);
-	       
+		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();	 
+		 //if(username)
 	       Property p =propertyService.fingPropertyById(propertyId);
-	       System.out.println("**********p*********"+p.toString());
 	       Credentials user = credentialService.findByUsername(username);
-	       System.out.println("**********u*********"+user.toString());
            FavoriteProperties favorite = new FavoriteProperties(p,user);
 	       favoritePropertiesService.addToFavorite(favorite);
-	       System.out.println("**********u*********"+user.toString());
 	       return "";
 	}
 
