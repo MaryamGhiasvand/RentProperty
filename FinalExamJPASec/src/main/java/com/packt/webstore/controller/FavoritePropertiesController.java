@@ -68,13 +68,21 @@ public class FavoritePropertiesController {
 		
 		@RequestMapping("/viewMyFvoriteList")
 		public String viewFvoriteList(Model model) {
-			 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+			String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 			List<Property> favoriteProperties=favoritePropertiesService.findAllFavorites(username);
 			model.addAttribute("properties",favoriteProperties);
 			
 			return "myFavoriteList";
 		}
 
+		@RequestMapping("/removeFavorite")
+		public String removeFvorite(@RequestParam("propertyId") long propertyId) {
+			//Property p =propertyService.fingPropertyById(propertyId);
+			favoritePropertiesService.removefavoriteProperty(propertyId);
+			//favoritePropertiesService.removeProperty(p);			
+			return "myFavoriteList";
+		}
+		
 	@ModelAttribute("LoggedInUser")
 	public Boolean CheckLoggedIn() {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
