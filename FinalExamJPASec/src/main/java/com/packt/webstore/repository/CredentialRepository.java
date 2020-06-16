@@ -12,5 +12,5 @@ public interface CredentialRepository extends CrudRepository<Credentials, String
 	
 	
 	@Query("select c from USERS c where c.username= :username")
-	Credentials findByUsername(@Param("username") String username);
+	public Credentials findByUsername(@Param("username") String username);
 }

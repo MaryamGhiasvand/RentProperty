@@ -35,6 +35,8 @@ public class PropertyController {
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String getPropertyDetail(Model model, @RequestParam("id") Long propertyId) {
+  		System.out.println("-*-*- edit " + propertyId);
+  		System.out.println("-*-*- LoggedInUser " + model.asMap().get("LoggedInUser"));
   		Property property = propertyService.fingPropertyById(propertyId);
   		model.addAttribute("property", property);
 		return "detailProperty";

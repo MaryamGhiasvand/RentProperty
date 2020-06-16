@@ -17,6 +17,7 @@
 			</div>
 		</div>
 	</section>
+	<!--  
 	<section class="container">
 		<form:form  modelAttribute="credential" class="form-horizontal" action="add" method="post">
 			<fieldset>
@@ -84,6 +85,7 @@
 				
 			</fieldset>
 		</form:form>
-	</section>
+	</section>-->
 </body>
 </html>
+s

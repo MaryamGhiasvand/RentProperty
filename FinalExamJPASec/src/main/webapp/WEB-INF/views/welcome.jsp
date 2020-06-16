@@ -11,11 +11,7 @@
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <title>Welcome</title>
 
-<!-- add to favorite -->
-<style type="text/css">@import url("<spring:url value="/resource/css/styples.css"/>");</style>
-<script type="text/javascript" src="<spring:url value="/resource/js/ajax.js"/>"></script>
-<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-<!-- add to favorite -->
+
 
 </head>
 <body>
@@ -41,13 +37,17 @@
 			<input type="text" name="min" />
 			<input type="submit" value="search" />
 		</form:form>
-		
-		<a href="credential/add" >Register</a>
+		<security:authorize access="isAuthenticated()">
+		<a href="dashboard" >Dashboard</a>
+		</security:authorize>
+
+
 				<security:authorize access="isAnonymous()">
 					<!-- WHICH ONE? depends on basic form OR CUSTOM -->
 					<!--a href="<spring:url value='/spring_security_login' />" class="btn btn-default pull-right"> Login</a-->
 					<a href="<spring:url value='/login' />"
 						class="btn btn-default pull-right"> Login</a>
+					<a href="credential/add" >Register</a>
 				</security:authorize>
 
 				<p>
@@ -70,9 +70,10 @@
 						class="btn btn-default"> <span
 						class="glyphicon-hand-left glyphicon"></span> Go to Company
 					</a>
-					<p>for Maryam </p>
-	<%-- <input type="button" value="Add to favorite" onclick="addToFavorite('${Property.id}')" /> --%>
-	<input type="button" value="Add to favorite" onclick="addToFavorite()" />
+
+
+
+	
 			</div>
 		</div>
 		
