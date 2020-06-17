@@ -77,16 +77,10 @@ public class PropertyController {
 	}
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-<<<<<<< HEAD
 	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
   		System.out.println("-*-*- edit " + propertyId);
   		Property property = propertyService.fingPropertyById(propertyId);
   		model.addAttribute("property", property);
-=======
-	public String getPropertyById(Model model, @RequestParam("search") String search) {
-  		//Property property = propertyService.searchProperty(search).get(0);
-  		//model.addAttribute("property", property);
->>>>>>> 7b4b1da000a36c3126cc8d8a878d5b81d0a165ca
 		return "editProperty";
 	}
 	
