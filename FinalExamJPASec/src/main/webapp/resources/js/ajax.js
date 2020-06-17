@@ -10,7 +10,9 @@ function addToFavorite(propertyId) {
 		data : 'propertyId=' + propertyId,
 
 		success : function(returnParam) {
-			alert("successfully added to your favorite list");
+			alert("successfully added to your favorite list")
+			//$("#favoriteButton").disabled = 'true'
+			$("#favoriteButton").attr("disabled", true);
 //			if (returnParam == "notLoggedIn") {
 //				alert("user notLoggedIn")
 //				$('#errors').html("");
@@ -28,19 +30,20 @@ function addToFavorite(propertyId) {
 //						'<H2> Sucessfully addded to your favorite list </H2>');
 //				$('#result').show();
 //			}
-		},
-
-		error : function(xhr, status, error) {
-			$('#result').html("");
-			// $("#errors").append( '<H3 align="center"> '+error.message+
-			// '<H3>');
-			$("#errors").append(
-					'<H2 align="center"> '
-							+ "An error occurred, please try again later"
-							+ '</H2>');
-			// alert(error.message);
-			$('#errors').show();
 		}
+				//,
+//
+//		error : function(xhr, status, error) {
+//			$('#result').html("");
+//			// $("#errors").append( '<H3 align="center"> '+error.message+
+//			// '<H3>');
+//			$("#errors").append(
+//					'<H2 align="center"> '
+//							+ "An error occurred, please try again later"
+//							+ '</H2>');
+//			// alert(error.message);
+//			$('#errors').show();
+//		}
 
 	})
 }

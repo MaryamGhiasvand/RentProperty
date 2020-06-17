@@ -7,8 +7,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "FavoriteProperties")
 //@NamedQuery(name = "FavoriteProperties.findAllFavorites", query = "select f from FavoriteProperties f inner join Credentials p on f.username = ?1")
 //@NamedQuery(name = "FavoriteProperties.findAllFavorites", query = "SELECT u FROM FavoriteProperties ug " + 
 //		"INNER JOIN ug.property u WHERE ug.credentials = ?1")
@@ -18,11 +20,28 @@ public class FavoriteProperties {
 	private long id;
 	
 	@ManyToOne()
-	//@JoinColumn(name = "property_id")
+	//test
+	//@JoinColumn(unique = true)
 	private Property property;
 	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
 	@ManyToOne
-	@JoinColumn(name = "username")
+	//@JoinColumn(name = "username")
 	private Credentials credentials;
 
 	public Property getProperty() {

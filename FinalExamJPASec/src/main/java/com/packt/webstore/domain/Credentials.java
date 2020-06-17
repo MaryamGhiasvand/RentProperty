@@ -52,7 +52,7 @@ public class Credentials {
     
 	
     @Column
-    @Size(min=7, max=7, message="{Size.Phone.Validation}")
+    @Size(min=10, max=10, message="{Size.Phone.Validation}")
 	private String phone;
     
     public List<Property> getProperties() {
