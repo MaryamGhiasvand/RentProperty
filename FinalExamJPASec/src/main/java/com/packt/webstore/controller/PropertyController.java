@@ -46,7 +46,7 @@ public class PropertyController {
 	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String getPropertyDetail(Model model,@ModelAttribute("PropertytReview") PropertyReview propertyReview, @RequestParam("id") Long propertyId) {
+	public String getPropertyDetail(@ModelAttribute("PropertytReview") PropertyReview propertyReview,@RequestParam("id") Long propertyId,Model model) {
   		System.out.println("-*-*- edit " + propertyId);
   		System.out.println("-*-*- LoggedInUser " + model.asMap().get("LoggedInUser"));
   		Property property = propertyService.fingPropertyById(propertyId);
@@ -61,25 +61,29 @@ public class PropertyController {
 	
 	
 	//Review property--> Added by Maryam 
-	@RequestMapping(value = "/addPropertyReview", method = RequestMethod.GET)
-	public String addReview(@RequestParam("id") Long propertyId,@ModelAttribute("PropertytReview") PropertyReview propertyReview,Model model) {
-		System.out.println("propid"+propertyId);
-		
-		Property p = propertyService.fingPropertyById(propertyId);
-		model.addAttribute("property",p);
-		
-		System.out.println(model.asMap().get("LoggedInUser"));
-		if((boolean)model.asMap().get("LoggedInUser") == true) {
-		System.out.println("AddReview");
-		return "propertyReview";
-		}
-	   return "redirect:/login";
-	}
+//	@RequestMapping(value = "/addPropertyReview", method = RequestMethod.GET)
+//	public String addReview(@RequestParam("id") Long propertyId,@ModelAttribute("PropertytReview") PropertyReview propertyReview,Model model) {
+//		System.out.println("propid"+propertyId);
+//		
+//		Property p = propertyService.fingPropertyById(propertyId);
+//		model.addAttribute("property",p);
+//		
+//		System.out.println(model.asMap().get("LoggedInUser"));
+//		if((boolean)model.asMap().get("LoggedInUser") == true) {
+//		System.out.println("AddReview");
+//		return "propertyReview";
+//		}
+//	   return "redirect:/login";
+//	}
 	
 	
 	@RequestMapping(value = "/addPropertyReview", method = RequestMethod.POST)
-	public String ProcessReview(@Valid @ModelAttribute("PropertytReview") PropertyReview propertyReview, BindingResult result,RedirectAttributes redirectAttr,Model model) {
+	public String ProcessReview(@Valid @ModelAttribute("PropertytReview") PropertyReview propertyReview, BindingResult result,Model model) {
 		
+		if(result.hasErrors())
+  		{
+  			return "detailProperty";
+  		}
 		long propertyId =propertyReview.getProperty().getId();
 		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 		Property p =propertyService.fingPropertyById(propertyId);
@@ -87,9 +91,7 @@ public class PropertyController {
 		propertyReview.setCredentials(credential);
 		propertyReview.setProperty(p);
 		reviewService.save(propertyReview);
-		redirectAttr.addFlashAttribute("successFullyAdded","Your comment successfully added!");
-		//redirectAttr.addFlashAttribute("property",p);
-		return "redirect:/properties/detail?id="+p.getId();
+		return "redirect:/properties/detail?id="+propertyId;
 
 	}
 	//Added By Maryam

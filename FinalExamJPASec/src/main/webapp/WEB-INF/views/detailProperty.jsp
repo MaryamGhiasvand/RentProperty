@@ -720,7 +720,7 @@
 														</p></td>
 													<td>
 														<div style="text-align: center;">
-															<form:errors path="title" cssStyle="error" />
+															<form:errors path="title" class="error" />
 														</div>
 													</td>
 												</tr>
@@ -734,7 +734,7 @@
 														</p></td>
 													<td>
 														<div style="text-align: center;">
-															<form:errors path="comment" cssStyle="error" />
+															<form:errors path="comment" class="error" />
 														</div>
 													</td>
 												</tr>
