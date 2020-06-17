@@ -69,13 +69,7 @@
 					<a href="<spring:url value='/employees/list' />"
 						class="btn btn-default"> <span
 						class="glyphicon-hand-left glyphicon"></span> Go to Company
-					</a>
-
-
-<p>added by Maryam</p>
-<a href=" <spring:url value="/favoriteProperties/viewMyFvoriteList" /> "class="button">May favorite list</a>
-
-	
+					</a>	
 			</div>
 		</div>
 		

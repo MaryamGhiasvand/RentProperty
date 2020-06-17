@@ -89,9 +89,11 @@ public class FavoritePropertiesController {
 	}
 
 	@RequestMapping("/removeFavorite")
-	public String removeFvorite(@RequestParam("propertyId") long propertyId) {
-		// Property p =propertyService.fingPropertyById(propertyId);
-		favoritePropertiesService.removefavoriteProperty(propertyId);
+	public String removeFavorite(@RequestParam("id") long favoriteId) {
+		//String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		// List<FavoriteProperties> fp =favoritePropertiesService.findByPropertyAndUsename(propertyId, username);
+		// long favoriteId = fp.get(0).get
+		favoritePropertiesService.removefavoriteProperty(favoriteId);
 		// favoritePropertiesService.removeProperty(p);
 		return "myFavoriteList";
 	}

@@ -96,6 +96,11 @@
 						</p>
 						<p>
 							<a href="properties/add">Add new property</a>
+						</p>
+						<p>
+							<a href="favoriteProperties/viewMyFvoriteList">My favorite list</a>
+							<%-- <a href=" <spring:url value="/favoriteProperties/viewMyFvoriteList" /> "class="button">May favorite list</a> --%>
+						</p>
 					</div>
 				</div>
 			</div>

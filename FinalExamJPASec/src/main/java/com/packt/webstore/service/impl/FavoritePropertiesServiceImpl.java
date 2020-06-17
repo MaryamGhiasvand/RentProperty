@@ -42,7 +42,11 @@ public class FavoritePropertiesServiceImpl implements FavoritePropertiesService{
 
 	@Override
 	public void removefavoriteProperty(long favoriteId) {
+		try {
 		favoritePropertiesRepository.delete(favoriteId);
+		}catch(Exception ex) {
+			System.out.print("a");
+		}
 		
 	}
 
