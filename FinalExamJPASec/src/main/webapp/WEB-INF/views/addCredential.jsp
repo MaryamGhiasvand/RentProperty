@@ -53,8 +53,7 @@
 							<div class="header_right d-flex">
 								<div class="short_contact_list"></div>
 								<div class="social_media_links">
-									<a href="home"> Home
-									</a>
+									<a href="home"> Home </a>
 								</div>
 							</div>
 
@@ -80,50 +79,90 @@
 					<form:form modelAttribute="credential" action="add"
 						class="form-contact contact_form" novalidate="novalidate">
 						<div class="row">
-							<div class="col-sm-12">
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:input class="form-control valid" path="username"
-										id="username"  placeholder="Username"/>
-										<form:errors path="username" cssClass="text-danger"/>
+									<p style="padding: 10px;">Username:</p>
 								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-9">
+								<div class="form-group">
+									<form:input class="form-control valid" path="username"
+										id="username" placeholder="Username" />
+									<form:errors path="username" cssClass="text-danger" />
+								</div>
+							</div>
+
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Password:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="password"
 										id="password" placeholder="Password" />
-										<form:errors path="password" cssClass="text-danger"/>
+									<form:errors path="password" cssClass="text-danger" />
 								</div>
 							</div>
-							<div class="col-sm-12">
+
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:input class="form-control valid" path="email"
-										id="email" placeholder="Email"/>
-										<form:errors path="email" cssClass="text-danger"/>
+									<p style="padding: 10px;">Email:</p>
 								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-9">
+								<div class="form-group">
+									<form:input class="form-control valid" path="email" id="email"
+										placeholder="Email" />
+									<form:errors path="email" cssClass="text-danger" />
+								</div>
+							</div>
+
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Firstname:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="firstName"
 										id="firstName" placeholder="Fristname" />
-										<form:errors path="firstName" cssClass="text-danger"/>
+									<form:errors path="firstName" cssClass="text-danger" />
 								</div>
 							</div>
-							<div class="col-sm-12">
+
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Lastname:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="lastName"
 										id="lastName" placeholder="Lastname" />
-										<form:errors path="lastName" cssClass="text-danger"/>
+									<form:errors path="lastName" cssClass="text-danger" />
 								</div>
 							</div>
-							<div class="col-sm-12">
+
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:input class="form-control valid" path="phone"
-										id="phone" placeholder="Phone" />
-									<form:errors path="phone" cssClass="text-danger"/>
+									<p style="padding: 10px;">Phone:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="form-group">
+									<form:input class="form-control valid" path="phone" id="phone"
+										placeholder="Phone" />
+									<form:errors path="phone" cssClass="text-danger" />
 								</div>
 							</div>
 						</div>
-						<div class="form-group mt-3">
+						<div class="col-sm-3">
+							<div class="form-group">
+								<p style="padding: 10px;"> </p>
+							</div>
+						</div>
+						<div class="form-group mt-9">
 							<button type="submit" class="button button-contactForm boxed-btn">Save</button>
 						</div>
 					</form:form>
