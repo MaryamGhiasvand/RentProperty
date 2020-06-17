@@ -10,6 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class PropertyReview {
@@ -18,12 +21,14 @@ public class PropertyReview {
 	private long id;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private String title;
 	
 	@Column
 	private int starCount;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private String comment;
 	
 	@Column
@@ -31,6 +36,7 @@ public class PropertyReview {
 	
 	
 	@ManyToOne
+	
     //@JoinColumn(name="property_id", nullable=false)
 	private Property property;
 

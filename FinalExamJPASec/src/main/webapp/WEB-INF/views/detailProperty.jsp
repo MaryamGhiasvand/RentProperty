@@ -720,7 +720,7 @@
 														</p></td>
 													<td>
 														<div style="text-align: center;">
-															<form:errors path="title" cssStyle="error" />
+															<form:errors path="title" class="error" />
 														</div>
 													</td>
 												</tr>
@@ -734,14 +734,14 @@
 														</p></td>
 													<td>
 														<div style="text-align: center;">
-															<form:errors path="comment" cssStyle="error" />
+															<form:errors path="comment" class="error" />
 														</div>
 													</td>
 												</tr>
 
 												<tr>
 													<td><label for="starCount"> <spring:message
-																code="starCount" text="stars" /></label></td>
+																code="starRate" text="stars" /></label></td>
 													<td>
 														<form>
 															<input type="radio" name="starCount" value=1 class="fa fa-star" />
