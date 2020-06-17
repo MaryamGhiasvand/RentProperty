@@ -15,13 +15,17 @@ import com.packt.webstore.domain.PropertyReview;
 @Repository
 public interface FavoritePropertiesRepository extends CrudRepository<FavoriteProperties, Long>{
 
-	@Query("select p from Property p")
-//	@Query("select p from Property p inner join p.FavoriteProperties f where f.username = :username")
-	List<Property> findAllFavorites(@Param("username") String username);
-
+//	//@Query("select p from Property p")
 	
-	@Query(value="delete from favoriteproperties f where f.property_id =:propertyId", nativeQuery = true)
-	void removefavoriteProperty(@Param("propertyId")long propertyId);
-	
+	//@Query(value="SELECT u FROM FavoriteProperties ug INNER JOIN ug.property u WHERE ug.credentials.username = :username")
+	@Query(value="SELECT f FROM FavoriteProperties f WHERE f.credentials.username = :username")
+	List<FavoriteProperties> findAllFavorites(@Param("username") String username);
 
+	 // public List<Property> findAllFavorites(String username);
+	
+//	@Query(value="delete from FavoriteProperties f where f.property.id =:propertyId", nativeQuery = true)
+//	void removefavoriteProperty(@Param("propertyId")long propertyId);
+//	
+//	@Query(value="SELECT f FROM FavoriteProperties f WHERE p.property.id =:propertyId")//, nativeQuery = true
+//	void findfavoriteByProperty(@Param("propertyId")long propertyId);
 }

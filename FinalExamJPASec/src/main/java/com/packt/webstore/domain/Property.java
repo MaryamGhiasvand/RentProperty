@@ -17,6 +17,10 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "property")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7b4b1da000a36c3126cc8d8a878d5b81d0a165ca
 public class Property {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)

@@ -159,9 +159,9 @@
 												</div>
 												<div class="single-field max_width ">
 													<label for="#">Property type</label> <select class="wide">
-														<option data-display="Apartment">Apartment</option>
-														<option value="1">Apartment</option>
-														<option value="2">Apartment</option>
+														<option data-display="Apartment" value="HOUSE">House</option>
+														<option value="APARTMENT">Apartment</option>
+														<option value="VILLA">Villa</option>
 													</select>
 												</div>
 												<div class="single_field range_slider">
@@ -171,15 +171,29 @@
 												<div class="single-field min_width ">
 													<label for="#">Bed Room</label> <select class="wide">
 														<option data-display="01">01</option>
-														<option value="1">02</option>
-														<option value="2">03</option>
+														<option value="2">02</option>
+														<option value="3">03</option>
+														<option value="4">04</option>
+														<option value="5">05</option>
+														<option value="6">06</option>
+														<option value="7">07</option>
+														<option value="8">08</option>
+														<option value="9">09</option>
+														<option value="10">10</option>
 													</select>
 												</div>
 												<div class="single-field min_width ">
 													<label for="#">Bath Room</label> <select class="wide">
 														<option data-display="01">01</option>
-														<option value="1">02</option>
-														<option value="2">03</option>
+														<option value="2">02</option>
+														<option value="3">03</option>
+														<option value="4">04</option>
+														<option value="5">05</option>
+														<option value="6">06</option>
+														<option value="7">07</option>
+														<option value="8">08</option>
+														<option value="9">09</option>
+														<option value="10">10</option>
 													</select>
 												</div>
 												<div class="serach_icon">
