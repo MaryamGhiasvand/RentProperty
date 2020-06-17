@@ -37,7 +37,7 @@ public class RentHistory {
     @JoinColumn(name="property_id", nullable=false)
 	private Property property;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Credentials credential;
 
 	public RentHistory() {}

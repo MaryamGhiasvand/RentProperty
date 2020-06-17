@@ -60,6 +60,9 @@ public class Credentials {
 		this.userRole = userRole;
 	}
 	
+	@OneToOne(mappedBy = "credential", cascade = CascadeType.ALL)
+	private RentHistory rentHistory;
+	
 	@OneToMany(mappedBy = "credential", cascade = CascadeType.ALL)
 	private List<Property> properties;
 	
