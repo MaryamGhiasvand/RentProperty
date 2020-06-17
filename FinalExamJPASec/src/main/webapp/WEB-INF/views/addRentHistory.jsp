@@ -9,24 +9,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-<section>
+
+	<section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>Rent</h1>
+				<h1>History</h1>
 			</div>
 		</div>
 	</section>
 	<section class="container">
 		<form:form  modelAttribute="rentHistory" action="addRentHistory" method="post">
 			<fieldset>
-				<legend>Rent</legend>
-
-				<form:errors path="*" element="div"/>
-				<div class="form-group">
-					<label for="number">Status type</label>
-					<div class="col-lg-10">				
-			   		</div>
+	<div class="form-group"><label for="number">Status</label>
+				<div class="col-lg-10">
+						<form:select id="status" path="status" class="form:input-large">
+					                <option value="RENTED">Rented</option>
+									<option value="CANCELED">Canceled</option>
+									<option value="AVAILABLE">Available</option>
+					   </form:select>	
+					   </div>
 				</div>
+				<form:errors path="*" element="div"/>
 			
 				<div class="form-group">
 					<label>Start sate</label>
@@ -50,16 +53,7 @@
 						</div>
 					</div>
 				</div>
-					<div class="form-group"><label for="number">Status</label>
-					<div class="col-lg-10">
-						<form:select id="status" path="status" class="form:input-large">
-					                <option value="ONRENT">On Rent</option>
-									<option value="CANCELED">Canceled</option>
-									<option value="CONFIRMED">Confirmed</option>
-									<option value="CONTRACTEXPIRED">Contract expired</option>
-					   </form:select>	
-					   </div>
-				   </div>
+			
 				 <div class="form-group">
 					<label >Description</label>
 					<div class="col-lg-10">
@@ -69,12 +63,35 @@
 				</div>
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<input type="submit" id="btnRent"value ="Rent"/>
+						<input type="submit" id="btnRent"value ="Save"/>
 					</div>
 				</div>				
 				
 			</fieldset>
 		</form:form>
+	</section>
+	<section class="container">
+	<fieldset>
+				<legend>History</legend>
+	<table border="1" cellpadding="2" cellspacing="2">	
+		<tr>
+			<th>Property</th>
+			<th>Start date</th>
+			<th>End Date</th>
+			<th>Price</th>
+			<th>Status</th>
+		</tr>
+		<c:forEach var="history" items="${rentHistories}">
+			<tr>
+				<td>${history.property.title}</td>
+				<td>${history.startDate}</td>
+				<td>${history.endDate}</td>
+				<td>${history.price}</td>
+				<td>${history.status}</td>
+			</tr>
+		</c:forEach>
+	</table>
+	</fieldset>
 	</section>
 </body>
 </html>

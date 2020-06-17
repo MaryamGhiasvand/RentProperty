@@ -27,13 +27,11 @@ public class Property {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@NotEmpty(message = "{NotEmpty}")
+	@NotEmpty(message= "{NotEmpty}")
 	private String title;
 	
-	@NotEmpty(message = "{NotEmpty}")
 	private String description;
 	
-	@NotNull(message = "Title not null")
 	private float price;
 	
 	@Column
@@ -43,7 +41,6 @@ public class Property {
 	private LocalDate expireDate;
 	
 	@Column
-	@Range(min=0, max = 20, message="{RangeInt}")
 	private int bathCount;
 	
 	@Column
@@ -60,6 +57,8 @@ public class Property {
 	
 	@Column
 	private boolean oven;
+	
+	private HistoryStatus status;	
 	
 	@Column
 	private boolean parking;
@@ -208,6 +207,14 @@ public class Property {
 
 	public void setCredential(Credentials credential) {
 		this.credential = credential;
+	}
+
+	public HistoryStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(HistoryStatus status) {
+		this.status = status;
 	}
 }
 	

@@ -3,6 +3,7 @@ package com.packt.webstore.service;
 
 import java.util.List;
 
+import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyType;
 
@@ -16,4 +17,5 @@ public interface PropertyService {
 	public List<Property> findPropertyForSearch(int bathCount, int bedCount);
 	public List<Property> findPropertyByCity(String city);
 	public List<Property> searchProperty(String search, int bathCount, int bedCount, PropertyType propertyType);
+	public List<Property> findPropertyByOwener(Credentials owner);
 }

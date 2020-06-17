@@ -23,9 +23,12 @@ import com.packt.webstore.domain.FavoriteProperties;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyReview;
 import com.packt.webstore.domain.PropertyType;
+import com.packt.webstore.domain.RentHistory;
+import com.packt.webstore.repository.RentHistoryRepository;
 import com.packt.webstore.service.CredentialService;
 import com.packt.webstore.service.FavoritePropertiesService;
 import com.packt.webstore.service.PropertyService;
+import com.packt.webstore.service.RentHistoryService;
 import com.packt.webstore.service.ReviewService;
 
 @Controller
@@ -38,19 +41,26 @@ public class PropertyController {
 	@Autowired
 	CredentialService credentialService;
 	
-	
 	//Added by Maryam 
 	@Autowired
 	private ReviewService reviewService;
 	
+
 	@Autowired
 	private FavoritePropertiesService favoritePropertiesService;
+
 	
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
 		
-		System.out.println("properties size - " + propertyService.findAll().size());		
-		model.addAttribute("properties", propertyService.findAll());
+		String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		Credentials credential = credentialService.findByUsername(username);
+//		
+		List<Property> properties = propertyService.findPropertyByOwener(credential);
+		model.addAttribute("properties", properties);
+		
+//		System.out.println("properties size - " + propertyService.findAll().size());		
+//		model.addAttribute("properties", propertyService.findAll());
 		return "properties";
 	}
 	
@@ -123,9 +133,7 @@ public class PropertyController {
 	}
 	   
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddProperty(@ModelAttribute("newProperty") @Valid Property newProperty,  BindingResult result, HttpServletRequest request) {
-		//@RequestParam CommonsMultipartFile propertyImage,
-		//System.out.println("------------------------------------------"+propertyImage+"----------------------------------------");
+	public String processAddProperty(@Valid @ModelAttribute("newProperty") Property newProperty,  BindingResult result) {
 		if(result.hasErrors()) {
 			return "addProperty";
 		}
@@ -137,7 +145,8 @@ public class PropertyController {
    			newProperty.setCredential(credential);
 			propertyService.save(newProperty);
 		} catch (Exception up) {
-	      System.out.println("Transaction Failed!!!");
+			System.out.println("------------------------------");
+	      System.out.println(up.getMessage());
  
 		}
 		
@@ -151,13 +160,6 @@ public class PropertyController {
   		model.addAttribute("property", property);
 		return "editProperty";
 	}
-	
-//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-//	public String getPropertyById(Model model, @RequestParam("search") String search) {
-//  		Property property = propertyService.searchProperty(search);
-//  		model.addAttribute("property", property);
-//		return "editProperty";
-//	}
   	
   	@RequestMapping(value="/edit", method = RequestMethod.POST)
 	public String processEditProperty(@Valid @RequestParam("id") Long propertyId, BindingResult result, HttpServletRequest request, Model model) {
@@ -192,5 +194,10 @@ public class PropertyController {
 		}
 		
 		return true;
+	}
+	
+	@RequestMapping(value= {"/home"}, method=RequestMethod.GET)
+	public String home() {
+		return "home";
 	}
 }

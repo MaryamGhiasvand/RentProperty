@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -52,7 +51,6 @@
 				</div>
 			</div>
 			<div class="row">
-
 				<div class="section-top-border" style="width: 100%;">
 					<h3 class="mb-30">Properties List</h3>
 					<div class="progress-table-wrap">
@@ -62,6 +60,8 @@
 								<div class="country">Title</div>
 								<div class="visit">Description</div>
 								<div class="percentage">Price</div>
+								<div class="status">Status</div>
+								<div class="acion">Action</div>
 							</div>
 							<c:forEach var="property" items="${properties}">
 								<div class="table-row">
@@ -69,26 +69,54 @@
 									<div class="country">${property.title}</div>
 									<div class="visit">${property.description}</div>
 									<div class="visit">${property.price}</div>
+									<div class="visit">${property.status}</div>
 									<div class="visit">
-										<a
-											href=" <spring:url value="/properties/delete?id=${property.id}" /> ">Delete</a>
+										<a href=" <spring:url value="/addRentHistory?id=${property.id}" /> ">Edit</a> 
 									</div>
-									<div class="visit">
-										<a
-											href=" <spring:url value="/properties/edit?id=${property.id}" /> ">Edit</a>
+								<!--  	<div class="visit">
+										<a href=" <spring:url value="/properties/edit?id=${property.id}" /> ">Edit</a>
+									</div> -->
+ 									<div class="visit">										
+									  <a href=" <spring:url value="/properties/detail?id=${property.id}" /> ">Details</a>
 									</div>
-									<div class="visit">
-										<a
-											href=" <spring:url value="/properties/detail?id=${property.id}" /> ">Details</a>
-									</div>
-									<a
-										href=" <spring:url value="/addRentHistory?id=${property.id}" /> ">Rent</a>
+									  <a href=" <spring:url value="/properties/delete?id=${property.id}" /> ">Delete</a>
 								</div>
 							</c:forEach>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<!-- Rent from  -->			
+			</div>
+		    	<div id="result" style="display:none" >   	
+		    	    <p id="success" ></p> 
+		    		<p id="errors" ></p>
+		    	</div>		 
+		   	<div id="formInput" style="display:none" > 
+			<h3 align="center">Category</h3>
+		
+			<!-- No action method handled by AJAX-->
+			<form id="categoryForm" method="post">	
+				<input type="hidden" name="id" value="0"> 
+		          <p>
+		          	<label for="name"> Name    : </label>
+		            <input type="text" name="name" id="name" value="" />
+		          </p>
+		 
+		         <p>
+		            <label for="description"> Description: </label>
+		            <input id="description" name="description" type="text"/>
+		         </p>
+		 
+		         <input type="button" value="Add Category" onclick="categorySubmit();return false;">
+		    </form>
+		  <h4 align="center"> 
+		     <a href="#" onclick="make_hidden('formInput'); make_hidden('result');resetForm('categoryForm');"> <b>EXIT</b> </a> 
+		  </h4>
+		
+		</div>
+			<!-- End Rent Form -->
 
 			<div class="row">
 				<div class="col-xl-12">
@@ -141,7 +169,8 @@
 	<!--/ footer end  -->
 
 	<!-- link that opens popup -->
-
+	<script type="text/javascript" src="<spring:url value="/resource/js/ajax.js"/>"></script>
+	
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script

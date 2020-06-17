@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,56 +8,38 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h4>My properties </h4>
 	<section class="container">
 		<div class="row">
-			<c:forEach items="${employees}" var="employee">
+			<c:forEach items="${properties}" var="property">
 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 					<div class="thumbnail">
  						<div class="caption">
-							<h3>First Name - ${employee.firstName}</h3>
-							<h3>Last Name -  ${employee.lastName}</h3>
-							<p>Age -         ${employee.age}</p>
-							<p>Title -       ${employee.title} </p>
-							<p>NUMBER -      ${employee.employeeNumber} </p>
-							<h4>ADDRESS:  </h4>
-							<p>${employee.address.street} </p>
-							<p>${employee.address.city}, ${employee.address.state}    ${employee.address.zipCode}</p>
-							<p>
-								<!--a
-									href=" <spring:url value="/products/product?id=${product.productId}" /> "
-									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Details
-								</a-->
-							</p>
-
+							<p>Title- ${property.title}</p>
+							<p>Description - ${property.description}</p>
+							<p>Price - ${property.price}</p>				
+							<p>Address - ${property.address.state} ${property.address.city} - ${property.address.street}</p>						
 						</div>
 					</div>
 				</div>
 			</c:forEach>
 		</div>
 	</section>
+	
+	<h4>Rent History</h4>
 	<section class="container">
 		<div class="row">
-			<c:forEach items="${employees}" var="employee">
+			<c:forEach items="${rentHistories}" var="history">
 				<div class="col-sm-6 col-md-3" style="padding-bottom: 15px">
 					<div class="thumbnail">
  						<div class="caption">
-							<h3>First Name - ${employee.firstName}</h3>
-							<h3>Last Name -  ${employee.lastName}</h3>
-							<p>Age -         ${employee.age}</p>
-							<p>Title -       ${employee.title} </p>
-							<p>NUMBER -      ${employee.employeeNumber} </p>
-							<h4>ADDRESS:  </h4>
-							<p>${employee.address.street} </p>
-							<p>${employee.address.city}, ${employee.address.state}    ${employee.address.zipCode}</p>
-							<p>
-								<!--a
-									href=" <spring:url value="/products/product?id=${product.productId}" /> "
-									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Details
-								</a-->
-							</p>
-
+ 							
+ 							<p>Property - ${history.property.title}</p>		
+							<p>Start Date- ${history.startDate}</p>
+							<p>End Date - ${history.endDate}</p>
+							<p>Price - ${history.price}</p>				
+							<p>Renter - ${history.credential.firstName} ${history.credential.lastName}</p>
+							<p>Phone - ${history.credential.phone}</p>				
 						</div>
 					</div>
 				</div>

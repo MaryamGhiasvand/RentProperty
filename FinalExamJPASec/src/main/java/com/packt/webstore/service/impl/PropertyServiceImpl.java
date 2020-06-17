@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyType;
 import com.packt.webstore.repository.PropertyRepository;
@@ -53,5 +54,10 @@ public class PropertyServiceImpl implements PropertyService{
 
 	public List<Property> searchProperty(String search, int bathCount, int bedCount, PropertyType propertyType) {
 		return propertyRepository.findCity(search, bathCount , bedCount, propertyType);
+	}
+
+	@Override
+	public List<Property> findPropertyByOwener(Credentials owner) {
+		return (List<Property>) propertyRepository.findPropertyByOwner(owner);
 	}
 }

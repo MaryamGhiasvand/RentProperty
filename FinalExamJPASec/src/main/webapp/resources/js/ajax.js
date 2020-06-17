@@ -62,3 +62,5 @@ function addToFavorite(propertyId) {
 //
 //	})
 //	}
+
+

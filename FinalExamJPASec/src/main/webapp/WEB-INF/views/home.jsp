@@ -59,7 +59,6 @@
 									<a href="?language=en_US">English</a> | 
 									<a href="?language=fa_IR">Persian</a> |
 									<a href="?language=fa_IR">Mongolian</a> 
-									</a>
 								</div>
 							</div>
 
@@ -83,7 +82,6 @@
 										<ul id="navigation">
 											<li><a class="active" href="home"><spring:message code="home" text="Home" /></a></li>
 											<li><a href="about"><spring:message code="about" text="About" /></a></li>
-											<li><a href="contact"><spring:message code="contact" text="Contact" /></a></li>
 										</ul>
 									</nav>
 								</div>
