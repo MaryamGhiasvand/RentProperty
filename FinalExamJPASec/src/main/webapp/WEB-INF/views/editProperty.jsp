@@ -11,14 +11,14 @@
 <section>
 		<div class="jumbotron">
 			<div class="container">
-				<h1>New Property</h1>
+				<h1>Edit Property</h1>
 			</div>
 		</div>
 	</section>
 	<section class="container">
 		<form:form  modelAttribute="property" action="edit" method="post">
 			<fieldset>
-				<legend>Edit property</legend>
+				<legend>Property</legend>
 
 				<form:errors path="*" element="div"/>
 				<div class="form-group">
@@ -59,6 +59,26 @@
 				</div>
 				
 				<div class="form-group">
+					<label class="control-label col-lg-2" for="price">Bath count</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input id="bathCount" path="bathCount" type="text"/>
+							<form:errors path="bathCount" cssClass="text-danger"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="bedCount">Bed count</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input id="bedCount" path="bedCount" type="text"/>
+							<form:errors path="bedCount" cssClass="text-danger"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
 					<form:checkbox path = "airConditioning" />
 					<label class="control-label col-lg-2" for="airConditioning">Air Conditioning</label>
 						
@@ -78,21 +98,24 @@
 					<label class="control-label col-lg-2" for="parking">Parking</label>						
 				</div>
 				
-				<h4>Address:</h4>
+				
+				<h4>Address</h4>
 			  	<div class="form-group">
 					<label class="control-label col-lg-2" for="state">State</label>
 					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input path="address.state" id="state" />
-						</div>
+						<form:select id="state" path="address.state" class="form:input-large">
+				                <option value="IOWA">IOWA</option>
+				   		</form:select>	
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="city">City</label>
 					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input path="address.city" id="city" />
-						</div>
+						<form:select id="city" path="address.city" class="form:input-large">
+				                <option value="Fairfield">Fairfield</option>
+				                <option value="Test1">Test1</option>
+				                <option value="Tes2">Tes2</option>
+				   		</form:select>	
 					</div>
 				</div>
 				<div class="form-group">
@@ -131,9 +154,9 @@
 
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
-						<input type="submit" id="btnAdd"value ="Add"/>
+						<input type="submit" id="btnAdd"value ="Save"/>
 					</div>
-				</div>
+				</div>	
 			</fieldset>
 		</form:form>
 	</section>

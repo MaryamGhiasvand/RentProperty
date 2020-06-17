@@ -11,7 +11,9 @@ import com.packt.webstore.domain.Property;
 
 @Repository
 public interface PropertyRepository extends CrudRepository<Property, Long> {
-	public Property findByState(String title);
+	
+	@Query("SELECT ug FROM Property ug INNER JOIN ug.address u WHERE u.city = :search")
+	public Property findByState(@Param("search") String title);
 
 	@Query("select e from Property e where e.id= :id")
 	public Property findPropertyById(@Param("id") Long id);

@@ -25,7 +25,7 @@
 				<td>${property.price}</td>
 				<td><a href=" <spring:url value="/properties/delete?id=${property.id}" /> ">Delete</a>	
 				</td>
-				<td><a href=" <spring:url value="/properties/edit?search=${property.address.state}" /> ">Edit</a>				
+				<td><a href=" <spring:url value="/properties/edit?id=${property.id}" /> ">Edit</a>				
 				</td>
 				<td><a href=" <spring:url value="/properties/detail?id=${property.id}" /> ">Details</a>				
 				</td>
