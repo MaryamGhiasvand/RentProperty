@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "property")
 public class Property {
@@ -21,10 +23,10 @@ public class Property {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@Column
+	@NotEmpty(message = "Title not null")
 	private String title;
 	
-	@Column
+	@NotEmpty(message = "Title not null")
 	private String description;
 	
 	@Column

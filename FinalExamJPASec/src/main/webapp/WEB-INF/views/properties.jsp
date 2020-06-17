@@ -75,7 +75,7 @@
 									</div>
 									<div class="visit">
 										<a
-											href=" <spring:url value="/properties/edit?search=${property.address.city}" /> ">Edit</a>
+											href=" <spring:url value="/properties/edit?id=${property.id}" /> ">Edit</a>
 									</div>
 									<div class="visit">
 										<a
