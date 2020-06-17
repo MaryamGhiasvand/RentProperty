@@ -40,4 +40,11 @@ public class FavoritePropertiesServiceImpl implements FavoritePropertiesService{
 		
 	}
 
+	@Override
+	public void removefavoriteProperty(long propertyId) {
+		favoritePropertiesRepository.removefavoriteProperty(propertyId);
+		
+	}
+
+
 }
