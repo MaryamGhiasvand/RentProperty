@@ -741,7 +741,7 @@
 
 												<tr>
 													<td><label for="starCount"> <spring:message
-																code="starCount" text="stars" /></label></td>
+																code="starRate" text="stars" /></label></td>
 													<td>
 														<form>
 															<input type="radio" name="starCount" value=1 class="fa fa-star" />
