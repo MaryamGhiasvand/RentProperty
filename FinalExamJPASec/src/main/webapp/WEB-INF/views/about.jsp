@@ -167,9 +167,10 @@
                     <div class="row">
                             <div class="col-xl-12">
                                 <div class="section_title mb-40 text-center">
-                                    <h3>
+                                    <h4>
                                             AIM (Afghanistan Iran Mongolia) Team Members
-                                    </h3>
+                                    </h4>
+                                    <p>Code Less, Accomplish More!</p>
                                 </div>
                             </div>
                         </div>
