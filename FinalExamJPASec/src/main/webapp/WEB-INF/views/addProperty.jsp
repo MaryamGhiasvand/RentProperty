@@ -180,8 +180,8 @@
 
 							<div class="col-sm-12">
 								<div class="form-group">
-									<form:input class="form-control valid" path="Street"
-										id="address.street" placeholder="address.street" />
+									<form:input class="form-control valid" path="address.street"
+										id="address.street" placeholder="Street" />
 									<form:errors path="address.street" cssClass="text-danger" />
 								</div>
 							</div>
