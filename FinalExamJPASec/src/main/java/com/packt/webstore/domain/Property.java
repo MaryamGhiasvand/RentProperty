@@ -30,10 +30,8 @@ public class Property {
 	@NotEmpty(message= "{NotEmpty}")
 	private String title;
 	
-	@NotEmpty(message= "{NotEmpty}")
 	private String description;
 	
-	@NotEmpty(message= "{NotEmpty}")
 	private float price;
 	
 	@Column
@@ -43,7 +41,6 @@ public class Property {
 	private LocalDate expireDate;
 	
 	@Column
-	@Range(min=0, max = 20, message="{RangeInt}")
 	private int bathCount;
 	
 	@Column

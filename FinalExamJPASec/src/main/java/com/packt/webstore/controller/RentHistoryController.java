@@ -38,21 +38,7 @@ public class RentHistoryController {
 	
 	@Autowired
 	CredentialService credentialService;
-	
-	@RequestMapping(value = "/rentHistory", method = RequestMethod.GET)
-	public String getRentHistories(Model model) {
-//		String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
-//		Credentials credential = credentialService.findByUsername(username);
-//		
-//		List<RentHistory> rentHistories = rentHistoryService.fingRentHistoriesByProduct(property)
-//		model.addAttribute("rentHistories", rentHistories);
-//		
-//		List<Property> properties = propertyRepository.findPropertyByOwner(credential);
-//		model.addAttribute("properties", properties);
-//		this.propertyId = propertyId;
-		return "rentHistory";
-	}	
-	
+		
 	@RequestMapping(value = "/addRentHistory", method = RequestMethod.GET)
 	public String getRentHistory(@ModelAttribute("rentHistory") RentHistory rentHistory, Model model, 
 		HttpServletRequest request, @RequestParam("id") long propertyId) {
@@ -80,6 +66,7 @@ public class RentHistoryController {
    				String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
    	   			Credentials credential = credentialService.findByUsername(username);
    	   			
+   	   			System.out.println(rentHistory.getStatus() +" : :::::::::::::::::::");
    	   			property.setStatus(rentHistory.getStatus());
    	   			propertyService.save(property);
    	   			
@@ -89,7 +76,7 @@ public class RentHistoryController {
    			}
    			
 		} catch (Exception up) {
-	      	System.out.println("Transaction Failed!!!");
+	      	System.out.println("Transaction Failed processRentHistory!!!");
  
 		}
    		return "redirect:/properties/list";

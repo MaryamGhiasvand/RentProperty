@@ -118,7 +118,7 @@ public class PropertyController {
 	}
 	   
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddProperty(@ModelAttribute("newProperty") @Valid Property newProperty,  BindingResult result, HttpServletRequest request) {
+	public String processAddProperty(@Valid @ModelAttribute("newProperty") Property newProperty,  BindingResult result) {
 		if(result.hasErrors()) {
 			return "addProperty";
 		}
@@ -130,7 +130,8 @@ public class PropertyController {
    			newProperty.setCredential(credential);
 			propertyService.save(newProperty);
 		} catch (Exception up) {
-	      System.out.println("Transaction Failed!!!");
+			System.out.println("------------------------------");
+	      System.out.println(up.getMessage());
  
 		}
 		
