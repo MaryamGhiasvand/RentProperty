@@ -8,4 +8,5 @@ import com.packt.webstore.domain.RentHistory;
 @Repository
 public interface RentHistoryRepository extends CrudRepository<RentHistory, Long>{
 //	public void find();
+//	@Query("select r from renthistory r where r.property.id = :property_Id")
 }

@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity(name="location")
 public class Address {
@@ -11,10 +14,14 @@ public class Address {
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
  	private long id;
-
+    
+    @NotEmpty(message = "{NotEmpty}")
     private String state;
+    @NotEmpty(message = "{NotEmpty}")
  	private String street;
 	private String city;
+	@NotEmpty(message = "{NotEmpty}")
+	@Size(min = 5, max = 7, message = "{zipcode}")
   	private String zipCode; 
 
 	private float longitude;
