@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
  
@@ -19,6 +20,7 @@ public class Credentials {
 	 @Id
 	 @Column(name = "USERNAME", nullable = false, unique = true)
 	 @NotEmpty(message= "The username should not be empty")
+	 @Size(min=5, max=15, message="Size must be greater than 5 chars and less than 15")
  	private String username;
 	 @NotEmpty(message= "The password should not be empty")
 	 @Column(name = "PASSWORD", nullable = false)

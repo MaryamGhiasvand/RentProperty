@@ -81,7 +81,13 @@
 						class="form-contact contact_form" novalidate="novalidate">
 						<form:errors path="*" element="div" />
 						<div class="row">
-							<div class="col-sm-12" style="padding: 15px;">
+						
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Type:</p>
+								</div>
+							</div>
+							<div class="col-sm-9" style="padding: 15px;">
 								<div class="form-group">
 									<form:select id="propertyType" path="propertyType"
 										class="form:input-large">
@@ -91,29 +97,50 @@
 									</form:select>
 								</div>
 							</div>
-							<div class="col-sm-12">
+
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Title:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="title" id="title"
 										placeholder="Title" />
 									<form:errors path="title" cssClass="text-danger" />
 								</div>
 							</div>
-							<div class="col-sm-12">
+
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Description:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="description"
 										id="description" placeholder="Description" />
 									<form:errors path="description" cssClass="text-danger" />
 								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Price:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="price" id="price"
 										placeholder="Price" />
 									<form:errors path="price" cssClass="text-danger" />
 								</div>
 							</div>
-
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Bath count:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="bathCount"
 										id="bathCount" placeholder="Bath Count" />
@@ -121,51 +148,65 @@
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Bed count:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="bedCount"
 										id="bedCount" placeholder="Bed Count" />
 									<form:errors path="bedCount" cssClass="text-danger" />
 								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:checkbox path="airConditioning" />
+									<form:checkbox path="airConditioning" id="airConditioning" />
 									<label class="control-label col-lg-2" for="airConditioning">Air
 										Conditioning</label>
 								</div>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:checkbox path="grill" />
+									<form:checkbox path="grill" id="grill"/>
 									<label class="control-label col-lg-2" for="grill">Grill</label>
-									<form:errors path="grill" cssClass="text-danger" />
+									<form:errors path="grill" cssClass="text-danger" id="grill" />
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:checkbox path="oven" />
+									<form:checkbox path="oven" id="oven" />
 									<label class="control-label col-lg-2" for="oven">Oven</label>
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
 								<div class="form-group">
-									<form:checkbox path="parking" />
+									<form:checkbox path="parking" id="parking" />
 									<label class="control-label col-lg-2" for="parking">Parking</label>
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">State:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="address.state"
 										id="address.state" placeholder="State" />
 									<form:errors path="address.state" cssClass="text-danger" />
 								</div>
 							</div>
-
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">City:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:select id="city" path="address.city"
 										class="form:input-large form-control valid">
@@ -178,7 +219,12 @@
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Street:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="address.street"
 										id="address.street" placeholder="Street" />
@@ -186,7 +232,12 @@
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">ZipCode:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="address.zipCode"
 										id="address.zipCode" placeholder="ZipCode" />
@@ -194,7 +245,12 @@
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Longitude:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="address.longitude"
 										id="address.longitude" placeholder="Longitude" />
@@ -202,7 +258,12 @@
 								</div>
 							</div>
 
-							<div class="col-sm-12">
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Latitude:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="address.latitude"
 										id="address.latitude" placeholder="Latitude" />
