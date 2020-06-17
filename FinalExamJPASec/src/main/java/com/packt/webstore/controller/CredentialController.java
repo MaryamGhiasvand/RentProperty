@@ -35,7 +35,7 @@ public class CredentialController {
 	}
 	
 	@RequestMapping(value= {"/add"}, method= RequestMethod.POST)
-	public String saveUser(@Valid @ModelAttribute("credential") Credentials credential, RedirectAttributes redirectAttributes, BindingResult bindingResult) {
+	public String saveUser(@Valid @ModelAttribute("credential") Credentials credential, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 		if(bindingResult.hasErrors()) {
 			System.out.println("------------------------------------------------ has erros ------------------------------------");
 			return "addCredential";
