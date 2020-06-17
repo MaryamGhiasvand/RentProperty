@@ -22,14 +22,18 @@ public class Credentials {
 	 @NotEmpty(message= "The username should not be empty")
 	 @Size(min=5, max=15, message="Size must be greater than 5 chars and less than 15")
  	private String username;
+	 
 	 @NotEmpty(message= "The password should not be empty")
 	 @Column(name = "PASSWORD", nullable = false)
 	 private String password;
+	 
 	 @NotEmpty(message= "The email should not be empty")
 	 @Column(name = "EMAIL", nullable = false)
 	 private String email;
-	String verifyPassword;
+	
+	 String verifyPassword;
 	private Boolean enabled;
+	
 	@Column
 	private UserRole userRole;
 	

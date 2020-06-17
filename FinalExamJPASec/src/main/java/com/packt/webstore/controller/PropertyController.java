@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.packt.webstore.domain.Credentials;
@@ -103,7 +105,9 @@ public class PropertyController {
 	}
 	   
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String processAddProperty(@ModelAttribute("newProperty") @Valid Property newProperty, BindingResult result, HttpServletRequest request) {
+	public String processAddProperty(@ModelAttribute("newProperty") @Valid Property newProperty,  BindingResult result, HttpServletRequest request) {
+		//@RequestParam CommonsMultipartFile propertyImage,
+		//System.out.println("------------------------------------------"+propertyImage+"----------------------------------------");
 		if(result.hasErrors()) {
 			return "addProperty";
 		}

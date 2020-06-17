@@ -14,6 +14,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name = "property")
 public class Property {
@@ -92,6 +94,17 @@ public class Property {
 	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
 	private List<FavoriteProperties> favorites;
 	
+	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
+	private List<PropertyPhoto> propertyPhotos;
+
+	public List<PropertyPhoto> getPropertyPhotos() {
+		return propertyPhotos;
+	}
+
+	public void setPropertyPhotos(List<PropertyPhoto> propertyPhotos) {
+		this.propertyPhotos = propertyPhotos;
+	}
+
 	public long getId() {
 		return id;
 	}
