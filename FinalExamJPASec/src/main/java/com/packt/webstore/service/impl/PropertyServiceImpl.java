@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.packt.webstore.domain.Property;
+import com.packt.webstore.domain.PropertyType;
 import com.packt.webstore.repository.PropertyRepository;
 import com.packt.webstore.service.PropertyService;
+
 
 @Service
 @Transactional 
@@ -35,8 +37,7 @@ public class PropertyServiceImpl implements PropertyService{
 	
 	@Override
 	public void delete(Long id) {
-		propertyRepository.delete(id);
-		
+		propertyRepository.delete(id);		
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class PropertyServiceImpl implements PropertyService{
 		return null;
 	}
 
-	public Property searchProperty(String search) {
-		return (Property) propertyRepository.findByState(search);
+	public List<Property> searchProperty(String search, int bathCount, int bedCount, PropertyType propertyType) {
+		return propertyRepository.findCity(search, bathCount , bedCount, propertyType);
 	}
 }

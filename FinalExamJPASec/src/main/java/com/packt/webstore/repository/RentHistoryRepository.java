@@ -7,5 +7,5 @@ import com.packt.webstore.domain.RentHistory;
 
 @Repository
 public interface RentHistoryRepository extends CrudRepository<RentHistory, Long>{
-
+//	public void find();
 }

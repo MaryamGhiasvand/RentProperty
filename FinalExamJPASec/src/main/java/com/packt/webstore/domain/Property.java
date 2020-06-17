@@ -15,11 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "proporty")
-
-@NamedQuery(name = "Property.findByState", query = "SELECT ug FROM Property ug " + 
-			"INNER JOIN ug.address u WHERE u.state = ?1")
-
+@Table(name = "property")
 
 public class Property {
 	@Id 
