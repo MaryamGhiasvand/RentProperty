@@ -64,4 +64,9 @@ public class CredentialController {
 	public String editUser() {
 		return "userEdit";
 	}
+	
+	@RequestMapping(value= {"/home"}, method=RequestMethod.GET)
+	public String home() {
+		return "home";
+	}
 }
