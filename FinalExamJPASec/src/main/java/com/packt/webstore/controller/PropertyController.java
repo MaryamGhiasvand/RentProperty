@@ -20,8 +20,11 @@ import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyReview;
 import com.packt.webstore.domain.PropertyType;
+import com.packt.webstore.domain.RentHistory;
+import com.packt.webstore.repository.RentHistoryRepository;
 import com.packt.webstore.service.CredentialService;
 import com.packt.webstore.service.PropertyService;
+import com.packt.webstore.service.RentHistoryService;
 import com.packt.webstore.service.ReviewService;
 
 @Controller
@@ -33,15 +36,23 @@ public class PropertyController {
 	
 	@Autowired
 	CredentialService credentialService;
+	
 	//Added by Maryam 
 	@Autowired
 	private ReviewService reviewService;
 	
+	
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
 		
-		System.out.println("properties size - " + propertyService.findAll().size());		
-		model.addAttribute("properties", propertyService.findAll());
+		String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		Credentials credential = credentialService.findByUsername(username);
+//		
+		List<Property> properties = propertyService.findPropertyByOwener(credential);
+		model.addAttribute("properties", properties);
+		
+//		System.out.println("properties size - " + propertyService.findAll().size());		
+//		model.addAttribute("properties", propertyService.findAll());
 		return "properties";
 	}
 	
@@ -129,13 +140,6 @@ public class PropertyController {
   		model.addAttribute("property", property);
 		return "editProperty";
 	}
-	
-//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-//	public String getPropertyById(Model model, @RequestParam("search") String search) {
-//  		Property property = propertyService.searchProperty(search);
-//  		model.addAttribute("property", property);
-//		return "editProperty";
-//	}
   	
   	@RequestMapping(value="/edit", method = RequestMethod.POST)
 	public String processEditProperty(@Valid @RequestParam("id") Long propertyId, BindingResult result, HttpServletRequest request, Model model) {

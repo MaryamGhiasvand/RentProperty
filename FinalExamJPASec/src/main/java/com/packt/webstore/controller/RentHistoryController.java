@@ -1,5 +1,7 @@
 package com.packt.webstore.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -20,6 +22,8 @@ import com.packt.webstore.domain.RentHistory;
 import com.packt.webstore.repository.PropertyRepository;
 import com.packt.webstore.repository.RentHistoryRepository;
 import com.packt.webstore.service.CredentialService;
+import com.packt.webstore.service.PropertyService;
+import com.packt.webstore.service.RentHistoryService;
 
 @Controller
 public class RentHistoryController {
@@ -27,18 +31,36 @@ public class RentHistoryController {
 	
 	long propertyId = 0;
 	@Autowired
-	RentHistoryRepository rentHistoryRepository;
+	RentHistoryService rentHistoryService;
 	
 	@Autowired
-	PropertyRepository propertyRepository;
+	PropertyService propertyService;
 	
 	@Autowired
 	CredentialService credentialService;
 	
+	@RequestMapping(value = "/rentHistory", method = RequestMethod.GET)
+	public String getRentHistories(Model model) {
+//		String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
+//		Credentials credential = credentialService.findByUsername(username);
+//		
+//		List<RentHistory> rentHistories = rentHistoryService.fingRentHistoriesByProduct(property)
+//		model.addAttribute("rentHistories", rentHistories);
+//		
+//		List<Property> properties = propertyRepository.findPropertyByOwner(credential);
+//		model.addAttribute("properties", properties);
+//		this.propertyId = propertyId;
+		return "rentHistory";
+	}	
+	
 	@RequestMapping(value = "/addRentHistory", method = RequestMethod.GET)
 	public String getRentHistory(@ModelAttribute("rentHistory") RentHistory rentHistory, Model model, 
-			HttpServletRequest request, @RequestParam("id") long propertyId) {
-		System.out.println("--getRentHistory " + propertyId);
+		HttpServletRequest request, @RequestParam("id") long propertyId) {
+		
+		Property property = propertyService.fingPropertyById(propertyId);
+		
+		List<RentHistory> rentHistories = rentHistoryService.fingRentHistoriesByProduct(property);
+		model.addAttribute("rentHistories", rentHistories);
 		this.propertyId = propertyId;
 		return "addRentHistory";
 	}
@@ -53,13 +75,17 @@ public class RentHistoryController {
 		}
 
    		try {
-   			Property property = propertyRepository.findPropertyById(propertyId);
+   			Property property = propertyService.fingPropertyById(propertyId);
    			if (property != null) {
    				String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
    	   			Credentials credential = credentialService.findByUsername(username);
+   	   			
+   	   			property.setStatus(rentHistory.getStatus());
+   	   			propertyService.save(property);
+   	   			
    	   			rentHistory.setCredential(credential);
    				rentHistory.setProperty(property);
-   				rentHistoryRepository.save(rentHistory);
+   				rentHistoryService.save(rentHistory);
    			}
    			
 		} catch (Exception up) {

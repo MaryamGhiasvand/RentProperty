@@ -59,3 +59,5 @@ function addToFavorite(propertyId) {
 //
 //	})
 //	}
+
+

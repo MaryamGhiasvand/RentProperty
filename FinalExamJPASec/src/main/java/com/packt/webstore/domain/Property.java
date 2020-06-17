@@ -59,6 +59,8 @@ public class Property {
 	@Column
 	private boolean oven;
 	
+	private HistoryStatus status;	
+	
 	@Column
 	private boolean parking;
 	
@@ -195,6 +197,14 @@ public class Property {
 
 	public void setCredential(Credentials credential) {
 		this.credential = credential;
+	}
+
+	public HistoryStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(HistoryStatus status) {
+		this.status = status;
 	}
 }
 	

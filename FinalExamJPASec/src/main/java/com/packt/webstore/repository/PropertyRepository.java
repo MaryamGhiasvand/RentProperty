@@ -7,6 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyType;
 
@@ -21,4 +22,7 @@ public interface PropertyRepository extends CrudRepository<Property, Long> {
 
 	@Query("select e from Property e where e.bathCount = :bathCount and e.bedCount = :bedCount")
 	public List<Property> findPropertyForSearch(@Param("bathCount") int bathCount, @Param("bedCount") int bedCount);
+	
+	@Query("SELECT ug FROM Property ug where ug.credential = :owner")
+	public List<Property> findPropertyByOwner(@Param("owner") Credentials owner);
 }

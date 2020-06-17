@@ -97,6 +97,18 @@
 									</form:select>
 								</div>
 							</div>
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Status:</p>
+								</div>
+							</div>
+							<div class="col-sm-9" style="padding: 15px;">
+								<div class="form-group">
+									<form:select id="status" path="status" class="form:input-large">
+					                <option value="AVAILABLE">Available</option>
+							  		</form:select>
+								</div>
+							</div>
 
 							<div class="col-sm-3">
 								<div class="form-group">
@@ -116,6 +128,7 @@
 									<p style="padding: 10px;">Description:</p>
 								</div>
 							</div>
+							
 							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input class="form-control valid" path="description"
