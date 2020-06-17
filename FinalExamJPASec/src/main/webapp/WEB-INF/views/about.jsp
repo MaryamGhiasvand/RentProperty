@@ -80,8 +80,8 @@
 								<div class="main-menu  d-none d-lg-block">
 									<nav>
 										<ul id="navigation">
-											<li><a class="active" href="home"><spring:message code="home" text="Home" /></a></li>
-											<li><a href="about"><spring:message code="about" text="About" /></a></li>
+											<li><a  href="home"><spring:message code="home" text="Home" /></a></li>
+											<li><a class="active" href="about"><spring:message code="about" text="About" /></a></li>
 										</ul>
 									</nav>
 								</div>
@@ -141,7 +141,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-md-6">
                     <div class="about_thumb">
-                        <img src="<spring:url value='/resource/template/img/logo.jpeg' />" alt="Logo">
+                        <img src="<spring:url value='/resource/template/img/svg_icon/color_box.svg' />" alt="Logo">
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-6">

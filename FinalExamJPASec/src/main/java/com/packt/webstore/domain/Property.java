@@ -37,7 +37,6 @@ public class Property {
 	private float price;
 	
 	@Column
-	@NotEmpty(message= "{NotEmpty}")
 	private float area;
 	
 	@Column
@@ -48,11 +47,9 @@ public class Property {
 	private int bathCount;
 	
 	@Column
-	@NotEmpty(message= "{NotEmpty}")
 	private int bedCount;
 	
 	@Column
-	@NotEmpty(message= "{NotEmpty}")
 	private int garageCount;
 	
 	@Column
