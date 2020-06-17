@@ -3,6 +3,8 @@ package com.packt.webstore.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
@@ -10,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,7 +35,12 @@ public class CredentialController {
 	}
 	
 	@RequestMapping(value= {"/add"}, method= RequestMethod.POST)
-	public String saveUser(@ModelAttribute("credential") Credentials credential, RedirectAttributes redirectAttributes) {
+	public String saveUser(@Valid @ModelAttribute("credential") Credentials credential, RedirectAttributes redirectAttributes, BindingResult bindingResult) {
+		if(bindingResult.hasErrors()) {
+			System.out.println("------------------------------------------------ has erros ------------------------------------");
+			return "addCredential";
+		}
+
 		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
 		Authority authority = new Authority();
 		authority.setAuthority("ROLE_USER");

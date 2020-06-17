@@ -112,18 +112,15 @@
 							</div>
 							<div class="col-xl-3 col-lg-3 d-none d-lg-block">
 								<div class="Appointment">
-									<div class="search_btn">
-										<a href="#"> <i class="ti-search"></i>
-										</a>
-									</div>
 									<div class="book_btn d-none d-lg-block">
 										<security:authorize access="isAnonymous()">
 											<a href="<spring:url value='/login' />"
 												class="btn btn-default pull-right"> Login</a>
-											<a href="credential/add">Register</a>
+											<a href="credential/add" style="float:left;">Register</a>
 										</security:authorize>
 										
 										<security:authorize access="isAuthenticated()">
+										<a href="dashboard" class="btn btn-default pull-right">Dashboard</a>
 											<spring:url value="/logout" var="logout_url" />
 											<form:form action="${logout_url}" class="form-horizontal"
 												method="POST">
@@ -131,6 +128,9 @@
 															class="btn btn-danger btn-mini  pull-right"
 															value="Logout" />
 											</form:form>
+													
+										
+		
 										</security:authorize>
 									</div>
 								</div>
