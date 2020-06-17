@@ -2,6 +2,7 @@ package com.packt.webstore.domain;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class RentHistory {
@@ -17,26 +21,37 @@ public class RentHistory {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@Column
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date startDate;
 	
-	@Column
+	@DateTimeFormat(pattern = "MM-dd-yyyy")
 	private Date endDate;
 	
 	@Column
 	private float price;
 	
-	@Column
-	private HistoryStatus status;
+//	@Column
+//	private HistoryStatus status;
 
 	@ManyToOne
     @JoinColumn(name="property_id", nullable=false)
 	private Property property;
+	
+	@OneToOne
+	private Credentials credential;
 
 	public RentHistory() {}
 	
 	public Property getProperty() {
 		return property;
+	}
+
+	public Credentials getCredential() {
+		return credential;
+	}
+
+	public void setCredential(Credentials credential) {
+		this.credential = credential;
 	}
 
 	public void setProperty(Property property) {
@@ -67,11 +82,11 @@ public class RentHistory {
 		this.price = price;
 	}
 
-	public HistoryStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(HistoryStatus status) {
-		this.status = status;
-	}
+//	public HistoryStatus getStatus() {
+//		return status;
+//	}
+//
+//	public void setStatus(HistoryStatus status) {
+//		this.status = status;
+//	}
 }

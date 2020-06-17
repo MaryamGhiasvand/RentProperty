@@ -67,6 +67,13 @@ public class Credentials {
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
+	
+	@OneToOne(mappedBy = "credential", cascade = CascadeType.ALL)
+	private RentHistory rentHistory;
+	
+	@OneToMany(mappedBy = "credential", cascade = CascadeType.ALL)
+	private List<Property> properties;
+	
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="USERNAME", referencedColumnName= "USERNAME") 
 	List<Authority> authority;

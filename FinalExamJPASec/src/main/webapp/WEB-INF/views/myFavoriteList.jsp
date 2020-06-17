@@ -16,14 +16,14 @@
 			<th>Description</th>
 			<th>Price</th>
 		</tr>
-		<c:forEach var="property" items="${properties}">
+		<c:forEach var="favoriteProperty" items="${favoriteProperties}">
 			<tr>
-				<td>${property.title}</td>
-				<td>${property.description}</td>
-				<td>${property.price}</td>
-				<td><a
-					href=" <spring:url value="/favoriteProperties/removeFavorite?propertyId=${property.id}" /> ">Delete</a>
-				</td>
+				<td>${favoriteProperty.property.title}</td>
+				<td>${favoriteProperty.property.description}</td>
+				<td>${favoriteProperty.property.price}</td>
+<%-- 				<td><a
+					href=" <spring:url value="/favoriteProperties/removeFavorite?propertyId=${favoriteProperty.id}" /> ">Delete</a>
+				</td> --%>
 			</tr>
 		</c:forEach>
 	</table>

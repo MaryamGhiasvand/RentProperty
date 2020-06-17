@@ -28,9 +28,9 @@ public class FavoritePropertiesServiceImpl implements FavoritePropertiesService{
 		favoritePropertiesRepository.delete(favorite_id);
 	}
 	
-	public List<Property> findAllFavorites(String username) {
+	public List<FavoriteProperties> findAllFavorites(String username) {
 		try {
-		List<Property> favoriteItems =favoritePropertiesRepository.findAllFavorites(username);
+		List<FavoriteProperties> favoriteItems =favoritePropertiesRepository.findAllFavorites(username);
 		return favoriteItems;
 		}
 		catch(Exception ex) {
@@ -41,8 +41,8 @@ public class FavoritePropertiesServiceImpl implements FavoritePropertiesService{
 	}
 
 	@Override
-	public void removefavoriteProperty(long propertyId) {
-		favoritePropertiesRepository.removefavoriteProperty(propertyId);
+	public void removefavoriteProperty(long favoriteId) {
+		favoritePropertiesRepository.delete(favoriteId);
 		
 	}
 
