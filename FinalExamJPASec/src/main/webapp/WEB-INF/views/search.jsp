@@ -2,6 +2,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -47,26 +49,13 @@
 					<div class="row">
 						<div class="col-xl-5 col-md-5 ">
 							<div class="header_left">
-								<p>Welcome to Conbusi consulting service</p>
+								<p style="color: #fff; font-weight: bold; font-size: 2em;">Easy Rent</p>
 							</div>
 						</div>
 						<div class="col-xl-7 col-md-7">
 							<div class="header_right d-flex">
-								<div class="short_contact_list">
-									<ul>
-										<li><a href="#"> <i class="fa fa-envelope"></i>
-												info@docmed.com
-										</a></li>
-										<li><a href="#"> <i class="fa fa-phone"></i> 1601-609
-												6780
-										</a></li>
-									</ul>
-								</div>
 								<div class="social_media_links">
-									<a href="#"> <i class="fa fa-linkedin"></i>
-									</a> <a href="#"> <i class="fa fa-facebook"></i>
-									</a> <a href="#"> <i class="fa fa-google-plus"></i>
-									</a>
+
 								</div>
 							</div>
 
@@ -88,33 +77,35 @@
 								<div class="main-menu  d-none d-lg-block">
 									<nav>
 										<ul id="navigation">
-											<li><a href="index.html">home</a></li>
-											<li><a href="#">pages <i class="ti-angle-down"></i></a>
-												<ul class="submenu">
-													<li><a href="about.html">about</a></li>
-													<li><a href="property_details.html">property
-															details</a></li>
-													<li><a href="elements.html">elements</a></li>
-												</ul></li>
-											<li><a class="active" href="Property.html">Property</a></li>
-											<li><a href="#">blog <i class="ti-angle-down"></i></a>
-												<ul class="submenu">
-													<li><a href="blog.html">blog</a></li>
-													<li><a href="single-blog.html">single-blog</a></li>
-												</ul></li>
-											<li><a href="contact.html">Contact</a></li>
+											<li><a class="active" href="home"><spring:message code="home" text="Home" /></a></li>
+											<li><a href="about"><spring:message code="about" text="About" /></a></li>
+											<li><a href="contact"><spring:message code="contact" text="Contact" /></a></li>
 										</ul>
 									</nav>
 								</div>
 							</div>
 							<div class="col-xl-3 col-lg-3 d-none d-lg-block">
 								<div class="Appointment">
-									<div class="search_btn">
-										<a href="#"> <i class="ti-search"></i>
-										</a>
-									</div>
 									<div class="book_btn d-none d-lg-block">
-										<a href="#">Add Property</a>
+										<security:authorize access="isAnonymous()">
+											<a href="<spring:url value='/login' />"
+												class="btn btn-default pull-right"> <spring:message code="login" text="Login" /></a>
+											<a href="credential/add" style="float:left;"><spring:message code="register" text="Register" /></a>
+										</security:authorize>
+										
+										<security:authorize access="isAuthenticated()">
+										<a href="dashboard" class="btn btn-default pull-right"><spring:message code="dashboard" text="Dashboard" /></a>
+											<spring:url value="/logout" var="logout_url" />
+											<form:form action="${logout_url}" class="form-horizontal"
+												method="POST">
+														<input type="submit" id="btnAdd"
+															class="btn btn-danger btn-mini  pull-right"
+															value="<spring:message code="logout" text="Logout" />" />
+											</form:form>
+													
+										
+		
+										</security:authorize>
 									</div>
 								</div>
 							</div>
@@ -142,64 +133,70 @@
 								<h3>Search property</h3>
 							</div>
 							<div class="property_form">
-								<form action="#">
-									<div class="row">
-										<div class="col-xl-12">
-											<div class="form_wrap d-flex">
-												<div class="single-field max_width ">
-													<label for="#">Location</label> <select class="wide">
-														<option data-display="NewYork">NewYork</option>
-														<option value="1">Bangladesh</option>
-														<option value="2">India</option>
-													</select>
-												</div>
-												<div class="single-field max_width ">
-													<label for="#">Property type</label> <select class="wide">
-														<option data-display="Apartment" value="HOUSE">House</option>
-														<option value="APARTMENT">Apartment</option>
-														<option value="VILLA">Villa</option>
-													</select>
-												</div>
-												<div class="single_field range_slider">
-													<label for="#">Price ($)</label>
-													<div id="slider"></div>
-												</div>
-												<div class="single-field min_width ">
-													<label for="#">Bed Room</label> <select class="wide">
-														<option data-display="01">01</option>
-														<option value="2">02</option>
-														<option value="3">03</option>
-														<option value="4">04</option>
-														<option value="5">05</option>
-														<option value="6">06</option>
-														<option value="7">07</option>
-														<option value="8">08</option>
-														<option value="9">09</option>
-														<option value="10">10</option>
-													</select>
-												</div>
-												<div class="single-field min_width ">
-													<label for="#">Bath Room</label> <select class="wide">
-														<option data-display="01">01</option>
-														<option value="2">02</option>
-														<option value="3">03</option>
-														<option value="4">04</option>
-														<option value="5">05</option>
-														<option value="6">06</option>
-														<option value="7">07</option>
-														<option value="8">08</option>
-														<option value="9">09</option>
-														<option value="10">10</option>
-													</select>
-												</div>
-												<div class="serach_icon">
-													<a href="#"> <i class="ti-search"></i>
-													</a>
-												</div>
+								<form action="search" method="get">
+								<div class="row">
+									<div class="col-xl-12">
+										<div class="form_wrap d-flex">
+											<div class="single-field max_width ">
+												<label for="#"><spring:message code="location" text="Location" /></label> 
+												<select name="city" class="wide">
+													<option data-display="New York" value="New York">New York</option>
+													<option value="Fairfield">Fairfield</option>
+													<option value="chicago">Chicago</option>
+													<option value="sanfrancisco">San Francisco</option>
+												</select>
+											</div>
+											<div class="single-field max_width ">
+												<label for="#"><spring:message code="property.type" text="Property Type" /></label> <select class="wide"
+													name="propertyType">
+													<option value="APARTMENT" data-display="APARTMENT">Apartment</option>
+													<option value="HOUSE">House</option>
+													<option value="VILLA">Villa</option>
+												</select>
+											</div>
+											<div class="single_field range_slider">
+												<label for="#"><spring:message code="price" text="Price" /> ($)</label>
+												<div id="slider"></div>
+											</div>
+											<div class="single-field min_width ">
+												<label for="#"><spring:message code="bedroom" text="Bed Room" /></label> <select class="wide"
+													name="bedCount">
+													<option data-display="01">01</option>
+													<option value="2">02</option>
+													<option value="3">03</option>
+													<option value="4">04</option>
+													<option value="5">05</option>
+													<option value="6">06</option>
+													<option value="7">07</option>
+													<option value="8">08</option>
+													<option value="9">09</option>
+													<option value="10">10</option>
+												</select>
+											</div>
+											
+											<div class="single-field min_width ">
+												<label for="#"><spring:message code="bathroom" text="Bathroom" /></label> <select class="wide"
+													name="bathCount">
+													<option data-display="01">01</option>
+													<option value="2">02</option>
+													<option value="3">03</option>
+													<option value="4">04</option>
+													<option value="5">05</option>
+													<option value="6">06</option>
+													<option value="7">07</option>
+													<option value="8">08</option>
+													<option value="9">09</option>
+													<option value="10">10</option>
+												</select>
+											</div>
+											<div class="serach_icon">
+												<input type="submit" value="<spring:message code="search" text="Search" />"
+													style="background: #FD8E5E; text-align: center; line-height: 45px; color: #fff; border-radius: 5px; display: inline-block; cursor: pointer;" />
 											</div>
 										</div>
 									</div>
-								</form>
+								</div>
+							</form>
 							</div>
 						</div>
 					</div>
@@ -219,6 +216,8 @@
 			</div>
 			<div class="row">
 			
+
+			<c:if test="${fn:length(properties) > 0}">
 			<c:forEach var="property" items="${properties}">
 			<a href="properties/detail?id=${property.id}" >
 				<div class="col-xl-4 col-md-6 col-lg-4">
@@ -271,107 +270,16 @@
 				</div>
 				</a>
 			  </c:forEach>
-				
-			</div>
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="more_property_btn text-center">
-						<a href="#" class="boxed-btn3-line">More Properties</a>
-					</div>
-				</div>
+			</c:if>
 			</div>
 		</div>
 	</div>
 
-	<!-- contact_action_area  -->
-	<div class="contact_action_area">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-7">
-					<div class="action_heading">
-						<h3>Add your property for sale</h3>
-					</div>
-				</div>
-				<div class="col-xl-5">
-					<div class="call_add_action">
-						<span>+10 637 367 4567</span> <a href="#" class="boxed-btn3-line">Load
-							More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /contact_action_area  -->
+
 
 
 	<!-- footer start -->
 	<footer class="footer">
-		<div class="footer_top">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-3 col-md-6 col-lg-3">
-						<div class="footer_widget">
-							<div class="footer_logo">
-								<a href="#"> <img
-									src="<spring:url value='/resource/template/img/footer_logo.png' />"
-									alt="">
-								</a>
-							</div>
-							<p>
-								<a href="#">conbusi@support.com</a> <br> +10 873 672 6782 <br>
-								600/D, Green road, NewYork
-							</p>
-							<div class="socail_links">
-								<ul>
-									<li><a href="#"> <i class="ti-facebook"></i>
-									</a></li>
-									<li><a href="#"> <i class="ti-twitter-alt"></i>
-									</a></li>
-									<li><a href="#"> <i class="fa fa-instagram"></i>
-									</a></li>
-								</ul>
-							</div>
-
-						</div>
-					</div>
-					<div class="col-xl-2 col-md-6 col-lg-3">
-						<div class="footer_widget">
-							<h3 class="footer_title">Services</h3>
-							<ul>
-								<li><a href="#">Marketing & SEO</a></li>
-								<li><a href="#"> Startup</a></li>
-								<li><a href="#">Finance solution</a></li>
-								<li><a href="#">Food</a></li>
-								<li><a href="#">Travel</a></li>
-							</ul>
-
-						</div>
-					</div>
-					<div class="col-xl-2 col-md-6 col-lg-2">
-						<div class="footer_widget">
-							<h3 class="footer_title">Useful Links</h3>
-							<ul>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Blog</a></li>
-								<li><a href="#"> Contact</a></li>
-								<li><a href="#">Appointment</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-xl-4 col-md-6 col-lg-4">
-						<div class="footer_widget">
-							<h3 class="footer_title">Subscribe</h3>
-							<form action="#" class="newsletter_form">
-								<input type="text" placeholder="Enter your mail">
-								<button type="submit">Subscribe</button>
-							</form>
-							<p class="newsletter_text">Esteem spirit temper too say
-								adieus who direct esteem esteems luckily.</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="copy-right_text">
 			<div class="container">
 				<div class="footer_border"></div>
@@ -380,9 +288,7 @@
 						<p class="copy_right text-center">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
-							All rights reserved | This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							Template by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>

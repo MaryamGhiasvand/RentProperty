@@ -1,7 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!doctype html>
@@ -10,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Real state</title>
+<title>Easy Rent</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -50,25 +50,15 @@
 					<div class="row">
 						<div class="col-xl-5 col-md-5 ">
 							<div class="header_left">
-								<p>Welcome to Conbusi consulting service</p>
+								<p style="color: #fff; font-weight: bold; font-size: 2em;">Easy Rent</p>
 							</div>
 						</div>
 						<div class="col-xl-7 col-md-7">
 							<div class="header_right d-flex">
-								<div class="short_contact_list">
-									<ul>
-										<li><a href="#"> <i class="fa fa-envelope"></i>
-												info@docmed.com
-										</a></li>
-										<li><a href="#"> <i class="fa fa-phone"></i> 1601-609
-												6780
-										</a></li>
-									</ul>
-								</div>
 								<div class="social_media_links">
-									<a href="#"> <i class="fa fa-linkedin"></i>
-									</a> <a href="#"> <i class="fa fa-facebook"></i>
-									</a> <a href="#"> <i class="fa fa-google-plus"></i>
+									<a href="?language=en_US">English</a> | 
+									<a href="?language=fa_IR">Persian</a> |
+									<a href="?language=fa_IR">Mongolian</a> 
 									</a>
 								</div>
 							</div>
@@ -91,21 +81,9 @@
 								<div class="main-menu  d-none d-lg-block">
 									<nav>
 										<ul id="navigation">
-											<li><a class="active" href="index.html">home</a></li>
-											<li><a href="#">pages <i class="ti-angle-down"></i></a>
-												<ul class="submenu">
-													<li><a href="about.html">about</a></li>
-													<li><a href="property_details.html">property
-															details</a></li>
-													<li><a href="elements.html">elements</a></li>
-												</ul></li>
-											<li><a href="Property.html">Property</a></li>
-											<li><a href="#">blog <i class="ti-angle-down"></i></a>
-												<ul class="submenu">
-													<li><a href="blog.html">blog</a></li>
-													<li><a href="single-blog.html">single-blog</a></li>
-												</ul></li>
-											<li><a href="contact.html">Contact</a></li>
+											<li><a class="active" href="home"><spring:message code="home" text="Home" /></a></li>
+											<li><a href="about"><spring:message code="about" text="About" /></a></li>
+											<li><a href="contact"><spring:message code="contact" text="Contact" /></a></li>
 										</ul>
 									</nav>
 								</div>
@@ -115,18 +93,18 @@
 									<div class="book_btn d-none d-lg-block">
 										<security:authorize access="isAnonymous()">
 											<a href="<spring:url value='/login' />"
-												class="btn btn-default pull-right"> Login</a>
-											<a href="credential/add" style="float:left;">Register</a>
+												class="btn btn-default pull-right"> <spring:message code="login" text="Login" /></a>
+											<a href="credential/add" style="float:left;"><spring:message code="register" text="Register" /></a>
 										</security:authorize>
 										
 										<security:authorize access="isAuthenticated()">
-										<a href="dashboard" class="btn btn-default pull-right">Dashboard</a>
+										<a href="dashboard" class="btn btn-default pull-right"><spring:message code="dashboard" text="Dashboard" /></a>
 											<spring:url value="/logout" var="logout_url" />
 											<form:form action="${logout_url}" class="form-horizontal"
 												method="POST">
 														<input type="submit" id="btnAdd"
 															class="btn btn-danger btn-mini  pull-right"
-															value="Logout" />
+															value="<spring:message code="logout" text="Logout" />" />
 											</form:form>
 													
 										
@@ -154,8 +132,8 @@
 				<div class="row align-items-center">
 					<div class="col-xl-10 offset-xl-1">
 						<div class="slider_text text-center justify-content-center">
-							<h3>Find your best Property</h3>
-							<p>Esteem spirit temper too say adieus who direct esteem.</p>
+							<h3><spring:message code="home.msg" text="Find Your Best Property" /></h3>
+							<p><spring:message code="fast.easy" text="Fast and Easy" /></p>
 						</div>
 						<div class="property_form">
 							<form action="search" method="get">
@@ -163,7 +141,7 @@
 									<div class="col-xl-12">
 										<div class="form_wrap d-flex">
 											<div class="single-field max_width ">
-												<label for="#"> Location</label> <select name="city"
+												<label for="#"><spring:message code="location" text="Location" /></label> <select name="city"
 													class="wide">
 													<option data-display="New York" value="New York">New
 														York</option>
@@ -173,7 +151,7 @@
 												</select>
 											</div>
 											<div class="single-field max_width ">
-												<label for="#">Property type</label> <select class="wide"
+												<label for="#"><spring:message code="property.type" text="Property Type" /></label> <select class="wide"
 													name="propertyType">
 													<option value="APARTMENT" data-display="APARTMENT">Apartment</option>
 													<option value="HOUSE">House</option>
@@ -181,11 +159,11 @@
 												</select>
 											</div>
 											<div class="single_field range_slider">
-												<label for="#">Price ($)</label>
+												<label for="#"><spring:message code="price" text="Price" /> ($)</label>
 												<div id="slider"></div>
 											</div>
 											<div class="single-field min_width ">
-												<label for="#">Bed Room</label> <select class="wide"
+												<label for="#"><spring:message code="bedroom" text="Bed Room" /></label> <select class="wide"
 													name="bedCount">
 													<option data-display="01">01</option>
 													<option value="2">02</option>
@@ -199,8 +177,9 @@
 													<option value="10">10</option>
 												</select>
 											</div>
+											
 											<div class="single-field min_width ">
-												<label for="#">Bath Room</label> <select class="wide"
+												<label for="#"><spring:message code="bathroom" text="Bathroom" /></label> <select class="wide"
 													name="bathCount">
 													<option data-display="01">01</option>
 													<option value="2">02</option>
@@ -215,7 +194,7 @@
 												</select>
 											</div>
 											<div class="serach_icon">
-												<input type="submit" value="Search"
+												<input type="submit" value="<spring:message code="search" text="Search" />"
 													style="background: #FD8E5E; text-align: center; line-height: 45px; color: #fff; border-radius: 5px; display: inline-block; cursor: pointer;" />
 											</div>
 										</div>
@@ -233,21 +212,6 @@
 
 	<!-- footer start -->
 	<footer class="footer">
-		<div class="footer_top">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-3 col-md-6 col-lg-3">
-						<div class="footer_widget">
-							<div class="footer_logo">
-								<a href="#"> <img src="img/footer_logo.png" alt="">
-								</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
 		<div class="copy-right_text">
 			<div class="container">
 				<div class="footer_border"></div>
@@ -256,9 +220,7 @@
 						<p class="copy_right text-center">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
-							All rights reserved | This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							Template by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>

@@ -1,86 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:security="http://www.springframework.org/schema/security"
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
+   xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
-
-	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-
-
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
-		
-		      http://www.springframework.org/schema/beans 
-      http://www.springframework.org/schema/beans/spring-beans.xsd
- 	  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-      http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd>
-      http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-	<mvc:annotation-driven />
-	<context:component-scan
-		base-package="com.packt.webstore.controller" />
-
-<<<<<<< HEAD
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-=======
  	<mvc:annotation-driven validator="validator"/>
 	<context:component-scan base-package="com.packt.webstore.controller" />
  	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
->>>>>>> 335767af82a31f254b520be2b235a80530d56134
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-<<<<<<< HEAD
-	<bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<property name="basename" value="messages" />
-	</bean>
-
-
-
 	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.support.StandardServletMultipartResolver">
-=======
-	<bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 
-		<!-- one of the properties available; the maximum file size in bytes -->
-		<property name="maxUploadSize" value="100000" />
+	    <!-- one of the properties available; the maximum file size in bytes -->
+	    <property name="maxUploadSize" value="100000"/>
 	</bean>
-
-
-	<!-- //Added by Maryam for messade source -->
-	<bean id="validator"
-		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
-		<property name="validationMessageSource" ref="messageSource" />
-	</bean>
-	<!-- Added by Maryam -->
 
 	<bean id= "messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
    		<property name="basenames" value="errorMessages,messages"/> 
->>>>>>> 335767af82a31f254b520be2b235a80530d56134
 	</bean>
 
-	<mvc:resources location="/resources/"
-		mapping="/resource/**" />
-
-	<mvc:interceptors>
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource" />
+	</bean>	
+	
+	<mvc:resources  location="/resources/"  mapping="/resource/**"/>
+ 
+ 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/employees/list" />
-			<bean class="com.packt.webstore.interceptor.NoticeInterceptor" />
-		</mvc:interceptor>
+        	<mvc:mapping path="/employees/list"/>
+        	<bean class="com.packt.webstore.interceptor.NoticeInterceptor" />
+    	</mvc:interceptor>	 			
 	</mvc:interceptors>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 335767af82a31f254b520be2b235a80530d56134
-</beans>
+ 
+ 	<mvc:interceptors>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<property name="paramName" value="language"></property>
+		</bean>
+	</mvc:interceptors>
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en_US"></property>
+	</bean>
+ </beans>
