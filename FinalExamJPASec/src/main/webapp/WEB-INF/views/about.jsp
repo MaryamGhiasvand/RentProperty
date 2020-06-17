@@ -1,15 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Real state</title>
+<title>Easy Rent</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -55,7 +56,9 @@
 						<div class="col-xl-7 col-md-7">
 							<div class="header_right d-flex">
 								<div class="social_media_links">
-
+									<a href="?language=en_US">English</a> | 
+									<a href="?language=fa_IR">Persian</a> |
+									<a href="?language=fa_IR">Mongolian</a> 
 								</div>
 							</div>
 
@@ -119,163 +122,102 @@
 		</div>
 	</header>
 	<!-- header-end -->
-
-	<!-- slider_area_start -->
-	<div class="slider_area">
-		<div
-			class="single_slider single_slider2  d-flex align-items-center property_bg overlay2">
-			<div class="container">
-				<div class="row align-items-center">
-					<div class="col-xl-10 offset-xl-1">
-						<div class="property_wrap">
-							<div class="slider_text text-center justify-content-center">
-								<h3>Search property</h3>
-							</div>
-							<div class="property_form">
-								<form action="search" method="get">
-								<div class="row">
-									<div class="col-xl-12">
-										<div class="form_wrap d-flex">
-											<div class="single-field max_width ">
-												<label for="#"><spring:message code="location" text="Location" /></label> 
-												<select name="city" class="wide">
-													<option data-display="New York" value="New York">New York</option>
-													<option value="Fairfield">Fairfield</option>
-													<option value="chicago">Chicago</option>
-													<option value="sanfrancisco">San Francisco</option>
-												</select>
-											</div>
-											<div class="single-field max_width ">
-												<label for="#"><spring:message code="property.type" text="Property Type" /></label> <select class="wide"
-													name="propertyType">
-													<option value="APARTMENT" data-display="APARTMENT">Apartment</option>
-													<option value="HOUSE">House</option>
-													<option value="VILLA">Villa</option>
-												</select>
-											</div>
-											<div class="single_field range_slider">
-												<label for="#"><spring:message code="price" text="Price" /> ($)</label>
-												<div id="slider"></div>
-											</div>
-											<div class="single-field min_width ">
-												<label for="#"><spring:message code="bedroom" text="Bed Room" /></label> <select class="wide"
-													name="bedCount">
-													<option data-display="01">01</option>
-													<option value="2">02</option>
-													<option value="3">03</option>
-													<option value="4">04</option>
-													<option value="5">05</option>
-													<option value="6">06</option>
-													<option value="7">07</option>
-													<option value="8">08</option>
-													<option value="9">09</option>
-													<option value="10">10</option>
-												</select>
-											</div>
-											
-											<div class="single-field min_width ">
-												<label for="#"><spring:message code="bathroom" text="Bathroom" /></label> <select class="wide"
-													name="bathCount">
-													<option data-display="01">01</option>
-													<option value="2">02</option>
-													<option value="3">03</option>
-													<option value="4">04</option>
-													<option value="5">05</option>
-													<option value="6">06</option>
-													<option value="7">07</option>
-													<option value="8">08</option>
-													<option value="9">09</option>
-													<option value="10">10</option>
-												</select>
-											</div>
-											<div class="serach_icon">
-												<input type="submit" value="<spring:message code="search" text="Search" />"
-													style="background: #FD8E5E; text-align: center; line-height: 45px; color: #fff; border-radius: 5px; display: inline-block; cursor: pointer;" />
-											</div>
-										</div>
-									</div>
-								</div>
-							</form>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- slider_area_end -->
-	<div class="popular_property plus_padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-12">
-					<div class="section_title mb-40 text-center">
-						<h4>${properties.size()} Properties found</h4>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-			
-
-			<c:if test="${fn:length(properties) > 0}">
-			<c:forEach var="property" items="${properties}">
-			<a href="properties/detail?id=${property.id}" >
-				<div class="col-xl-4 col-md-6 col-lg-4">
-					<div class="single_property">
-						<div class="property_thumb">
-							<div class="property_tag">For Rent</div>
-							<img
-								src="<spring:url value='/resource/template/img/property/1.png' />"
-								alt="">
-						</div>
-						<div class="property_content">
-							<div class="main_pro">
-								<h3>
-									<a href="#"><c:out value="${property.title}" /></a>
-								</h3>
-								<div class="mark_pro">
-									<img
-										src="<spring:url value='/resource/template/img/svg_icon/location.svg' />"
-										alt=""> <span>Popular Properties</span>
-								</div>
-								<span class="amount">From $${property.price}</span>
-							</div>
-						</div>
-						<div class="footer_pro">
-							<ul>
-								<li>
-									<div class="single_info_doc">
-										<img
-											src="<spring:url value='/resource/template/img/svg_icon/square.svg' />"
-											alt=""> <span>${property.area} Sqft</span>
-									</div>
-								</li>
-								<li>
-									<div class="single_info_doc">
-										<img
-											src="<spring:url value='/resource/template/img/svg_icon/bed.svg' />"
-											alt=""> <span>${property.bedCount} Bed</span>
-									</div>
-								</li>
-								<li>
-									<div class="single_info_doc">
-										<img
-											src="<spring:url value='/resource/template/img/svg_icon/bath.svg' />"
-											alt=""> <span>${property.bathCount} Bath</span>
-									</div>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				</a>
-			  </c:forEach>
-			</c:if>
-			</div>
-		</div>
-	</div>
+         <!-- bradcam_area  -->
+         <div class="bradcam_area bradcam_bg_1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="bradcam_text text-center">
+                                <h3>About Us</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/ bradcam_area  -->
+            
+    <div class="about_mission">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-md-6">
+                    <div class="about_thumb">
+                        <img src="<spring:url value='/resource/template/img/logo.jpeg' />" alt="Logo">
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6">
+                    <div class="about_text">
+                        <h4>Our Mission</h4>
+                        <p>To learn and make use of what we learnt in Web Application Architecture class.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- accordion  -->
+   
 
 
 
+   
+
+
+    <!-- team_area  -->
+    <div class="team_area">
+            <div class="container">
+                    <div class="row">
+                            <div class="col-xl-12">
+                                <div class="section_title mb-40 text-center">
+                                    <h3>
+                                            AIM (Afghanistan Iran Mongolia) Team Members
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-6">
+                                <div class="single_team">
+                                    <div class="team_thumb">
+                                        <img src="img/team/1.png" alt="">
+                                    </div>
+                                    <div class="team_info text-center">
+                                        <h3>Maryam Ghiasvand</h3>
+                                        <p>Iran</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single_team">
+                                    <div class="team_thumb">
+                                        <img src="img/team/2.png" alt="">
+                                    </div>
+                                    <div class="team_info text-center">
+                                        <h3>Erkhbayar Ganzorig</h3>
+                                        <p>Mongolia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single_team">
+                                    <div class="team_thumb">
+                                        <img src="img/team/3.png" alt="">
+                                    </div>
+                                    <div class="team_info text-center">
+                                        <h3>Mohammad Zahedy</h3>
+                                        <p>Afghanistan</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-6">
+                                <div class="single_team">
+                                    <div class="team_thumb">
+                                        <img src="img/team/4.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    <!-- /team_area  -->
 
 	<!-- footer start -->
 	<footer class="footer">

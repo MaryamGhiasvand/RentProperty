@@ -108,8 +108,6 @@ public class PropertyController {
 	   
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String processAddProperty(@ModelAttribute("newProperty") @Valid Property newProperty,  BindingResult result, HttpServletRequest request) {
-		//@RequestParam CommonsMultipartFile propertyImage,
-		//System.out.println("------------------------------------------"+propertyImage+"----------------------------------------");
 		if(result.hasErrors()) {
 			return "addProperty";
 		}
@@ -176,5 +174,10 @@ public class PropertyController {
 		}
 		
 		return true;
+	}
+	
+	@RequestMapping(value= {"/home"}, method=RequestMethod.GET)
+	public String home() {
+		return "home";
 	}
 }

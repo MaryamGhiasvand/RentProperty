@@ -30,4 +30,9 @@ public class HomeController {
 	public String home() {
 		return "home";
 	}
+	
+	@RequestMapping({"/about"})
+	public String about() {
+		return "about";
+	}
 }

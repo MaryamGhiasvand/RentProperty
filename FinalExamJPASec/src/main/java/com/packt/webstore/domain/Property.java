@@ -27,16 +27,17 @@ public class Property {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@NotEmpty(message = "{NotEmpty}")
+	@NotEmpty(message= "{NotEmpty}")
 	private String title;
 	
-	@NotEmpty(message = "{NotEmpty}")
+	@NotEmpty(message= "{NotEmpty}")
 	private String description;
 	
-	@NotNull(message = "Title not null")
+	@NotEmpty(message= "{NotEmpty}")
 	private float price;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private float area;
 	
 	@Column
@@ -47,9 +48,11 @@ public class Property {
 	private int bathCount;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private int bedCount;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private int garageCount;
 	
 	@Column
