@@ -15,10 +15,12 @@
 	
  	  <security:intercept-url pattern="/dashboard/add" access="hasRole('ROLE_ADMIN','ROLE_USER')" />  	
 	  <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  />
+	  <security:intercept-url pattern="/properties/add" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  />
+	  
  	
  		<security:form-login login-page="/login" 
 				login-processing-url="/postLogin"
-               default-target-url="/welcome"    
+               default-target-url="/"    
   				username-parameter="username" 
 				password-parameter="password"
                always-use-default-target="true"   

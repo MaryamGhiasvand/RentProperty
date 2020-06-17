@@ -10,15 +10,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.validator.constraints.NotEmpty;
  
 @Entity(name="USERS")
 public class Credentials {
 
 	 @Id
 	 @Column(name = "USERNAME", nullable = false, unique = true)
+	 @NotEmpty(message= "The username should not be empty")
  	private String username;
+	 @NotEmpty(message= "The password should not be empty")
 	 @Column(name = "PASSWORD", nullable = false)
 	 private String password;
+	 @NotEmpty(message= "The email should not be empty")
 	 @Column(name = "EMAIL", nullable = false)
 	 private String email;
 	String verifyPassword;
@@ -27,6 +32,7 @@ public class Credentials {
 	private UserRole userRole;
 	
     @Column
+    @NotEmpty(message= "The firstname should not be empty")
 	private String firstName;
     
     public List<Property> getProperties() {
@@ -53,9 +59,11 @@ public class Credentials {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	@NotEmpty(message= "The lastname should not be empty")
 	@Column
 	private String lastName;
     
+	@NotEmpty(message= "The phone should not be empty")
     @Column
 	private String phone;
     
@@ -65,6 +73,9 @@ public class Credentials {
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
+	
+	@OneToOne(mappedBy = "credential", cascade = CascadeType.ALL)
+	private RentHistory rentHistory;
 	
 	@OneToMany(mappedBy = "credential", cascade = CascadeType.ALL)
 	private List<Property> properties;

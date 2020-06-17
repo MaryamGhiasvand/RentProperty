@@ -50,6 +50,23 @@
 						</div>
 					</div>
 				</div>
+					<div class="form-group"><label for="number">Status</label>
+					<div class="col-lg-10">
+						<form:select id="status" path="status" class="form:input-large">
+					                <option value="ONRENT">On Rent</option>
+									<option value="CANCELED">Canceled</option>
+									<option value="CONFIRMED">Confirmed</option>
+									<option value="CONTRACTEXPIRED">Contract expired</option>
+					   </form:select>	
+					   </div>
+				   </div>
+				 <div class="form-group">
+					<label >Description</label>
+					<div class="col-lg-10">
+						<form:input id="comment" path="comment" type="text"/>
+						<form:errors path="comment" cssClass="text-danger"/>
+					</div>
+				</div>
 				<div class="form-group">
 					<div class="col-lg-offset-2 col-lg-10">
 						<input type="submit" id="btnRent"value ="Rent"/>

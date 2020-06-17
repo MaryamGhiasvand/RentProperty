@@ -46,8 +46,7 @@ public class RentHistoryController {
 	@RequestMapping(value = "/addRentHistory", method = RequestMethod.POST)
 	public String processRentHistory(@ModelAttribute("rentHistory") @Valid RentHistory rentHistory, BindingResult result, 
 										HttpServletRequest request) {
-		
-//		long propertyId = 4;
+
 		System.out.println("-------------------propertyId " + propertyId);
 		if(result.hasErrors()) {
 			return "addRentHistory";
@@ -56,9 +55,9 @@ public class RentHistoryController {
    		try {
    			Property property = propertyRepository.findPropertyById(propertyId);
    			if (property != null) {
-//   				String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
-//   	   			Credentials credential = credentialService.findByUsername(username);
-//   	   			rentHistory.setCredential(credential);
+   				String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
+   	   			Credentials credential = credentialService.findByUsername(username);
+   	   			rentHistory.setCredential(credential);
    				rentHistory.setProperty(property);
    				rentHistoryRepository.save(rentHistory);
    			}
