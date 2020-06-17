@@ -21,6 +21,11 @@ public interface FavoritePropertiesRepository extends CrudRepository<FavoritePro
 	@Query(value="SELECT f FROM FavoriteProperties f WHERE f.credentials.username = :username")
 	List<FavoriteProperties> findAllFavorites(@Param("username") String username);
 
+	
+	@Query(value="SELECT f FROM FavoriteProperties f WHERE f.property.id =:propertyId and f.credentials.username =:username")
+	List<FavoriteProperties> findByPropertyAndUsename(@Param("propertyId")long propertyId,@Param("username") String username);
+
+
 	 // public List<Property> findAllFavorites(String username);
 	
 //	@Query(value="delete from FavoriteProperties f where f.property.id =:propertyId", nativeQuery = true)

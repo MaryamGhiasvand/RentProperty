@@ -17,10 +17,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.packt.webstore.domain.Credentials;
+import com.packt.webstore.domain.FavoriteProperties;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyReview;
 import com.packt.webstore.domain.PropertyType;
 import com.packt.webstore.service.CredentialService;
+import com.packt.webstore.service.FavoritePropertiesService;
 import com.packt.webstore.service.PropertyService;
 import com.packt.webstore.service.ReviewService;
 
@@ -33,9 +35,14 @@ public class PropertyController {
 	
 	@Autowired
 	CredentialService credentialService;
+	
+	
 	//Added by Maryam 
 	@Autowired
 	private ReviewService reviewService;
+	
+	@Autowired
+	private FavoritePropertiesService favoritePropertiesService;
 	
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
@@ -54,6 +61,15 @@ public class PropertyController {
   		//Added by Maryam for get property Review
   		List<PropertyReview> propertyReviews= reviewService.findByPropertyId(propertyId);
   		model.addAttribute("propertyReviews", propertyReviews);
+  		
+		// is already in favorite list
+		boolean inFavoriteList = false;
+		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		List<FavoriteProperties> fpList = favoritePropertiesService.findByPropertyAndUsename(propertyId, username);
+		if (fpList.size()>=1) {
+			inFavoriteList = true;
+		}
+		model.addAttribute("inFavoriteList", inFavoriteList);
   		//Added by Maryam
   		model.addAttribute("property", property);
 		return "detailProperty";

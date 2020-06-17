@@ -18,11 +18,12 @@ public class FavoriteProperties {
 	private long id;
 	
 	@ManyToOne()
-	//@JoinColumn(name = "property_id")
+	//test
+	//@JoinColumn(unique = true)
 	private Property property;
 	
 	@ManyToOne
-	@JoinColumn(name = "username")
+	//@JoinColumn(name = "username")
 	private Credentials credentials;
 
 	public Property getProperty() {

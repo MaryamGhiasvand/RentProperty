@@ -124,7 +124,7 @@
 									<c:if test="${LoggedInUser == true}">
 										<div class="book_btn d-none d-lg-block">
 
-											<input type="button" value="add to favorite"
+											<input id= "favoriteButton" type="button" <c:if test="${inFavoriteList == true}"><c:out value="disabled='disabled'"/></c:if> value="add to favorite"
 												onclick="addToFavorite(${property.id})" class="button" />
 
 										</div>

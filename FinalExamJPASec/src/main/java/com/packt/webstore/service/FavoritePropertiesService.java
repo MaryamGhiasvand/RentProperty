@@ -17,6 +17,9 @@ public interface FavoritePropertiesService {
 
 
 	public void removefavoriteProperty(long favoriteId);
+
+	public List<FavoriteProperties> findByPropertyAndUsename(long propertyId,String username);
+
 	
 
 }

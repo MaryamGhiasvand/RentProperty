@@ -49,40 +49,53 @@ public class FavoritePropertiesController {
 //		return "redirect:/login";
 //}
 
-		@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
-		@ResponseBody
-		public String addtoFavorite(@RequestParam("propertyId") long propertyId, Model model) {
-		System.out.println("**********propertyId*********"+propertyId);
-		 String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();	 
-		 System.out.print("username"+username);
-		 if(username !="anonymousUser") {
-	       Property p =propertyService.fingPropertyById(propertyId);
-	       Credentials user = credentialService.findByUsername(username);
-           FavoriteProperties favorite = new FavoriteProperties(p,user);
-	       favoritePropertiesService.addToFavorite(favorite);
-	       return "success";
-		 }
-	       return "notLoggedIn";
-	}
-		
-		
-		@RequestMapping("/viewMyFvoriteList")
-		public String viewFvoriteList(Model model) {
-			String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-			List<FavoriteProperties> favoriteProperties=favoritePropertiesService.findAllFavorites(username);
-			model.addAttribute("favoriteProperties",favoriteProperties);
-			
-			return "myFavoriteList";
-		}
+	@RequestMapping(value = "/addtoFavorite", method = RequestMethod.GET)
+	@ResponseBody
+	public String addtoFavorite(@RequestParam("propertyId") long propertyId, Model model) {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		if (username != "anonymousUser") {
 
-		@RequestMapping("/removeFavorite")
-		public String removeFvorite(@RequestParam("propertyId") long propertyId) {
-			//Property p =propertyService.fingPropertyById(propertyId);
-			favoritePropertiesService.removefavoriteProperty(propertyId);
-			//favoritePropertiesService.removeProperty(p);			
-			return "myFavoriteList";
+			// is already in favorite list
+			boolean inFavoriteList = false;
+			List<FavoriteProperties> fpList = favoritePropertiesService.findByPropertyAndUsename(propertyId, username);
+			if (fpList.size()>=1) {
+//				inFavoriteList = true;
+//				model.addAttribute("inFavoriteList", inFavoriteList);
+				return "Has alredy added";
+			}
+			//
+			else {
+				Property p = propertyService.fingPropertyById(propertyId);
+				Credentials user = credentialService.findByUsername(username);
+				FavoriteProperties favorite = new FavoriteProperties(p, user);
+				favoritePropertiesService.addToFavorite(favorite);
+				inFavoriteList = true;
+				model.addAttribute("inFavoriteList", inFavoriteList);
+				return "success";
+			}
+			
+			
 		}
-		
+		return "notLoggedIn";
+	}
+
+	@RequestMapping("/viewMyFvoriteList")
+	public String viewFvoriteList(Model model) {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		List<FavoriteProperties> favoriteProperties = favoritePropertiesService.findAllFavorites(username);
+		model.addAttribute("favoriteProperties", favoriteProperties);
+
+		return "myFavoriteList";
+	}
+
+	@RequestMapping("/removeFavorite")
+	public String removeFvorite(@RequestParam("propertyId") long propertyId) {
+		// Property p =propertyService.fingPropertyById(propertyId);
+		favoritePropertiesService.removefavoriteProperty(propertyId);
+		// favoritePropertiesService.removeProperty(p);
+		return "myFavoriteList";
+	}
+
 	@ModelAttribute("LoggedInUser")
 	public Boolean CheckLoggedIn() {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
@@ -92,5 +105,4 @@ public class FavoritePropertiesController {
 
 		return true;
 	}
-
 }

@@ -46,5 +46,20 @@ public class FavoritePropertiesServiceImpl implements FavoritePropertiesService{
 		
 	}
 
+	@Override
+	public List<FavoriteProperties> findByPropertyAndUsename(long propertyId,String username) {
+		//return favoritePropertiesRepository.findByPropertyAndUsename(propertyId,username);
+		try {
+		List<FavoriteProperties> favoriteItems =favoritePropertiesRepository.findByPropertyAndUsename(propertyId,username);
+		return favoriteItems;
+		}
+		catch(Exception ex) {
+			System.out.print("a");
+			return null;
+		}
+	}
+
+
+
 
 }
