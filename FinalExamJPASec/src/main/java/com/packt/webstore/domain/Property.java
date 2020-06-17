@@ -1,4 +1,4 @@
-	package com.packt.webstore.domain;
+package com.packt.webstore.domain;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -9,14 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.NamedQuery;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "property")
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7b4b1da000a36c3126cc8d8a878d5b81d0a165ca
 public class Property {
 	@Id 
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -72,6 +76,9 @@ public class Property {
 		this.area = area;
 		this.bedCount = bedCount;
 	}
+
+	@ManyToOne
+	private Credentials credential;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Address address;
@@ -180,6 +187,14 @@ public class Property {
 	}
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public Credentials getCredential() {
+		return credential;
+	}
+
+	public void setCredential(Credentials credential) {
+		this.credential = credential;
 	}
 }
 	

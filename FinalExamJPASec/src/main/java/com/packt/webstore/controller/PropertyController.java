@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyType;
+import com.packt.webstore.service.CredentialService;
 import com.packt.webstore.service.PropertyService;
 
 @Controller
@@ -24,6 +27,9 @@ public class PropertyController {
 
 	@Autowired
 	private PropertyService propertyService;
+	
+	@Autowired
+	CredentialService credentialService;
 	
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
@@ -57,6 +63,10 @@ public class PropertyController {
 		}
 
    		try {
+   			
+   			String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
+   			Credentials credential = credentialService.findByUsername(username);
+   			newProperty.setCredential(credential);
 			propertyService.save(newProperty);
 		} catch (Exception up) {
 	      System.out.println("Transaction Failed!!!");
@@ -66,20 +76,26 @@ public class PropertyController {
 	   	return "redirect:/properties/list";
 	}
 	
-//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
-//	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
-//  		System.out.println("-*-*- edit " + propertyId);
-//  		Property property = propertyService.fingPropertyById(propertyId);
-//  		model.addAttribute("property", property);
-//		return "editProperty";
-//	}
-	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+<<<<<<< HEAD
+	public String getPropertyById(Model model, @RequestParam("id") Long propertyId) {
+  		System.out.println("-*-*- edit " + propertyId);
+  		Property property = propertyService.fingPropertyById(propertyId);
+  		model.addAttribute("property", property);
+=======
 	public String getPropertyById(Model model, @RequestParam("search") String search) {
   		//Property property = propertyService.searchProperty(search).get(0);
   		//model.addAttribute("property", property);
+>>>>>>> 7b4b1da000a36c3126cc8d8a878d5b81d0a165ca
 		return "editProperty";
 	}
+	
+//	@RequestMapping(value = "/edit", method = RequestMethod.GET)
+//	public String getPropertyById(Model model, @RequestParam("search") String search) {
+//  		Property property = propertyService.searchProperty(search);
+//  		model.addAttribute("property", property);
+//		return "editProperty";
+//	}
   	
   	@RequestMapping(value="/edit", method = RequestMethod.POST)
 	public String processEditProperty(@Valid @RequestParam("id") Long propertyId, BindingResult result, HttpServletRequest request, Model model) {

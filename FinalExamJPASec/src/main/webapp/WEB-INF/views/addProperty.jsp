@@ -60,6 +60,26 @@
 				</div>
 				
 				<div class="form-group">
+					<label class="control-label col-lg-2" for="price">Bath count</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input id="bathCount" path="bathCount" type="text"/>
+							<form:errors path="bathCount" cssClass="text-danger"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="control-label col-lg-2" for="bedCount">Bed count</label>
+					<div class="col-lg-10">
+						<div class="form:input-prepend">
+							<form:input id="bedCount" path="bedCount" type="text"/>
+							<form:errors path="bedCount" cssClass="text-danger"/>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group">
 					<form:checkbox path = "airConditioning" />
 					<label class="control-label col-lg-2" for="airConditioning">Air Conditioning</label>
 						
@@ -84,17 +104,21 @@
 			  	<div class="form-group">
 					<label class="control-label col-lg-2" for="state">State</label>
 					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input path="address.state" id="state" />
-						</div>
+						<form:select id="state" path="address.state" class="form:input-large">
+				                <option value="IOWA">IOWA</option>
+				   		</form:select>	
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="control-label col-lg-2" for="city">City</label>
 					<div class="col-lg-10">
-						<div class="form:input-prepend">
-							<form:input path="address.city" id="city" />
-						</div>
+						<form:select id="city" path="address.city" class="form:input-large">
+				                <option value="Fairfield">Fairfield</option>
+				                <option value="Gilmore">Gilmore City</option>
+				                <option value="Hartwick">Hartwick</option>
+				                <option value="Maloy">Maloy</option>
+				                <option value="Palmer">Palmer</option>
+				   		</form:select>	
 					</div>
 				</div>
 				<div class="form-group">
