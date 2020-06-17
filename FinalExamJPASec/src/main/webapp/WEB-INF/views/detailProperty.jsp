@@ -2,6 +2,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -44,7 +45,7 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-	<!-- header-start -->
+
 	<header>
 		<div class="header-area ">
 			<div class="header-top_area d-none d-lg-block">
@@ -52,26 +53,13 @@
 					<div class="row">
 						<div class="col-xl-5 col-md-5 ">
 							<div class="header_left">
-								<p>Welcome to Conbusi consulting service</p>
+								<p style="color: #fff; font-weight: bold; font-size: 2em;">Easy Rent</p>
 							</div>
 						</div>
 						<div class="col-xl-7 col-md-7">
 							<div class="header_right d-flex">
-								<div class="short_contact_list">
-									<ul>
-										<li><a href="#"> <i class="fa fa-envelope"></i>
-												info@docmed.com
-										</a></li>
-										<li><a href="#"> <i class="fa fa-phone"></i> 1601-609
-												6780
-										</a></li>
-									</ul>
-								</div>
 								<div class="social_media_links">
-									<a href="#"> <i class="fa fa-linkedin"></i>
-									</a> <a href="#"> <i class="fa fa-facebook"></i>
-									</a> <a href="#"> <i class="fa fa-google-plus"></i>
-									</a>
+
 								</div>
 							</div>
 
@@ -85,9 +73,7 @@
 						<div class="row align-items-center">
 							<div class="col-xl-3 col-lg-2">
 								<div class="logo">
-									<a href="index.html"> <img
-										src="<spring:url value='/resource/template/img/logo.png' />"
-										alt="">
+									<a href="index.html"> <img src="img/logo.png" alt="">
 									</a>
 								</div>
 							</div>
@@ -95,40 +81,45 @@
 								<div class="main-menu  d-none d-lg-block">
 									<nav>
 										<ul id="navigation">
-											<li><a href="index.html">home</a></li>
-											<li><a class="active" href="#">pages <i
-													class="ti-angle-down"></i></a>
-												<ul class="submenu">
-													<li><a href="about.html">about</a></li>
-													<li><a href="property_details.html">property
-															details</a></li>
-													<li><a href="elements.html">elements</a></li>
-												</ul></li>
-											<li><a href="Property.html">Property</a></li>
-											<li><a href="#">blog <i class="ti-angle-down"></i></a>
-												<ul class="submenu">
-													<li><a href="blog.html">blog</a></li>
-													<li><a href="single-blog.html">single-blog</a></li>
-												</ul></li>
-											<li><a href="contact.html">Contact</a></li>
+											<li><a class="active" href="home"><spring:message code="home" text="Home" /></a></li>
+											<li><a href="about"><spring:message code="about" text="About" /></a></li>
 										</ul>
 									</nav>
 								</div>
 							</div>
 							<div class="col-xl-3 col-lg-3 d-none d-lg-block">
 								<div class="Appointment">
-									<div class="search_btn">
-										<a href="#"> <i class="ti-search"></i>
-										</a>
-									</div>
+									<div class="book_btn d-none d-lg-block">
+										<security:authorize access="isAnonymous()">
+											<a href="<spring:url value='/login' />"
+												class="btn btn-default pull-right"> <spring:message code="login" text="Login" /></a>
+											<a href="credential/add" style="float:left;"><spring:message code="register" text="Register" /></a>
+										</security:authorize>
+										
+										<security:authorize access="isAuthenticated()">
+										<a href="dashboard" class="btn btn-default pull-right"><spring:message code="dashboard" text="Dashboard" /></a>
+											<spring:url value="/logout" var="logout_url" />
+											<form:form action="${logout_url}" class="form-horizontal"
+												method="POST">
+														<input type="submit" id="btnAdd"
+															class="btn btn-danger btn-mini  pull-right"
+															value="<spring:message code="logout" text="Logout" />" />
+											</form:form>
+													
+										
+		
+										</security:authorize>
+										
 									<c:if test="${LoggedInUser == true}">
-										<div class="book_btn d-none d-lg-block">
+										
 
 											<input type="button" value="add to favorite"
 												onclick="addToFavorite(${property.id})" class="button" />
 
-										</div>
+									
 									</c:if>
+									
+									</div>
 								</div>
 							</div>
 							<div class="col-12">
@@ -142,7 +133,7 @@
 		</div>
 	</header>
 	<!-- header-end -->
-
+	
 	<!-- bradcam_area  -->
 	<div class="property_details_banner">
 		<div class="container">
@@ -194,16 +185,6 @@
 				<div class="col-xl-12">
 					<div class="property_banner">
 						<div class="property_banner_active owl-carousel">
-							<div class="single_property">
-								<img
-									src="<spring:url value='/resource/template/img/banner/property_details.png' />"
-									alt="">
-							</div>
-							<div class="single_property">
-								<img
-									src="<spring:url value='/resource/template/img/banner/property_details.png' />"
-									alt="">
-							</div>
 							<div class="single_property">
 								<img
 									src="<spring:url value='/resource/template/img/banner/property_details.png' />"
@@ -720,7 +701,7 @@
 														</p></td>
 													<td>
 														<div style="text-align: center;">
-															<form:errors path="title" cssStyle="error" />
+															<form:errors path="title" class="error" />
 														</div>
 													</td>
 												</tr>
@@ -734,14 +715,14 @@
 														</p></td>
 													<td>
 														<div style="text-align: center;">
-															<form:errors path="comment" cssStyle="error" />
+															<form:errors path="comment" class="error" />
 														</div>
 													</td>
 												</tr>
 
 												<tr>
 													<td><label for="starCount"> <spring:message
-																code="starCount" text="stars" /></label></td>
+																code="starRate" text="stars" /></label></td>
 													<td>
 														<form>
 															<input type="radio" name="starCount" value=1 class="fa fa-star" />
@@ -795,24 +776,8 @@
 	</div>
 	<!-- /details  -->
 
-
 	<!-- footer start -->
 	<footer class="footer">
-		<div class="footer_top">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-3 col-md-6 col-lg-3">
-						<div class="footer_widget">
-							<div class="footer_logo">
-								<a href="#"> <img src="img/footer_logo.png" alt="">
-								</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
 		<div class="copy-right_text">
 			<div class="container">
 				<div class="footer_border"></div>
@@ -821,9 +786,7 @@
 						<p class="copy_right text-center">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							Copyright &copy;
-							<script>document.write(new Date().getFullYear());</script>
-							All rights reserved | This template is made with <i
-								class="fa fa-heart-o" aria-hidden="true"></i> by <a
+							Template by <a
 								href="https://colorlib.com" target="_blank">Colorlib</a>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>

@@ -1,8 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="security"
-	uri="http://www.springframework.org/security/tags"%>
+
 
 
 <!doctype html>
@@ -11,7 +10,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
-<title>Login</title>
+<title>Busicol</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -54,7 +53,8 @@
 							<div class="header_right d-flex">
 								<div class="short_contact_list"></div>
 								<div class="social_media_links">
-									<a href="home"> Home </a>
+									<a href="home"> Home
+									</a>
 								</div>
 							</div>
 
@@ -64,8 +64,6 @@
 			</div>
 		</div>
 	</header>
-	<!-- header-end -->
-	<!-- bradcam_area  -->
 
 	<!--/ bradcam_area  -->
 
@@ -74,46 +72,10 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
-					<h2 class="contact-title">User login</h2>
+					<h2 class="contact-title">Error</h2>
 				</div>
-				<c:if test="${not empty error}">
-					<div class="alert alert-danger">
-						<spring:message
-							code="AbstractUserDetailsAuthenticationProvider.badCredentials"
-							text="Bad Credentials" />
-						<br />
-					</div>
-				</c:if>
 				<div class="col-lg-12">
-					<form action="<spring:url value="/postlogin"></spring:url>" method="post" class="form-contact contact_form" novalidate="novalidate">
-						<div class="row">
-							<div class="col-sm-3">
-								<div class="form-group">
-									<p style="padding: 10px;">Username:</p>
-								</div>
-							</div>
-							<div class="col-sm-9">
-								<div class="form-group">
-									<input class="form:input-large" placeholder="User Name"	name='username' type="text">
-								</div>
-							</div>
-
-							<div class="col-sm-3">
-								<div class="form-group">
-									<p style="padding: 10px;">Password:</p>
-								</div>
-							</div>
-							<div class="col-sm-9">
-								<div class="form-group">
-									<input class=" form:input-large" placeholder="Password" name='password' type="password" value="">
-								</div>
-							</div>
-
-						<div class="form-group mt-9">
-							<button type="submit" class="button button-contactForm boxed-btn">Login</button>
-						</div>
-						<security:csrfInput />
-					</form>
+					<p>${msg}</p>
 				</div>
 			</div>
 		</div>
@@ -139,8 +101,6 @@
 			</div>
 		</div>
 	</footer>
-	<!--/ footer end  -->
-
 	<!-- JS here -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -163,22 +123,7 @@
 	<script
 		src="<spring:url value='/resource/template/js/jquery.ajaxchimp.min.js' />"></script>
 	<script src="<spring:url value='/resource/template/js/main.js' />"></script>
-	<script>
-		$('#datepicker').datepicker({
-			iconsLibrary : 'fontawesome',
-			icons : {
-				rightIcon : '<span class="fa fa-caret-down"></span>'
-			}
-		});
-		$('#datepicker2').datepicker({
-			iconsLibrary : 'fontawesome',
-			icons : {
-				rightIcon : '<span class="fa fa-caret-down"></span>'
-			}
 
-		});
-	</script>
 </body>
 
 </html>
-

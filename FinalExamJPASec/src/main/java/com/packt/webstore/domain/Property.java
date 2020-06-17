@@ -18,6 +18,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
 
+import org.springframework.web.multipart.MultipartFile;
+
 @Entity
 @Table(name = "property")
 public class Property {
@@ -25,16 +27,17 @@ public class Property {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id;
 	
-	@NotEmpty(message = "{NotEmpty}")
+	@NotEmpty(message= "{NotEmpty}")
 	private String title;
 	
-	@NotEmpty(message = "{NotEmpty}")
+	@NotEmpty(message= "{NotEmpty}")
 	private String description;
 	
-	@NotNull(message = "Title not null")
+	@NotEmpty(message= "{NotEmpty}")
 	private float price;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private float area;
 	
 	@Column
@@ -45,9 +48,11 @@ public class Property {
 	private int bathCount;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private int bedCount;
 	
 	@Column
+	@NotEmpty(message= "{NotEmpty}")
 	private int garageCount;
 	
 	@Column
@@ -99,6 +104,17 @@ public class Property {
 	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
 	private List<FavoriteProperties> favorites;
 	
+	@OneToMany(mappedBy = "property" ,cascade = CascadeType.REMOVE)
+	private List<PropertyPhoto> propertyPhotos;
+
+	public List<PropertyPhoto> getPropertyPhotos() {
+		return propertyPhotos;
+	}
+
+	public void setPropertyPhotos(List<PropertyPhoto> propertyPhotos) {
+		this.propertyPhotos = propertyPhotos;
+	}
+
 	public long getId() {
 		return id;
 	}

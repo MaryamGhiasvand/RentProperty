@@ -60,14 +60,10 @@
 						</div>
 					</div>
 				</div>
-				<<<<<<< HEAD
 			</div>
 		</div>
 	</header>
 	<!-- header-end -->
-	<!-- bradcam_area  -->
-
-	<!--/ bradcam_area  -->
 
 	<!-- ================ contact section start ================= -->
 	<section class="contact-section">
@@ -77,11 +73,10 @@
 					<h2 class="contact-title">User registration</h2>
 				</div>
 				<div class="col-lg-12">
-					<form:form modelAttribute="newProperty" action="add" method="post"
-						class="form-contact contact_form" novalidate="novalidate">
+					<form:form modelAttribute="newProperty" action="add" method="post" class="form-contact contact_form" novalidate="novalidate"  >
 						<form:errors path="*" element="div" />
 						<div class="row">
-						
+
 							<div class="col-sm-3">
 								<div class="form-group">
 									<p style="padding: 10px;">Type:</p>
@@ -182,7 +177,7 @@
 							</div>
 							<div class="col-sm-3">
 								<div class="form-group">
-									<form:checkbox path="grill" id="grill"/>
+									<form:checkbox path="grill" id="grill" />
 									<label class="control-label col-lg-2" for="grill">Grill</label>
 									<form:errors path="grill" cssClass="text-danger" id="grill" />
 								</div>
@@ -257,7 +252,7 @@
 									<form:errors path="address.zipCode" cssClass="text-danger" />
 								</div>
 							</div>
-
+							
 							<div class="col-sm-3">
 								<div class="form-group">
 									<p style="padding: 10px;">Longitude:</p>
@@ -283,11 +278,24 @@
 									<form:errors path="address.latitude" cssClass="text-danger" />
 								</div>
 							</div>
+
+							<div class="col-sm-3">
+								<div class="form-group">
+									<p style="padding: 10px;">Photo:</p>
+								</div>
+							</div>
+							<div class="col-sm-9">
+								<div class="form-group">
+									<%-- <form:input class="form-control valid" path="propertyPhotos"
+										id="propertyImage"  type="file" size="50" /> --%>
+								</div>
+							</div>
+							
 						</div>
-						<div class="form-group mt-3">
+						<div class="form-group mt-12">
 							<button type="submit" class="button button-contactForm boxed-btn">Add</button>
 						</div>
-						<input type="file" name="fileUpload" size="50" />
+						
 					</form:form>
 				</div>
 			</div>

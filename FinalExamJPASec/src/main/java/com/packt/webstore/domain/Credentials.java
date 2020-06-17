@@ -12,6 +12,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
  
 @Entity(name="USERS")
@@ -19,23 +20,40 @@ public class Credentials {
 
 	 @Id
 	 @Column(name = "USERNAME", nullable = false, unique = true)
-	 @NotEmpty(message= "The username should not be empty")
-	 @Size(min=5, max=15, message="Size must be greater than 5 chars and less than 15")
+	 @NotEmpty(message= "{NotEmpty}")
+	 @Size(min=5, max=15, message="{Size.Validation}")
  	private String username;
-	 @NotEmpty(message= "The password should not be empty")
+	 
+	 
+	 @NotEmpty(message= "{NotEmpty}")
 	 @Column(name = "PASSWORD", nullable = false)
 	 private String password;
-	 @NotEmpty(message= "The email should not be empty")
+	 
+	 
+	 @Email(message="{Email.Validation}")
+	 @NotEmpty(message= "{NotEmpty}")
 	 @Column(name = "EMAIL", nullable = false)
 	 private String email;
+	 
 	String verifyPassword;
+
 	private Boolean enabled;
+	
 	@Column
 	private UserRole userRole;
 	
     @Column
-    @NotEmpty(message= "The firstname should not be empty")
+    @NotEmpty(message= "{NotEmpty}")
 	private String firstName;
+    
+	@NotEmpty(message= "{NotEmpty}")
+	@Column
+	private String lastName;
+    
+	
+    @Column
+    @Size(min=7, max=7, message="{Size.Phone.Validation}")
+	private String phone;
     
     public List<Property> getProperties() {
 		return properties;
@@ -61,13 +79,6 @@ public class Credentials {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	@NotEmpty(message= "The lastname should not be empty")
-	@Column
-	private String lastName;
-    
-	@NotEmpty(message= "The phone should not be empty")
-    @Column
-	private String phone;
     
     public UserRole getUserRole() {
 		return userRole;
