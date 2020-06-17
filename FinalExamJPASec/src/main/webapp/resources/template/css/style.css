@@ -8484,3 +8484,13 @@ h6 {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+
+
+
+.comment-table {
+	border-bottom: 1px solid #ccc;
+    width: 100%;
+    margin: 35px 0;
+}

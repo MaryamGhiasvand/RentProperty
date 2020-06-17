@@ -14,8 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
 import com.packt.webstore.domain.PropertyReview;
+import com.packt.webstore.service.CredentialService;
 import com.packt.webstore.service.PropertyService;
 import com.packt.webstore.service.ReviewService;
 
@@ -26,6 +28,8 @@ public class ReviewController {
 	private ReviewService reviewService;
 	@Autowired
 	private PropertyService propertyService;
+	@Autowired
+	private CredentialService credentialService;
 	
 	@RequestMapping(value = "/addPropertyReview", method = RequestMethod.GET)
 	public String addReview(@RequestParam("id") Long propertyId,@ModelAttribute("PropertytReview") PropertyReview propertyReview,Model model) {
@@ -47,8 +51,10 @@ public class ReviewController {
 	public String ProcessReview(@Valid @ModelAttribute("PropertytReview") PropertyReview propertyReview, BindingResult result,RedirectAttributes redirectAttr,Model model) {
 		
 		long propertyId =propertyReview.getProperty().getId();
+		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
 		Property p =propertyService.fingPropertyById(propertyId);
-		
+		Credentials credential = credentialService.findByUsername(username);
+		propertyReview.setCredentials(credential);
 		propertyReview.setProperty(p);
 		reviewService.save(propertyReview);
 		redirectAttr.addFlashAttribute("successFullyAdded","Your comment successfully added!");

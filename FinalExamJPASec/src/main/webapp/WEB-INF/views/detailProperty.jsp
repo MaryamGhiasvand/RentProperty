@@ -124,10 +124,7 @@
 									<c:if test="${LoggedInUser == true}">
 										<div class="book_btn d-none d-lg-block">
 
-											<a
-												href=" <spring:url value="/propertyReview/addPropertyReview?id=${property.id}" /> "
-												class="button">Add review</a> <br /> <br /> <input
-												type="button" value="add to favorite"
+											<input type="button" value="add to favorite"
 												onclick="addToFavorite(${property.id})" class="button" />
 
 										</div>
@@ -697,25 +694,99 @@
 					</section>
 
 					<section>
-					<div><h3>Comments :</h3></div>
 						<div>
+							<h3>Comments :</h3>
+						</div>
+						<br /> <br />
+						<div>
+							<div>
+								<!-- addreview form by Maryam-->
+								<c:if test="${LoggedInUser == true}">
+									<form:form modelAttribute="PropertytReview"
+										action="addPropertyReview" method="post">
+										<fieldset>
+											<form:input type="hidden" value='${property.id}'
+												path="Property.id" />
+											<h4 >
+												<spring:message code="propertyReviewForm.title"
+													text="add your Comment here:" />
+											</h4>
+											<table style="width:100%;">
+												<tr>
+													<td><label for="reviewTitle"> <spring:message
+																code="reviewTitle" text="add a title : " /></label></td>
+													<td><p>
+															<form:input path="title" />
+														</p></td>
+													<td>
+														<div style="text-align: center;">
+															<form:errors path="title" cssStyle="error" />
+														</div>
+													</td>
+												</tr>
+
+
+												<tr>
+													<td><h6><label for="comment"> <spring:message
+																code="comment" text="Comment:" /></label></h6></td>
+													<td><p>
+															<form:input path="comment" style="width:100%;"/>
+														</p></td>
+													<td>
+														<div style="text-align: center;">
+															<form:errors path="comment" cssStyle="error" />
+														</div>
+													</td>
+												</tr>
+
+												<tr>
+													<td><label for="starCount"> <spring:message
+																code="starCount" text="stars" /></label></td>
+													<td>
+														<form>
+															<input type="radio" name="starCount" value=1 class="fa fa-star" />
+															<input type="radio" name="starCount" value=2 class="fa fa-star" />
+															<input type="radio" name="starCount" value=3 class="fa fa-star" />
+															<input type="radio" name="starCount" value=4 class="fa fa-star" />
+															<input type="radio" name="starCount" value=4 class="fa fa-star" />
+														</form>
+													</td>
+
+												</tr>
+
+												<tr>
+													<td colspan="2"><input type="submit"
+														value="Save" /></td>
+												</tr>
+											</table>
+										</fieldset>
+
+									</form:form>
+
+								</c:if>
+								<!-- add review form by Maryam -->
+							</div>
 							<c:forEach var="review" items="${propertyReviews}">
-								<table>
+								<table cellpadding="2" cellspacing="2" class="comment-table">
 
 									<tr>
-										<td><p>${review.starCount}</p></td>
-										<td><h4>Comment title</h4></td>
-										<td><p>${review.title}</p></td>
+										<td><p>${review.credentials.username}</p></td>
+										<td><p>${review.starCount}
+												<i class="fa fa-star" style="color: orange"
+													aria-hidden="true"></i>
+											</p></td>
+									</tr>
+									<tr>
+										<td><h4>${review.title}</h4></td>
 									</tr>
 
 									<tr>
-										<td><h4>Comment body</h4></td>
 										<td><p>${review.comment}</p></td>
 									</tr>
 
 								</table>
 							</c:forEach>
-							
+
 						</div>
 					</section>
 				</div>

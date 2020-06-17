@@ -1,5 +1,7 @@
 package com.packt.webstore.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +35,11 @@ public class ReviewServiceImpl implements ReviewService{
 //	public void update(PropertyReview review) {
 //		reviewRepository.
 //	}
+
+	@Override
+	public List<PropertyReview> findByPropertyId(Long propertyId) {
+		List<PropertyReview> reviews =reviewRepository.findByPropertyId(propertyId);
+		return reviews;
+	}
 
 }

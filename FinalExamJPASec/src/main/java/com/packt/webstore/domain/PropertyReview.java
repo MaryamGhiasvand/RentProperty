@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class PropertyReview {
@@ -30,8 +31,33 @@ public class PropertyReview {
 	
 	
 	@ManyToOne
-    @JoinColumn(name="property_id", nullable=false)
+    //@JoinColumn(name="property_id", nullable=false)
 	private Property property;
+
+	@OneToOne
+    //@JoinColumn(name="property_id", nullable=false)
+	private Credentials credentials;
+	
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public Credentials getCredentials() {
+		return credentials;
+	}
+
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
+
 
 
 	public String getTitle() {
@@ -84,13 +110,18 @@ public class PropertyReview {
 	}
 
 
-	public PropertyReview(String title, int starCount, String comment, LocalDateTime dateTime, Property property) {
+
+
+
+	public PropertyReview(String title, int starCount, String comment, LocalDateTime dateTime, Property property,
+			Credentials credentials) {
 		super();
 		this.title = title;
 		this.starCount = starCount;
 		this.comment = comment;
 		this.dateTime = dateTime;
 		this.property = property;
+		this.credentials = credentials;
 	}
 
 

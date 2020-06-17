@@ -29,7 +29,13 @@ public class Credentials {
     @Column
 	private String firstName;
     
-    public String getFirstName() {
+    public List<Property> getProperties() {
+		return properties;
+	}
+	public void setProperties(List<Property> properties) {
+		this.properties = properties;
+	}
+	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {

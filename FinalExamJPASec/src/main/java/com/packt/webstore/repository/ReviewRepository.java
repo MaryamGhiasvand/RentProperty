@@ -1,5 +1,7 @@
 package com.packt.webstore.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -10,8 +12,7 @@ import com.packt.webstore.domain.PropertyReview;
 @Repository
 public interface ReviewRepository extends CrudRepository<PropertyReview, Long>{
 
-//	@Query("select r from PropertyReview where r.property.id = :property_Id")
-//	void findAllReviews(@Param("property_Id") long property_Id);
-
+	@Query("select r from PropertyReview r where r.property.id = :property_Id")
+	List<PropertyReview> findByPropertyId(@Param("property_Id")Long propertyId);
 
 }

@@ -14,12 +14,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.domain.Property;
+import com.packt.webstore.domain.PropertyReview;
 import com.packt.webstore.domain.PropertyType;
 import com.packt.webstore.service.CredentialService;
 import com.packt.webstore.service.PropertyService;
+import com.packt.webstore.service.ReviewService;
 
 @Controller
 @RequestMapping({"/properties"})
@@ -30,6 +33,9 @@ public class PropertyController {
 	
 	@Autowired
 	CredentialService credentialService;
+	//Added by Maryam 
+	@Autowired
+	private ReviewService reviewService;
 	
 	@RequestMapping("/list")
 	public String listProperties(Model model) {
@@ -40,13 +46,53 @@ public class PropertyController {
 	}
 	
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public String getPropertyDetail(Model model, @RequestParam("id") Long propertyId) {
+	public String getPropertyDetail(Model model,@ModelAttribute("PropertytReview") PropertyReview propertyReview, @RequestParam("id") Long propertyId) {
   		System.out.println("-*-*- edit " + propertyId);
   		System.out.println("-*-*- LoggedInUser " + model.asMap().get("LoggedInUser"));
   		Property property = propertyService.fingPropertyById(propertyId);
+  		
+  		//Added by Maryam for get property Review
+  		List<PropertyReview> propertyReviews= reviewService.findByPropertyId(propertyId);
+  		model.addAttribute("propertyReviews", propertyReviews);
+  		//Added by Maryam
   		model.addAttribute("property", property);
 		return "detailProperty";
 	}
+	
+	
+	//Review property--> Added by Maryam 
+	@RequestMapping(value = "/addPropertyReview", method = RequestMethod.GET)
+	public String addReview(@RequestParam("id") Long propertyId,@ModelAttribute("PropertytReview") PropertyReview propertyReview,Model model) {
+		System.out.println("propid"+propertyId);
+		
+		Property p = propertyService.fingPropertyById(propertyId);
+		model.addAttribute("property",p);
+		
+		System.out.println(model.asMap().get("LoggedInUser"));
+		if((boolean)model.asMap().get("LoggedInUser") == true) {
+		System.out.println("AddReview");
+		return "propertyReview";
+		}
+	   return "redirect:/login";
+	}
+	
+	
+	@RequestMapping(value = "/addPropertyReview", method = RequestMethod.POST)
+	public String ProcessReview(@Valid @ModelAttribute("PropertytReview") PropertyReview propertyReview, BindingResult result,RedirectAttributes redirectAttr,Model model) {
+		
+		long propertyId =propertyReview.getProperty().getId();
+		String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
+		Property p =propertyService.fingPropertyById(propertyId);
+		Credentials credential = credentialService.findByUsername(username);
+		propertyReview.setCredentials(credential);
+		propertyReview.setProperty(p);
+		reviewService.save(propertyReview);
+		redirectAttr.addFlashAttribute("successFullyAdded","Your comment successfully added!");
+		//redirectAttr.addFlashAttribute("property",p);
+		return "redirect:/properties/detail?id="+p.getId();
+
+	}
+	//Added By Maryam
 	
   	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String getAddProperty(@ModelAttribute("newProperty") Property newProperty, Model model) {
