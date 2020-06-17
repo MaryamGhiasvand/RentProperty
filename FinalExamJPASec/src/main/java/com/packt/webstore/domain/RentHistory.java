@@ -30,8 +30,11 @@ public class RentHistory {
 	@Column
 	private float price;
 	
-//	@Column
-//	private HistoryStatus status;
+	@Column
+	private HistoryStatus status;	
+
+	private String comment;
+	
 
 	@ManyToOne
     @JoinColumn(name="property_id", nullable=false)
@@ -82,11 +85,19 @@ public class RentHistory {
 		this.price = price;
 	}
 
-//	public HistoryStatus getStatus() {
-//		return status;
-//	}
-//
-//	public void setStatus(HistoryStatus status) {
-//		this.status = status;
-//	}
+	public HistoryStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(HistoryStatus status) {
+		this.status = status;
+	}	
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }
