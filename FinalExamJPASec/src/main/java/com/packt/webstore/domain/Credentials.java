@@ -36,7 +36,9 @@ public class Credentials {
 	 private String email;
 	 
 	String verifyPassword;
+
 	private Boolean enabled;
+	
 	@Column
 	private UserRole userRole;
 	
