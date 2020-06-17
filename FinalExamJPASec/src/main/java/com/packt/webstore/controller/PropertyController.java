@@ -76,8 +76,8 @@ public class PropertyController {
 	
 	@RequestMapping(value = "/edit", method = RequestMethod.GET)
 	public String getPropertyById(Model model, @RequestParam("search") String search) {
-  		Property property = propertyService.searchProperty(search);
-  		model.addAttribute("property", property);
+  		//Property property = propertyService.searchProperty(search).get(0);
+  		//model.addAttribute("property", property);
 		return "editProperty";
 	}
   	

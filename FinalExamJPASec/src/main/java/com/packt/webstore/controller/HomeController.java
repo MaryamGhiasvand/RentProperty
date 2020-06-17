@@ -16,12 +16,12 @@ import com.packt.webstore.domain.PropertyType;
 @Controller
 public class HomeController {
 
-	@RequestMapping({"/","/welcome"})
+	@RequestMapping({"/"})
 	public String welcome(@ModelAttribute("property") Property property) {
-		return "welcome";
+		return "home";
 	}
 	
-	@RequestMapping("/welcome/greeting")
+	@RequestMapping("/welcome")
 	public String greeting() {
 		return "welcome";
 	}

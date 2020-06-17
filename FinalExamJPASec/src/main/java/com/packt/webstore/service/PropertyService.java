@@ -4,6 +4,7 @@ package com.packt.webstore.service;
 import java.util.List;
 
 import com.packt.webstore.domain.Property;
+import com.packt.webstore.domain.PropertyType;
 
 public interface PropertyService {
 	
@@ -14,5 +15,5 @@ public interface PropertyService {
 
 	public List<Property> findPropertyForSearch(int bathCount, int bedCount);
 	public List<Property> findPropertyByCity(String city);
-	public Property searchProperty(String search);
+	public List<Property> searchProperty(String search, int bathCount, int bedCount, PropertyType propertyType);
 }
