@@ -1,7 +1,7 @@
 var contextRoot = "/" + window.location.pathname.split('/')[1];
 
 function addToFavorite(propertyId) {
-alert ("propid= "+propertyId)
+
 	$.ajax({
 		url : contextRoot+'/favoriteProperties/addtoFavorite',
 		type : 'GET',
@@ -10,24 +10,24 @@ alert ("propid= "+propertyId)
 		data : 'propertyId=' + propertyId,
 
 		success : function(returnParam) {
-			alert(returnParam);
-			if (returnParam == "notLoggedIn") {
-				alert("user notLoggedIn")
-				$('#errors').html("");
-				// $("#result").append( '<H2 align="center" color="green">
-				// Sucessfully addded to your favorite list </H2>');
-				$("#result").append(
-						'<H2> please login to system </H2>');
-				$('#result').show();
-			} else {
-				alert("sucess")
-				$('#errors').html("");
-				// $("#result").append( '<H2 align="center" color="green">
-				// Sucessfully addded to your favorite list </H2>');
-				$("#result").append(
-						'<H2> Sucessfully addded to your favorite list </H2>');
-				$('#result').show();
-			}
+			alert("successfully added to your favorite list");
+//			if (returnParam == "notLoggedIn") {
+//				alert("user notLoggedIn")
+//				$('#errors').html("");
+//				// $("#result").append( '<H2 align="center" color="green">
+//				// Sucessfully addded to your favorite list </H2>');
+//				$("#result").append(
+//						'<H2> please login to system </H2>');
+//				$('#result').show();
+//			} else {
+//				alert("sucess")
+//				$('#errors').html("");
+//				// $("#result").append( '<H2 align="center" color="green">
+//				// Sucessfully addded to your favorite list </H2>');
+//				$("#result").append(
+//						'<H2> Sucessfully addded to your favorite list </H2>');
+//				$('#result').show();
+//			}
 		},
 
 		error : function(xhr, status, error) {

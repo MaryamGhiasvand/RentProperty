@@ -85,7 +85,9 @@
 						<div class="row align-items-center">
 							<div class="col-xl-3 col-lg-2">
 								<div class="logo">
-									<a href="index.html"> <img src="<spring:url value='/resource/template/img/logo.png' />" alt="">
+									<a href="index.html"> <img
+										src="<spring:url value='/resource/template/img/logo.png' />"
+										alt="">
 									</a>
 								</div>
 							</div>
@@ -119,9 +121,17 @@
 										<a href="#"> <i class="ti-search"></i>
 										</a>
 									</div>
-									<div class="book_btn d-none d-lg-block">
-										<a href="#">Add Property</a>
-									</div>
+									<c:if test="${LoggedInUser == true}">
+										<div class="book_btn d-none d-lg-block">
+
+											<a
+												href=" <spring:url value="/propertyReview/addPropertyReview?id=${property.id}" /> "
+												class="button">Add review</a> <br /> <br /> <input
+												type="button" value="add to favorite"
+												onclick="addToFavorite(${property.id})" class="button" />
+
+										</div>
+									</c:if>
 								</div>
 							</div>
 							<div class="col-12">
@@ -145,21 +155,26 @@
 						<h4>${property.title}</h4>
 						<h5>${property.description}</h5>
 						<p>
-							<img src="<spring:url value='/resource/template/img/svg_icon/location.svg' />" alt=""> 200/A,
-							${property.address.city}, ${property.address.state}, USA
+							<img
+								src="<spring:url value='/resource/template/img/svg_icon/location.svg' />"
+								alt=""> 200/A, ${property.address.city},
+							${property.address.state}, USA
 						</p>
 						<div class="quality_quantity d-flex">
 							<div class="single_quantity">
-								<img src="<spring:url value='/resource/template/img/svg_icon/color_box.svg' />" alt=""> <span>${property.area}
-									Sqft</span>
+								<img
+									src="<spring:url value='/resource/template/img/svg_icon/color_box.svg' />"
+									alt=""> <span>${property.area} Sqft</span>
 							</div>
 							<div class="single_quantity">
-								<img src="<spring:url value='/resource/template/img/svg_icon/color_bed.svg' />" alt=""> <span>${property.bedCount}
-									Bed</span>
+								<img
+									src="<spring:url value='/resource/template/img/svg_icon/color_bed.svg' />"
+									alt=""> <span>${property.bedCount} Bed</span>
 							</div>
 							<div class="single_quantity">
-								<img src="<spring:url value='/resource/template/img/svg_icon/color_bath.svg' />" alt=""> <span>${property.bathCount}
-									Bath</span>
+								<img
+									src="<spring:url value='/resource/template/img/svg_icon/color_bath.svg' />"
+									alt=""> <span>${property.bathCount} Bath</span>
 							</div>
 						</div>
 					</div>
@@ -183,13 +198,19 @@
 					<div class="property_banner">
 						<div class="property_banner_active owl-carousel">
 							<div class="single_property">
-								<img src="<spring:url value='/resource/template/img/banner/property_details.png' />" alt="">
+								<img
+									src="<spring:url value='/resource/template/img/banner/property_details.png' />"
+									alt="">
 							</div>
 							<div class="single_property">
-								<img src="<spring:url value='/resource/template/img/banner/property_details.png' />" alt="">
+								<img
+									src="<spring:url value='/resource/template/img/banner/property_details.png' />"
+									alt="">
 							</div>
 							<div class="single_property">
-								<img src="<spring:url value='/resource/template/img/banner/property_details.png' />" alt="">
+								<img
+									src="<spring:url value='/resource/template/img/banner/property_details.png' />"
+									alt="">
 							</div>
 						</div>
 					</div>
@@ -199,7 +220,7 @@
 						<h4>Description</h4>
 						<p>${property.description}.</p>
 
-			
+
 					</div>
 					<section class="contact-section">
 						<div class="d-none d-sm-block">
@@ -674,6 +695,29 @@
 
 						</div>
 					</section>
+
+					<section>
+					<div><h3>Comments :</h3></div>
+						<div>
+							<c:forEach var="review" items="${propertyReviews}">
+								<table>
+
+									<tr>
+										<td><p>${review.starCount}</p></td>
+										<td><h4>Comment title</h4></td>
+										<td><p>${review.title}</p></td>
+									</tr>
+
+									<tr>
+										<td><h4>Comment body</h4></td>
+										<td><p>${review.comment}</p></td>
+									</tr>
+
+								</table>
+							</c:forEach>
+							
+						</div>
+					</section>
 				</div>
 			</div>
 		</div>
@@ -681,56 +725,66 @@
 	<!-- /details  -->
 
 
-  <!-- footer start -->
-    <footer class="footer">
-        <div class="footer_top">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-md-6 col-lg-3">
-                        <div class="footer_widget">
-                            <div class="footer_logo">
-                                <a href="#">
-                                    <img src="img/footer_logo.png" alt="">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+	<!-- footer start -->
+	<footer class="footer">
+		<div class="footer_top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xl-3 col-md-6 col-lg-3">
+						<div class="footer_widget">
+							<div class="footer_logo">
+								<a href="#"> <img src="img/footer_logo.png" alt="">
+								</a>
+							</div>
+						</div>
+					</div>
 
-                </div>
-            </div>
-        </div>
-        <div class="copy-right_text">
-            <div class="container">
-                <div class="footer_border"></div>
-                <div class="row">
-                    <div class="col-xl-12">
-                        <p class="copy_right text-center">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--/ footer end  -->
+				</div>
+			</div>
+		</div>
+		<div class="copy-right_text">
+			<div class="container">
+				<div class="footer_border"></div>
+				<div class="row">
+					<div class="col-xl-12">
+						<p class="copy_right text-center">
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;
+							<script>document.write(new Date().getFullYear());</script>
+							All rights reserved | This template is made with <i
+								class="fa fa-heart-o" aria-hidden="true"></i> by <a
+								href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<!--/ footer end  -->
 
-    <!-- link that opens popup -->
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
+	<!-- link that opens popup -->
 
-    <script src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
-    <!-- JS here -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script
+		src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-de7e2ef6bfefd24b79a3f68b414b87b8db5b08439cac3f1012092b2290c719cd.js"></script>
 
-    <script src="<spring:url value='/resource/template/js/bootstrap.min.js' />"></script>
-    <script src="<spring:url value='/resource/template/js/jquery.scrollUp.min.js' />"></script>
-    <script src="<spring:url value='/resource/template/js/nice-select.min.js' />"></script>
-    <!--contact js-->
-    <script src="<spring:url value='/resource/template/js/jquery.ajaxchimp.min.js' />"></script>
-    <script src="<spring:url value='/resource/template/js/main.js' />"></script>
-    <script>
+	<script
+		src=" https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>
+	<!-- JS here -->
+
+	<script
+		src="<spring:url value='/resource/template/js/bootstrap.min.js' />"></script>
+	<script
+		src="<spring:url value='/resource/template/js/jquery.scrollUp.min.js' />"></script>
+	<script
+		src="<spring:url value='/resource/template/js/nice-select.min.js' />"></script>
+	<!--contact js-->
+	<script
+		src="<spring:url value='/resource/template/js/jquery.ajaxchimp.min.js' />"></script>
+	<script src="<spring:url value='/resource/template/js/main.js' />"></script>
+	<script>
         function collision($div1, $div2) {
             var x1 = $div1.offset().left;
             var w1 = 40;
