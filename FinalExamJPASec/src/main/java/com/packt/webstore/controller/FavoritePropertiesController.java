@@ -69,8 +69,8 @@ public class FavoritePropertiesController {
 		@RequestMapping("/viewMyFvoriteList")
 		public String viewFvoriteList(Model model) {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName().toString();
-			List<Property> favoriteProperties=favoritePropertiesService.findAllFavorites(username);
-			model.addAttribute("properties",favoriteProperties);
+			List<FavoriteProperties> favoriteProperties=favoritePropertiesService.findAllFavorites(username);
+			model.addAttribute("favoriteProperties",favoriteProperties);
 			
 			return "myFavoriteList";
 		}

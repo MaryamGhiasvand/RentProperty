@@ -13,10 +13,10 @@ public interface FavoritePropertiesService {
 
 	public void deleteFromFavorites(long favorite_id);
 	
-	public List<Property> findAllFavorites(String username);
+	public List<FavoriteProperties> findAllFavorites(String username);
 
 
-	public void removefavoriteProperty(long propertyId);
+	public void removefavoriteProperty(long favoriteId);
 	
 
 }
