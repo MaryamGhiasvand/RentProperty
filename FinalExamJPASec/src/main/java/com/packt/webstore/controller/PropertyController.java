@@ -200,4 +200,9 @@ public class PropertyController {
 	public String home() {
 		return "home";
 	}
+	
+	@RequestMapping(value= {"/dashboard"}, method=RequestMethod.GET)
+	public String dashboard() {
+		return "dashboard";
+	}
 }

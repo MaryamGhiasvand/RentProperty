@@ -13,9 +13,10 @@
 		
  	<security:http use-expressions="true">
 	
- 	  <security:intercept-url pattern="/dashboard/add" access="hasRole('ROLE_ADMIN','ROLE_USER')" />  	
+ 	  <security:intercept-url pattern="/addRentHistory" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />  	
 	  <security:intercept-url pattern="/dashboard" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  />
 	  <security:intercept-url pattern="/properties/add" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  />
+	  <security:intercept-url pattern="/properties/list" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"  />
 	  
  	
  		<security:form-login login-page="/login" 

@@ -141,7 +141,7 @@
             <div class="row align-items-center">
                 <div class="col-xl-6 col-md-6">
                     <div class="about_thumb">
-                        <img src="<spring:url value='/resource/template/img/svg_icon/color_box.svg' />" alt="Logo">
+                        <img src="<spring:url value='/resource/images/logo.png' />" alt="Logo">
                     </div>
                 </div>
                 <div class="col-xl-6 col-md-6">
