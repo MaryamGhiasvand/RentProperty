@@ -11,13 +11,12 @@ import com.packt.webstore.domain.Credentials;
 import com.packt.webstore.service.CredentialService;
 
 @Controller
-@RequestMapping("/dashboard")
 public class DashboardController {
 	
 	@Autowired
 	CredentialService credentialService;
 	
-	@RequestMapping(value= {""}, method=RequestMethod.GET)
+	@RequestMapping(value= {"/dashboard"}, method=RequestMethod.GET)
 	public String dashboard(Model model) {
 		String username =  SecurityContextHolder.getContext().getAuthentication().getName().toString();
 		Credentials credential = credentialService.findByUsername(username);

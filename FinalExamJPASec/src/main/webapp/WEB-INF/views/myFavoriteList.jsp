@@ -80,14 +80,14 @@
 				</div>
 			</div>
 
-			<div class="row">
+<%-- 			<div class="row">
 				<div class="col-xl-12">
 					<div class="section_title mb-40 text-center">
 						<a href="<c:url value="/properties/add" />"
 							class="btn btn-danger btn-mini pull-right">Add a new one</a>
 					</div>
 				</div>
-			</div>
+			</div> --%>
 
 		</div>
 	</div>

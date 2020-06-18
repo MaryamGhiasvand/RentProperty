@@ -203,6 +203,6 @@ public class PropertyController {
 	
 	@RequestMapping(value= {"/dashboard"}, method=RequestMethod.GET)
 	public String dashboard() {
-		return "dashboard";
+		return "redirect:/dashboard";
 	}
 }
