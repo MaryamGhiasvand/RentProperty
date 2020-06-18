@@ -31,8 +31,6 @@ public class PropertyReview {
 	@NotEmpty(message= "{NotEmpty}")
 	private String comment;
 	
-	@Column
-	private LocalDateTime dateTime;
 	
 	
 	@ManyToOne
@@ -96,14 +94,6 @@ public class PropertyReview {
 	}
 
 
-	public LocalDateTime getDateTime() {
-		return dateTime;
-	}
-
-
-	public void setDateTime(LocalDateTime dateTime) {
-		this.dateTime = dateTime;
-	}
 
 
 	public Property getProperty() {
@@ -125,7 +115,6 @@ public class PropertyReview {
 		this.title = title;
 		this.starCount = starCount;
 		this.comment = comment;
-		this.dateTime = dateTime;
 		this.property = property;
 		this.credentials = credentials;
 	}
