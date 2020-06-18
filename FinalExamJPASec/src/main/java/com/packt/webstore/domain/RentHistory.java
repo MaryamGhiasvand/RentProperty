@@ -15,8 +15,11 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.packt.webstore.validation.EndDate;
+
 @Entity
 @Table(name = "renthistory")
+@EndDate
 public class RentHistory {
 	
 	@Id 
@@ -27,6 +30,7 @@ public class RentHistory {
 	private Date startDate;
 	
 	@DateTimeFormat(pattern = "MM-dd-yyyy")
+	
 	private Date endDate;
 	
 	@Column

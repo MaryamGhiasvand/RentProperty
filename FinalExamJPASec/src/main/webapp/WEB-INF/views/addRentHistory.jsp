@@ -73,7 +73,7 @@
 					<form:form modelAttribute="rentHistory" action="addRentHistory"
 						method="post" class="form-contact contact_form"
 						novalidate="novalidate">
-						<form:errors path="*" element="div" />
+						<form:errors path="*" element="div" class="error"/>
 						<div class="row">
 
 							<div class="col-sm-3">
@@ -99,7 +99,7 @@
 							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input id="startDate" path="startDate" placeholder="Start Date"  class="form-control valid"/>
-									<form:errors path="startDate" cssClass="text-danger" />
+									<form:errors path="startDate" cssClass="text-danger" class="error"/>
 								</div>
 							</div>
 
@@ -112,7 +112,7 @@
 							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input  path="endDate" id="endDate" placeholder="End Date" class="form-control valid" />
-									<form:errors path="endDate" cssClass="text-danger" />
+									<form:errors path="endDate" cssClass="text-danger" class="error"/>
 								</div>
 							</div>
 							<div class="col-sm-3">
@@ -124,7 +124,7 @@
 								<div class="form-group">
 									<form:input class="form-control valid" path="price" id="price"
 										placeholder="Price" />
-									<form:errors path="price" cssClass="text-danger" />
+									<form:errors path="price" cssClass="text-danger" class="error"/>
 								</div>
 							</div>
 							<div class="col-sm-3">
@@ -135,7 +135,7 @@
 							<div class="col-sm-9">
 								<div class="form-group">
 									<form:input id="comment" path="comment" type="text" placeholder="Comment" class="form-control valid" />
-									<form:errors path="comment" cssClass="text-danger" />
+									<form:errors path="comment" cssClass="text-danger" class="error"/>
 								</div>
 							</div>
 
